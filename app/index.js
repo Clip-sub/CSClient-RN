@@ -1,15 +1,15 @@
 /**
  * @flow
  */
-import {Component} from 'react';
+'use strict';
+import React, {Component} from 'react';
 import {View, Text} from 'react-native';
+import Home from './components/home';
 
 export default class CSClient extends Component {
-  static render() {
+  render() {
     return (
-      <View>
-        <Text>Homepage</Text>
-      </View>
+      <Home/>
     );
   }
 }
