@@ -14,8 +14,16 @@ export default class HeaderSearch extends Component {
     this.props.setSearchKeyword(event.nativeEvent.text.trim());
   }
 
-  _handleSubmit(event) {
-    this.props.runSearch(this.props.keyword);
+  _handleSubmit() {
+    const {dispatch} = this.props;
+    dispatch(getPosts(this.state.keyword));
+    //this.props.runSearch(this.props.keyword);
+  }
+
+  _handlePressBack() {
+    InteractionManager.runAfterInteractions(() => {
+      this.props.navigator.pop();
+    });
   }
 
   render() {

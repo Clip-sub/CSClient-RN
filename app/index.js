@@ -2,23 +2,20 @@
  * @flow
  */
 'use strict';
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
-import {Provider} from 'react-redux';
-import {thunk} from 'redux-thunk';
-import * as reducers from './reducers';
-import Home from './components/home';
+import React, {Component} from "react";
+import {Provider} from "react-redux";
+import CustomStore from "./stores/custom-store";
+import {thunk} from "redux-thunk";
+import AppContainer from "./container";
 
-const grandReducer = combineReducers(reducers);
-const store = configStore();
+const store = CustomStore(); // Initial state = null.
 const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
 
 export default class CSClient extends Component {
   render() {
     return (
       <Provider store={store}>
-
+        {() => <AppContainer/>}
       </Provider>
     );
   }
