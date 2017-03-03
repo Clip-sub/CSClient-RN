@@ -15,8 +15,8 @@ export function getRecentPosts(page: number, perPage: ?number = 1) {
   }
 }
 
-export function getCurrentUserInfo(id: number) {
+export function getUserInfo(id: number) {
   return dispatch => {
-    
+    APIClient.
   }
 }
