@@ -71,8 +71,6 @@ let API = {
       console.log(e);
     }
   },
-
-
 }
 
 export default API;
