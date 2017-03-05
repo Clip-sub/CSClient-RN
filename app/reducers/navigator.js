@@ -2,7 +2,7 @@
  * @flow
  */
 'use strict';
-import * as ActionTypes from '../actions/action-types';
+import * as ActionTypes from '../actions/action-types-core';
 
 const initialRoute = {path: 'home'};
 const initialState = {route: initialRoute};

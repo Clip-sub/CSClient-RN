@@ -1,5 +1,5 @@
 'use strict';
-import Types from "./action-types";
+import Types from "./action-types-core";
 
 export function loadPosts(page: number, perPage: ?number = 1) {
   return {

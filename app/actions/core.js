@@ -1,13 +1,14 @@
 'use strict';
-import Types from "./action-types";
+import * as Types from "./action-types-core";
+import API from "../api/APIClient";
 
-export function getPosts(page: number, perPage: ?number = 1) {
+function getPosts(page: number, perPage: ?number = 1) {
   return dispatch => {
     return API.loadPosts;
   }
 }
 
-export function getRecentPosts(page: number, perPage: ?number = 1) {
+function getRecentPosts(page: number, perPage: ?number = 1) {
   return dispatch => {
     return API.getRecentPosts(page, perPage)
       .then(response => dispatch(gotRecentPosts(response)))
@@ -15,8 +16,23 @@ export function getRecentPosts(page: number, perPage: ?number = 1) {
   }
 }
 
-export function getUserInfo(id: number) {
+function getUserInfo(id: number) {
   return dispatch => {
-    APIClient.
+    API.getUserInfo(id)
+  }
+}
+
+export function receivePosts(posts: Array<Object>, appliedArgs: Object) {
+  return {
+    type: Types.RECEIVE_POSTS,
+    posts: posts,
+    appliedArgs: appliedArgs
+  }
+}
+
+export function receiveRecentPosts(recentPosts: Array<Object>) {
+  return {
+    type: Types.RECEIVE_RECENT_POSTS,
+    posts: recentPosts
   }
 }
