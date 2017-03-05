@@ -5,13 +5,18 @@
 
 const BASE_API = 'https://clip-sub.com/api/';
 
-const GET_NONCE = 'get_nonce/';
+export const ResponseStatus = {
+  OK: 'ok',
+  ERROR: 'error'
+}
+
+const API_GET_NONCE = 'get_nonce/';
 const API_GET_POSTS = 'get_posts/';
 const API_GET_POST = 'get_post/';
 const API_GET_PAGE_INDEX = 'get_page_index/';
 const API_GET_PAGE = 'get_page/';
 
-let API = {
+export default let API = {
   /**
    * @param controller Name of the controller, e.g: posts
    * @param method Name of the method, e.g: create_post
