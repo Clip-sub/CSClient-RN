@@ -5,6 +5,11 @@
 import React, {Component} from "react";
 
 export default class SideMenu extends Component {
+  styles = {
+    controlPanel: {},
+    controlPanelWelcome: {}
+  };
+
   constructor(props) {
     super(props);
   }
@@ -16,6 +21,7 @@ export default class SideMenu extends Component {
           Control Panel
         </Text>
         <Button
+          title={''}
           onPress={() => {this.props.closeDrawer();}}
           text="Close Drawer"/>
       </View>

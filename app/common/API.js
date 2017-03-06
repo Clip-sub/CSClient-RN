@@ -8,7 +8,7 @@ const BASE_API = 'https://clip-sub.com/api/';
 export const ResponseStatus = {
   OK: 'ok',
   ERROR: 'error'
-}
+};
 
 const API_GET_NONCE = 'get_nonce/';
 const API_GET_POSTS = 'get_posts/';
@@ -16,7 +16,7 @@ const API_GET_POST = 'get_post/';
 const API_GET_PAGE_INDEX = 'get_page_index/';
 const API_GET_PAGE = 'get_page/';
 
-export default let API = {
+const API = {
   /**
    * @param controller Name of the controller, e.g: posts
    * @param method Name of the method, e.g: create_post
@@ -59,6 +59,7 @@ export default let API = {
         console.log(error);
       }
     }
-
   }
 };
+
+export default API;

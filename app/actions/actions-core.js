@@ -1,15 +1,13 @@
 'use strict';
-import * as Types from "./action-types-core";
+import * as Types from "./types-core";
 import API, {ResponseStatus} from "../api/APIClient";
 
 export function getPosts(page: number, perPage: ?number = 1, args: ?Object = {}) {
   return dispatch => {
-    return dispatch => {
-      return API.getPosts(page, perPage, args)
-        .then(response => ResponseStatus.OK ? 
-          dispatch(receivePosts(response)) : dispatch(receiveError(response)))
-        .catch(error => dispatch(receiveError(error)));
-    }
+    return API.getPosts(page, perPage, args)
+      .then(response => ResponseStatus.OK ?
+        dispatch(receivePosts(response)) : dispatch(receiveError(response)))
+      .catch(error => dispatch(receiveError(error)));
   }
 }
 
