@@ -3,9 +3,18 @@
  */
 'use strict';
 import * as Types from '../actions/types-navigation';
+import Immutable from "immutable";
 
 const initialRoute = {path: 'home'};
-const initialState = {route: initialRoute};
+//const initialState = {route: initialRoute};
+const initialState = Immutable.fromJS({
+  index: 0,
+  routes: [{
+    routeName: 'init',
+    key: 'init'
+  }]
+});
+
 
 export default function navigator(state = initialRoute, action) {
   switch (action.type) {

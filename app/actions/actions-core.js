@@ -1,6 +1,6 @@
 'use strict';
 import * as Types from "./types-core";
-import API, {ResponseStatus} from "../api/APIClient";
+import API, {ResponseStatus} from "../common/API";
 
 export function getPosts(page: number, perPage: ?number = 1, args: ?Object = {}) {
   return dispatch => {

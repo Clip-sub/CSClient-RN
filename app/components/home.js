@@ -3,8 +3,7 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {  Container, Header, Content, Button, Item, Input, Left,
-  Body, Right, Title, Tab, TabHeading, Icon, Text} from "native-base";
+import {Container, Header, Content, Button, Item, Input, Left, Body, Right, Title, Icon, Text} from "native-base";
 
 export default class Home extends Component {
   constructor(props) {
@@ -40,7 +39,10 @@ export default class Home extends Component {
         </Body>
 
         <Right>
-          <Button transparent>
+          <Button
+            title={''}
+            onPress={() => console.log('')}
+            transparent>
             <Icon name='search'/>
           </Button>
         </Right>
@@ -56,7 +58,10 @@ export default class Home extends Component {
           <Input placeholder="Search"/>
           <Icon active name="people"/>
         </Item>
-        <Button transparent>
+        <Button
+          title={''}
+          onPress={() => console.log('')}
+          transparent>
           <Text>Search</Text>
         </Button>
       </Header>
