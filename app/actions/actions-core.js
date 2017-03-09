@@ -1,6 +1,14 @@
 'use strict';
-import * as Types from "./types-core";
 import API, {ResponseStatus} from "../common/API";
+
+const CREATE_POST = 'CREATE_POST';
+const RECEIVE_NONCE = 'RECEIVE_NONCE';
+const RECEIVE_POST = 'RECEIVE_POST';
+const RECEIVE_POSTS = 'RECEIVE_POSTS';
+const RECEIVE_PAGE = 'RECEIVE_PAGE';
+const RECEIVE_RECENT_POSTS = 'RECEIVE_RECENT_POSTS';
+const RECEIVE_CATEGORY_INDEX = 'RECEIVE_CATEGORY_INDEX';
+const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
 export function getPosts(page: number, perPage: ?number = 1, args: ?Object = {}) {
   return dispatch => {
@@ -22,7 +30,7 @@ export function getRecentPosts(page: number, perPage: ?number = 1) {
 
 export function receivePosts(posts: Array<Object>, count: number, countTotal: number, pages: number, query: ?Object) {
   return {
-    type: Types.RECEIVE_POSTS,
+    type: RECEIVE_POSTS,
     posts: posts,
     count: count,
     countTotal: countTotal,
@@ -33,7 +41,7 @@ export function receivePosts(posts: Array<Object>, count: number, countTotal: nu
 
 export function receiveRecentPosts(recentPosts: Array<Object>, count: number, countTotal: number, pages: number) {
   return {
-    type: Types.RECEIVE_RECENT_POSTS,
+    type: RECEIVE_RECENT_POSTS,
     posts: recentPosts,
     count: count,
     countTotal: countTotal,
@@ -43,7 +51,7 @@ export function receiveRecentPosts(recentPosts: Array<Object>, count: number, co
 
 export function receivePost(post: Object, nextUrl, previousUrl) {
   return {
-    type: Types.RECEIVE_POST,
+    type: RECEIVE_POST,
     nextUrl: nextUrl,
     previousUrl: previousUrl
   }
@@ -51,21 +59,21 @@ export function receivePost(post: Object, nextUrl, previousUrl) {
 
 export function receivePage(page: Object) {
   return {
-    type: Types.RECEIVE_PAGE,
+    type: RECEIVE_PAGE,
     page: page
   }
 }
 
 export function receiveCategoryIndex(categories: ?Array<any> = [], count: number = 0) {
   return {
-    type: Types.RECEIVE_CATEGORY_INDEX,
+    type: RECEIVE_CATEGORY_INDEX,
     count: count
   }
 }
 
 export function receiveNonce(nonce: string, controller: string, method: string) {
   return {
-    type: Types.RECEIVE_NONCE,
+    type: RECEIVE_NONCE,
     nonce: nonce,
     controller: controller,
     method: method
@@ -74,7 +82,7 @@ export function receiveNonce(nonce: string, controller: string, method: string) 
 
 export function receiveError(error) {
   return {
-    type: Types.RECEIVE_ERROR,
+    type: RECEIVE_ERROR,
     error: error
   }
 }
