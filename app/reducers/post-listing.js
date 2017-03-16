@@ -8,7 +8,7 @@ const initialState = {
   count: GlobalConstants.DEFAULT_NUMBER_OF_POSTS
 };
 
-export default function postListing(state = initialState.posts, action = {}) {
+export default function postListingReducer(state = initialState.posts, action = {}) {
   switch (action.type) {
     case Types.RECEIVE_RECENT_POSTS:
       return initialState.posts.push(action.posts);

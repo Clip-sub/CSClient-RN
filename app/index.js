@@ -14,7 +14,7 @@ export default class CSClient extends Component {
   render() {
     return (
       <Provider store={store}>
-        <RootContainer/>
+        {<RootContainer/>}
       </Provider>
     );
   }
