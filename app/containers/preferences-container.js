@@ -3,7 +3,7 @@ import {View} from "react-native";
 import {connect} from "react-redux";
 import ListPosts from "../components/lists/list-posts";
 
-export default class PostsContainer extends Component {
+export default class PreferencesContainer extends Component {
   render() {
     return (
       <ListPosts {...this.props}/>
