@@ -6,10 +6,10 @@ const initialState = {
   categories: []
 };
 
-export default function categoryListing(state = initialState, action) {
+export default function categoryListing(state: Array = initialState, action) {
   switch (action.type) {
     case Types.RECEIVE_CATEGORY_INDEX:
-      return state.pushAll(action.categories);
+      return state.concat(action.categories);
     default:
       return state;
   }
