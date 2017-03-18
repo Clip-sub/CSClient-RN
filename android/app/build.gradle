@@ -93,6 +93,9 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [manifestApplicationId          : "${applicationId}",
+                                onesignal_app_id               : rootProject.ext.onesignal_app_id,
+                                onesignal_google_project_number: rootProject.ext.onesignal_google_project_number]
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -130,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-onesignal')
     compile project(':react-native-vector-icons')
     compile project(':react-native-i18n')
     compile project(':react-native-config')

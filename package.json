@@ -28,6 +28,7 @@
     "react-native-config": "^0.3.1",
     "react-native-device-info": "^0.10.1",
     "react-native-i18n": "^1.0.0",
+    "react-native-onesignal": "^3.0.3",
     "react-native-vector-icons": "^4.0.0",
     "react-navigation": "^1.0.0-beta.7",
     "react-redux": "^5.0.3",
