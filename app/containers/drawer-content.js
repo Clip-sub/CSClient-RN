@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {ScrollView, Image, BackAndroid} from "react-native";
 import {DrawerStyles} from "./styles/styles-drawer";
+import {connect} from "react-redux";
 
 export default class DrawerContent extends Component {
   static contextTypes = {

@@ -1,13 +1,24 @@
 'use strict';
 
 import React, {Component} from "react";
+import {View, Text} from "react-native";
+import {Container, Header} from "native-base";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
 class HomeContainer extends Component {
   render() {
     return(
-      <Home {...this.props}/>
+      <Container>
+        <Header/>
+        <View {...this.props}>
+          <Text>sadasd</Text>
+          <Text>sadasd</Text>
+          <Text>sadasd</Text>
+          <Text>sadasd</Text>
+          <Text>sadasd</Text>
+        </View>
+      </Container>
     );
   }
 }

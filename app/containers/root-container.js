@@ -1,21 +1,46 @@
 /**
  * @flow
+ * Application's root container. Including navigation component.
  */
 'use strict';
 import React, {Component} from "react";
-import {View, Text} from "react-native";
-import {StackNavigator} from "react-navigation";
-import LoginContainer from "./login-container";
+import {Container, Header} from "native-base";
+import {View, Text, StatusBar} from "react-native";
+import {connect} from "react-redux";
 
-const AppNavigator = StackNavigator({
-  Login: {screen: LoginContainer}
-});
-export default class RootContainer extends Component {
+import {NavigationActions, addNavigationHelpers, StackNavigator} from "react-navigation";
+import HomeContainer from "../containers/home-container";
+
+/**
+ * Additional parameters would be: path, navigationOptions.
+ */
+const routeConfiguration = {
+  Home: { screen: HomeContainer },
+  /*Profile: { screen: ProfileContainer },
+  Content: { screen: ContentContainer },
+  About: { screen: AboutContainer }*/
+};
+
+const stackNavigatorConfiguration = {
+  initialRouteName: 'Home'
+};
+
+const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
+
+class RootContainer extends Component {
   render() {
-    return(
-      <View>
-        <Text>Yolo swag</Text>
-      </View>
+    console.log('here');
+    const {dispatch, navState} = this.props;
+    const navigationHelpers = addNavigationHelpers({dispatch: this.props.dispatch, navState: this.props.navState});
+
+    return (
+      <AppNavigator/>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  startup: () => {}
+})
+
+export default connect(null, mapDispatchToProps)(RootContainer);
