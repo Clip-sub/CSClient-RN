@@ -20,6 +20,7 @@
   "dependencies": {
     "format-json": "^1.0.3",
     "lodash": "^4.17.4",
+    "moment": "^2.18.0",
     "native-base": "^2.0.12",
     "querystringify": "0.0.4",
     "react": "~15.4.2",
@@ -34,7 +35,6 @@
     "react-navigation": "^1.0.0-beta.7",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
-    "redux-persist": "^4.5.0",
     "redux-saga": "^0.14.3",
     "redux-thunk": "^2.2.0",
     "seamless-immutable": "^7.0.1"

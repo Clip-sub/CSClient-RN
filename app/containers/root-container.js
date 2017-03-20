@@ -4,25 +4,25 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {Container, Header} from "native-base";
-import {View, Text, StatusBar} from "react-native";
+import {View, Text, StatusBar, Button} from "react-native";
 import {connect} from "react-redux";
-
-import {NavigationActions, addNavigationHelpers, StackNavigator} from "react-navigation";
+import {addNavigationHelpers, StackNavigator} from "react-navigation";
 import HomeContainer from "../containers/home-container";
 
 /**
  * Additional parameters would be: path, navigationOptions.
  */
 const routeConfiguration = {
-  Home: { screen: HomeContainer },
+  Home: {screen: HomeContainer},
   /*Profile: { screen: ProfileContainer },
-  Content: { screen: ContentContainer },
-  About: { screen: AboutContainer }*/
+   Content: { screen: ContentContainer },
+   About: { screen: AboutContainer }*/
 };
 
 const stackNavigatorConfiguration = {
-  initialRouteName: 'Home'
+  initialRouteName: 'Home',
+  mode: 'modal',
+  headerMode: 'none',
 };
 
 const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
@@ -40,7 +40,8 @@ class RootContainer extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startup: () => {}
-})
+  startup: () => {
+  }
+});
 
 export default connect(null, mapDispatchToProps)(RootContainer);
