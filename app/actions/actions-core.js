@@ -1,5 +1,5 @@
 'use strict';
-import API, {ResponseStatus} from "../common/API";
+import API, {ResponseStatus} from "../services/API";
 
 const CREATE_POST = 'CREATE_POST';
 const RECEIVE_NONCE = 'RECEIVE_NONCE';

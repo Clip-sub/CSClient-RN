@@ -2,96 +2,65 @@
  * @flow
  */
 'use strict';
-import React, {Component} from "react";
-import {Container, Header, Button, Item, Input, Left, Body, Right, Title, Icon, Text} from "native-base";
-import PostSearchBar from "./post-search-bar";
+import React, {Component, PropTypes} from "react";
+import {View, Dimensions} from "react-native";
+import {Container, Header, Content, Button, Fab,
+  Item, Input, Left, Body, Right, Title, Icon, Text, List, ListItem, Switch} from "native-base";
+import PostMenuBar from "./post-menu-bar";
+import {getRecentPosts} from "../actions/actions-core";
+import API from "../services/API";
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showSearchBar: false
-    }
+  static propTypes = {
+    dispatch: PropTypes.func
   }
 
-  componentDidMount() {
+  static defaultProps = {
+    posts: []
+  }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      fetching: true,
+      posts: []
+    }
+    this.renderItem = this.renderItem.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.forceUpdate();
   }
 
   _search(keyword) {
 
   }
 
-  _switchHeader() {
-    this.setState({showSearchBar: !this.state.showSearchBar})
+  _getRecentPosts() {
+    const {dispatch} = this.props;
+    console.log('get recent');
+    dispatch({type: 'GET_RECENT_POSTS'});
   }
 
-  _renderNormalHeader() {
+  renderItem(item) {
     return (
-      <Header searchBar={this.state.showSearchBar} rounded hasTabs>
-        <Left>
-          <Button
-            title={''}
-            onPress={() => {}}
-            transparent>
-            <Icon name='menu'/>
-          </Button>
-        </Left>
-        <Body>
-        <Title>Clip-sub</Title>
-        </Body>
-
-        <Right>
-          <Button
-            title={''}
-            onPress={() => console.log('yo')}
-            transparent>
-            <Icon name='search'/>
-          </Button>
-        </Right>
-      </Header>
-    );
-  }
-
-  _renderSearchBarHeader() {
-    return (
-      <Header searchBar rounded>
-        <Item>
-          <Icon name="search"/>
-          <Input placeholder="Search"/>
-          <Icon active name="people"/>
-        </Item>
-        <Button
-          title={''}
-          onPress={() => console.log('')}
-          transparent>
-          <Text>Search</Text>
-        </Button>
-      </Header>
-    );
+      <ListItem>
+        <Text>{item.title}</Text>
+      </ListItem>
+    )
   }
 
   render() {
     return (
-      <Container>
-        {/*this.state.showSearchBar ? this._renderHeader() : this._renderSearchBarHeader()*/}
-        <Header>
-          <Left>
-            <Button
-              title={''}
-              onPress={() => {}}
-              transparent>
-              <Icon name='menu'/>
-            </Button>
-          </Left>
-          <Body>
-          <Title>Header</Title>
-          </Body>
-          <Right />
-        </Header>
-        <PostSearchBar/>
-      </Container>
+      <Content>
+        <PostMenuBar/>
+        <Button onPress={() => this._getRecentPosts()}>
+          <Text>Press here to load</Text>
+        </Button>
+        <List
+          dataArray={this.props.posts}
+          renderRow={(item) => this.renderItem(item)} />
+      </Content>
     );
   }
 }

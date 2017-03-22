@@ -2,13 +2,30 @@
 
 import React, {Component} from "react";
 import {View, Text, Image} from "react-native";
+import {Container, Header, Left, Button, Icon, Body, Title, Right} from "native-base";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
 class HomeContainer extends Component {
   render() {
     return (
-      <Home {...this.props}/>
+      <Container>
+        <Header>
+          <Left>
+            <Button
+              title={''}
+              onPress={() => {}}
+              transparent>
+              <Icon name='menu'/>
+            </Button>
+          </Left>
+          <Body>
+            <Title>Clip-sub</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Home {...this.props}/>
+      </Container>
     );
   }
 }
