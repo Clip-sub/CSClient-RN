@@ -3,7 +3,8 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {Container, Header, Content, Button, Item, Input, Left, Body, Right, Title, Icon, Text} from "native-base";
+import {Container, Header, Button, Item, Input, Left, Body, Right, Title, Icon, Text} from "native-base";
+import PostSearchBar from "./post-search-bar";
 
 export default class Home extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.init();
+
   }
 
   _search(keyword) {
@@ -30,7 +31,10 @@ export default class Home extends Component {
     return (
       <Header searchBar={this.state.showSearchBar} rounded hasTabs>
         <Left>
-          <Button transparent>
+          <Button
+            title={''}
+            onPress={() => {}}
+            transparent>
             <Icon name='menu'/>
           </Button>
         </Left>
@@ -41,7 +45,7 @@ export default class Home extends Component {
         <Right>
           <Button
             title={''}
-            onPress={() => console.log('')}
+            onPress={() => console.log('yo')}
             transparent>
             <Icon name='search'/>
           </Button>
@@ -71,10 +75,22 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
-        {this.state.showSearchBar ? this._renderHeader() : this._renderSearchBarHeader()}
-        <Content>
-
-        </Content>
+        {/*this.state.showSearchBar ? this._renderHeader() : this._renderSearchBarHeader()*/}
+        <Header>
+          <Left>
+            <Button
+              title={''}
+              onPress={() => {}}
+              transparent>
+              <Icon name='menu'/>
+            </Button>
+          </Left>
+          <Body>
+          <Title>Header</Title>
+          </Body>
+          <Right />
+        </Header>
+        <PostSearchBar/>
       </Container>
     );
   }
