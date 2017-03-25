@@ -7,14 +7,20 @@ import {connect} from "react-redux";
 import Home from "../components/home";
 
 class HomeContainer extends Component {
+  static navigationOptions = {
+    title: 'Yolo'
+  }
+
   render() {
+    const {navigate} = this.props.navigation;
+
     return (
       <Container>
         <Header>
           <Left>
             <Button
               title={''}
-              onPress={() => {}}
+              onPress={() => navigate('AuthContainer')}
               transparent>
               <Icon name='menu'/>
             </Button>

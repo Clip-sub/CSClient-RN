@@ -37,6 +37,8 @@ export default class Home extends Component {
   }
 
   _getRecentPosts() {
+    const {navigate} = this.props.navigation;
+    navigate('AuthContainer');
     const {dispatch} = this.props;
     console.log('get recent');
     dispatch({type: 'GET_RECENT_POSTS'});

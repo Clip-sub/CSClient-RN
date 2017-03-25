@@ -27,10 +27,11 @@ const Methods = {
   }
 };
 
-const create = (BASE_URL = "https://clip-sub.com/api/") => {
+const create = (baseURL = "https://clip-sub.com/api/") => {
   const api = apisauce.create({
-    BASE_URL,
+    baseURL,
     headers: {
+      'Accept': 'application/json',
       'Cache-Control': 'no-cache'
     },
     timeout: 10000

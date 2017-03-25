@@ -7,22 +7,24 @@ import React, {Component} from "react";
 import {View, Text, StatusBar, Button} from "react-native";
 import {connect} from "react-redux";
 import {addNavigationHelpers, StackNavigator} from "react-navigation";
-import HomeContainer from "../containers/home-container";
+import HomeScreen from "../containers/home-container";
+import AuthScreen from "../containers/auth-container";
 
 /**
  * Additional parameters would be: path, navigationOptions.
  */
 const routeConfiguration = {
-  Home: {screen: HomeContainer},
+  HomeScreen: {screen: HomeScreen},
+  AuthScreen: {screen: AuthScreen}
   /*Profile: { screen: ProfileContainer },
    Content: { screen: ContentContainer },
    About: { screen: AboutContainer }*/
 };
 
 const stackNavigatorConfiguration = {
-  initialRouteName: 'Home',
-  mode: 'modal',
-  headerMode: 'none',
+  initialRouteName: 'HomeScreen',
+  mode: 'card',
+
 };
 
 const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
