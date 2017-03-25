@@ -1,7 +1,8 @@
 'use strict';
 import React, {Component, PropTypes} from "react";
 import {Container, Header, View} from "react-native";
-import {Text, Content, Card, CardItem, Item, Input, Form, Button, Body} from "native-base";
+import {Content} from "native-base";
+import {ItemPostCard} from "./items/item-post-card";
 import API from "../services/API";
 
 export default class Authentication extends Component {
@@ -12,72 +13,8 @@ export default class Authentication extends Component {
   }
 
   render() {
-    return(
+    return (
       <Content>
-        <Card>
-          <Form>
-              <Item>
-                  <Input placeholder="Username" />
-              </Item>
-              <Item last>
-                  <Input placeholder="Password" />
-              </Item>
-              <Button block success onPress={() => this._onPressLogin()}>
-                <Text>Login</Text>
-              </Button>
-          </Form>
-        </Card>
-
-                    <Card>
-                        <CardItem header>
-                            <Text>NativeBase</Text>
-                        </CardItem>
-
-                        <CardItem>
-                            <Body>
-                                <Text>
-                                    //Your text here
-                                </Text>
-                            </Body>
-                        </CardItem>
-                        <CardItem footer>
-                            <Text>GeekyAnts</Text>
-                        </CardItem>
-                   </Card>
-
-                    <Card>
-                        <CardItem header>
-                            <Text>NativeBase</Text>
-                        </CardItem>
-
-                        <CardItem>
-                            <Body>
-                                <Text>
-                                    //Your text here
-                                </Text>
-                            </Body>
-                        </CardItem>
-                        <CardItem footer>
-                            <Text>GeekyAnts</Text>
-                        </CardItem>
-                   </Card>
-
-                    <Card>
-                        <CardItem header>
-                            <Text>NativeBase</Text>
-                        </CardItem>
-
-                        <CardItem>
-                            <Body>
-                                <Text>
-                                    //Your text here
-                                </Text>
-                            </Body>
-                        </CardItem>
-                        <CardItem footer>
-                            <Text>GeekyAnts</Text>
-                        </CardItem>
-                   </Card>
 
       </Content>
     );

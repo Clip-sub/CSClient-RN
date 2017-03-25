@@ -10,7 +10,6 @@ import RootContainer from "./containers/root-container";
 const store = CustomStore();
 
 export default class CSClient extends Component {
-
   render() {
     return (
       <Provider store={store}>

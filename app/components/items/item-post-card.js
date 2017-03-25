@@ -3,9 +3,9 @@
  */
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
-import {Image, TouchableNativeFeedback} from 'react-native';
-import {Container, Card, CardItem, Text, H3, Left, Body} from 'native-base';
+import React, {Component, PropTypes} from "react";
+import {Image, TouchableNativeFeedback} from "react-native";
+import {Card, CardItem, Text, H3, Left, Body} from "native-base";
 
 /**
  * Basic needs for item:
@@ -51,7 +51,7 @@ export default class ItemPostCard extends Component {
   };
 
   render() {
-    return(
+    return (
       <Card>
         <CardItem header>
           <Left>
@@ -61,7 +61,7 @@ export default class ItemPostCard extends Component {
         </CardItem>
         <CardItem cardBody>
           <Body>
-            <Image source={this.props.image} style={styles.thumbnailImage}/>
+          <Image source={this.props.image} style={styles.thumbnailImage}/>
           </Body>
         </CardItem>
         <CardItem footer>
@@ -89,4 +89,4 @@ const styles = {
     alignSelf: 'stretch',
     height: 160
   }
-}
+};

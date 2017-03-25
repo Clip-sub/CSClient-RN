@@ -1,34 +1,24 @@
 'use strict';
 
 import React, {Component} from "react";
-import {View, Text, Image} from "react-native";
-import {Container, Header, Left, Button, Icon, Body, Title, Right} from "native-base";
+import {View, Image} from "react-native";
+import {Container, Button, Icon, Header, Left} from "native-base";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
 class HomeContainer extends Component {
-  static navigationOptions = {
-    title: 'Yolo'
-  }
-
   render() {
-    const {navigate} = this.props.navigation;
-
     return (
       <Container>
         <Header>
           <Left>
             <Button
               title={''}
-              onPress={() => navigate('AuthContainer')}
+              onPress={() => console.log('Open menu')}
               transparent>
               <Icon name='menu'/>
             </Button>
           </Left>
-          <Body>
-            <Title>Clip-sub</Title>
-          </Body>
-          <Right />
         </Header>
         <Home {...this.props}/>
       </Container>

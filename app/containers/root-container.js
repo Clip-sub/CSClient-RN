@@ -21,10 +21,19 @@ const routeConfiguration = {
    About: { screen: AboutContainer }*/
 };
 
+/**
+ * Default StackNavigator configuration.
+ * Consult: https://reactnavigation.org/docs/navigators/stack
+ * @type {{initialRouteName: string, mode: string, navigationOptions: {header: {visible: boolean}}}}
+ */
 const stackNavigatorConfiguration = {
   initialRouteName: 'HomeScreen',
   mode: 'card',
-
+  navigationOptions: {
+    header: {
+      visible: false
+    }
+  }
 };
 
 const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
@@ -42,7 +51,8 @@ class RootContainer extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startup: () => {}
+  startup: () => {
+  }
 });
 
 export default connect(null, mapDispatchToProps)(RootContainer);

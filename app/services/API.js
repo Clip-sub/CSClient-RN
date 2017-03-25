@@ -1,6 +1,7 @@
 'use strict';
 // New API, API.js is legacy.
 import apisauce from "apisauce";
+
 const ResponseStatus = {OK: 'ok', ERROR: 'error'};
 const Controllers = {
   CORE: 'core',
@@ -42,7 +43,11 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
   }
 
   const getNonce = (method: string, controller: string) => api.get('get_nonce', {method, controller});
-  const getRecentPosts = (count: number, page: number, postType: string) => api.get('get_recent_posts', {count: count, page: page, post_type: postType});
+  const getRecentPosts = (count: number, page: number, postType: string) => api.get('get_recent_posts', {
+    count: count,
+    page: page,
+    post_type: postType
+  });
   const getPosts = (...params) => api.get('get_posts', params);
 
   return {
