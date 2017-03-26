@@ -10,6 +10,12 @@ const RECEIVE_RECENT_POSTS = 'RECEIVE_RECENT_POSTS';
 const RECEIVE_CATEGORY_INDEX = 'RECEIVE_CATEGORY_INDEX';
 const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
+export function increment() {
+  return {
+    type: 'INCREMENT'
+  }
+}
+
 export function getPosts(page: number, perPage: ?number = 1, args: ?Object = {}) {
   return dispatch => {
     return API.getPosts(page, perPage, args)

@@ -20,3 +20,18 @@ export default function postListingReducer(state = INITIAL_STATE.posts, action =
       return state;
   }
 }
+
+export function counter(state = {count: 0}, action = {}) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return {
+        count: state.count + 1
+      };
+    case 'DECREMENT':
+      return {
+        count: state.count - 1
+      };
+    default:
+      return state;
+  }
+}

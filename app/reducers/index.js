@@ -1,10 +1,10 @@
 
 'use strict';
 import {combineReducers} from 'redux';
-import postListingReducer from './post-listing';
+import {counter} from './post-listing';
 
 const rootReducer = combineReducers({
-  postListingReducer
+  counter
 });
 
 export default rootReducer;

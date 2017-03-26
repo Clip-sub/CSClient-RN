@@ -2,7 +2,8 @@
 // New API, API.js is legacy.
 import apisauce from "apisauce";
 
-const ResponseStatus = {OK: 'ok', ERROR: 'error'};
+const DataStatus = {OK: 'ok', ERROR: 'error'};
+const RESPONSE_STATUS_OK = 200;
 const Controllers = {
   CORE: 'core',
   RESPOND: 'respond',
@@ -58,4 +59,4 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
 };
 
 export default {create};
-export {ResponseStatus, Controllers, Methods};
+export {RESPONSE_STATUS_OK, DataStatus, Controllers, Methods};

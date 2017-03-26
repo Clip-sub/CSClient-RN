@@ -6,12 +6,6 @@ import {ItemPostCard} from "./items/item-post-card";
 import API from "../services/API";
 
 export default class Authentication extends Component {
-  _onPressLogin() {
-    API.create().getRecentPosts()
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-  }
-
   render() {
     return (
       <Content>

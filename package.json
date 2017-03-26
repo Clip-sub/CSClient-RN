@@ -52,7 +52,7 @@
     "react-dom": "^15.4.2",
     "react-test-renderer": "~15.4.2",
     "reactotron-apisauce": "^1.7.0",
-    "reactotron-react-native": "^1.7.0",
+    "reactotron-react-native": "^1.9.1",
     "reactotron-redux": "^1.7.0",
     "reactotron-redux-saga": "^1.7.0",
     "snazzy": "^6.0.0"
