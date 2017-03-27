@@ -7,7 +7,10 @@ import {connect} from "react-redux";
 import Home from "../components/home";
 
 class HomeContainer extends Component {
+
   render() {
+    const {posts} = this.props;
+
     return (
       <Container>
         <Header>
@@ -33,12 +36,10 @@ class HomeContainer extends Component {
  * The result of mapStateToProps must be a plain object, which will be merged into component's props.
  */
 function mapStateToProps(state) {
-  const {activeTab, showSearchBar, searchKeyword} = state;
-
+  const {posts} = state;
+  console.log(posts);
   return {
-    activeTab,
-    showSearchBar,
-    searchKeyword
+    posts
   }
 }
 

@@ -1,10 +1,10 @@
 
 'use strict';
 import {combineReducers} from 'redux';
-import {counter} from './post-listing';
+import {posts/* categories, pages */} from './home-reducer';
 
 const rootReducer = combineReducers({
-  counter
+  posts
 });
 
 export default rootReducer;

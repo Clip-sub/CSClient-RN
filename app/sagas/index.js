@@ -2,20 +2,19 @@
  * @flow
  */
 'use strict';
-/* ------------- Misc ------------- */
-import API from "../services/API";
 import {fork, call, put, takeLatest, takeEvery} from "redux-saga/effects";
-
-/* ------------- Types ------------- */
+import API from "../services/API";
+import Types from "../actions/types-core";
+import {receiveRecentPosts} from "../actions/actions-core";
 
 const api = API.create();
-
 function* getRecentPosts(api, action) {
   try {
+    yield take(Types.GET_RECENT_POSTS);
     const result = yield call(api.getRecentPosts(10, 1));
-    yield put({type: 'RECEIVE_RECENT_POSTS', data: result});
+    yield put({type: Types.RECEIVE_RECENT_POSTS, data: result});
   } catch (e) {
-    yield put({type: 'DATA_ERROR', message: e});
+    yield put({type: Types.RECEIVE_ERROR, message: e});
   }
 }
 

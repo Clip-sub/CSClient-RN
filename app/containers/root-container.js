@@ -39,14 +39,27 @@ const stackNavigatorConfiguration = {
 const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
 
 class RootContainer extends Component {
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
   render() {
     console.log('here');
     const {dispatch, navState} = this.props;
     const navigationHelpers = addNavigationHelpers({dispatch: this.props.dispatch, navState: this.props.navState});
-
+    
     return (
       <AppNavigator/>
     );
+  }
+}
+
+function mapStateToProps(state) {
+  const {activeTab, showSearchBar, searchKeyword} = state;
+  return {
+    activeTab,
+    showSearchBar,
+    searchKeyword
   }
 }
 
@@ -55,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(RootContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(RootContainer);

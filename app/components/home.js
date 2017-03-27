@@ -5,6 +5,7 @@
 import React, {Component, PropTypes} from "react";
 import {View, Dimensions} from "react-native";
 import {Content, Button, Text, List, ListItem} from "native-base";
+import {getRecentPosts, dummy} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
 import API, {RESPONSE_STATUS_OK} from "../services/API";
@@ -29,6 +30,7 @@ export default class Home extends Component {
 
   componentWillReceiveProps(newProps) {
     this.forceUpdate();
+    console.log(newProps);
   }
 
   _search(keyword) {
@@ -36,13 +38,13 @@ export default class Home extends Component {
   }
 
   _getRecentPosts() {
-    /*API.create().getRecentPosts()
-      .then(response => response.status === RESPONSE_STATUS_OK ? this.setState({posts: response.data.posts}) : null)
-      .catch(error => console.log(error));*/
     const {dispatch} = this.props;
-    console.log(dispatch);
-    dispatch({type: 'GET_RECENT_POSTS'});
-    dispatch({type: 'INCREMENT'});
+    dispatch(getRecentPosts(1));
+  }
+
+  _dummy() {
+    const {dispatch} = this.props;
+    dispatch(dummy());
   }
 
   renderItem(item) {
@@ -62,8 +64,10 @@ export default class Home extends Component {
       <Content>
         <PostMenuBar/>
         <Button title={''} onPress={() => this._getRecentPosts()}>
-          <Text>Press here to load</Text>
-          <Text>{this.props.counter}</Text>
+          <Text>Reload Posts</Text>
+        </Button>
+        <Button title={''} onPress={() => this._dummy()}>
+          <Text>{this.props.dummy}</Text>
         </Button>
         <List
           dataArray={this.state.posts}
