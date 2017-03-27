@@ -13,6 +13,5 @@ const sagaMiddleware = createSagaMiddleware();
 export default function CustomStore(initialState) {
   const store = createStore(rootReducer, initialState, compose(applyMiddleware(sagaMiddleware)));
   sagaMiddleware.run(rootSaga);
-  console.log('Run rootSaga');
   return store;
 }
