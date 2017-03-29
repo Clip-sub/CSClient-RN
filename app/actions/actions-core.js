@@ -16,8 +16,7 @@ const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
 export function dummy() {
   return {
-    type: 'DUMMY',
-    text: 'dum'
+    type: 'DUMMY'
   }
 }
 
