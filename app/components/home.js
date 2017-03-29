@@ -4,12 +4,10 @@
 'use strict';
 import React, {Component, PropTypes} from "react";
 import {View, Dimensions, ListView} from "react-native";
-import {Content, Button, Text, List, ListItem} from "native-base";
+import {Content, Button, Text, List} from "native-base";
 import {getRecentPosts, dummy} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
-import API, {RESPONSE_STATUS_OK} from "../services/API";
-import Accordion from "react-native-accordion";
 
 const SECTIONS = [
   {
@@ -66,10 +64,6 @@ export default class Home extends Component {
     dispatch: PropTypes.func
   };
 
-  static defaultProps = {
-    posts: []
-  };
-
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -112,51 +106,6 @@ export default class Home extends Component {
     )
   }
 
-  _renderHeader() {
-    return (
-      <View style={{
-        paddingTop: 15,
-        paddingRight: 15,
-        paddingLeft: 15,
-        paddingBottom: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#a9a9a9',
-        backgroundColor: '#f9f9f9',
-      }}>
-        <Text>Click to Expand</Text>
-      </View>
-    );
-  }
-
-  _renderContent() {
-    return (
-      <View style={{
-        backgroundColor: '#31363D'
-      }}>
-        <Text style={{
-          paddingTop: 15,
-          paddingRight: 15,
-          paddingBottom: 15,
-          paddingLeft: 15,
-          color: '#fff',
-        }}>
-          This content is hidden in the accordion
-        </Text>
-      </View>
-    );
-  }
-
-  _renderRow(rowData) {
-    return (
-      <Accordion
-        header={this._renderHeader()}
-        content={this._renderContent()}
-        duration={300}
-        easing="easeOutCubic"
-      />
-    );
-  }
-
   render() {
     return (
       <Content>
@@ -170,9 +119,6 @@ export default class Home extends Component {
         <List
           dataArray={this.state.posts}
           renderRow={(item) => this.renderItem(item)}/>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => this._renderRow(rowData)}/>
       </Content>
     );
   }
