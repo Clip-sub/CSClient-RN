@@ -1,6 +1,5 @@
 'use strict';
-import * as Types from "../actions/types-core";
-import GlobalConstants from "../utils/global-constants";
+import Types from "../actions/types-core";
 import Immutable from "seamless-immutable";
 
 const INITIAL_STATE = Immutable({
@@ -13,8 +12,7 @@ const INITIAL_STATE = Immutable({
 export const posts = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case Types.RECEIVE_RECENT_POSTS:
-      console.log(state);
-      console.log(action);
+      console.log('111', action);
       return Object.assign({}, state, action);
     case Types.RECEIVE_POSTS:
       console.log(state);
@@ -23,9 +21,9 @@ export const posts = (state = INITIAL_STATE, action = {}) => {
     case 'DUMMY':
       console.log(state);
       console.log(action);
-      return {text: state.text + 1}
+      return {text: state.text + 1};
     default:
       return state;
   }
-}
+};
 

@@ -4,79 +4,25 @@
 'use strict';
 import React, {Component, PropTypes} from "react";
 import {View, Dimensions, ListView} from "react-native";
-import {Content, Button, Text, List} from "native-base";
+import {Content, Button, Text} from "native-base";
 import {getRecentPosts, dummy} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
+import API from "../services/API";
 
-const SECTIONS = [
-  {
-    title: 'First',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Third',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Fourth',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'First',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'First',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-];
+const INIT_PAGE = 1;
 export default class Home extends Component {
-  static propTypes = {
-    dispatch: PropTypes.func
-  };
-
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       fetching: true,
-      posts: [],
-      dataSource: ds.cloneWithRows(SECTIONS)
+      posts: []
     };
     this.renderItem = this.renderItem.bind(this);
+    this.page = INIT_PAGE;
   }
 
   componentWillReceiveProps(newProps) {
-    //this.forceUpdate();
     console.log(newProps);
   }
 
@@ -86,7 +32,7 @@ export default class Home extends Component {
 
   _getRecentPosts() {
     const {dispatch} = this.props;
-    dispatch(getRecentPosts(1));
+    dispatch(getRecentPosts(this.page));
   }
 
   _dummy() {
@@ -116,9 +62,6 @@ export default class Home extends Component {
         <Button title={''} onPress={() => this._dummy()}>
           <Text>{this.props.posts.text}</Text>
         </Button>
-        <List
-          dataArray={this.state.posts}
-          renderRow={(item) => this.renderItem(item)}/>
       </Content>
     );
   }
