@@ -20,6 +20,7 @@
   "dependencies": {
     "format-json": "^1.0.3",
     "lodash": "^4.17.4",
+    "lottie-react-native": "^1.1.1",
     "moment": "^2.18.1",
     "native-base": "^2.1.0",
     "querystringify": "^1.0.0",
