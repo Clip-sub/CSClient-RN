@@ -15,7 +15,6 @@ const initialState = Immutable.fromJS({
   }]
 });
 
-
 export default function navigator(state = initialRoute, action) {
   switch (action.type) {
     case ActionTypes.CHANGE_PATH:

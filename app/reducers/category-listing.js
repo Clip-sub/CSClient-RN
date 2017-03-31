@@ -1,6 +1,6 @@
 'use strict';
 
-import * as Types from "../actions/types-core";
+import Types from "../actions/types-core";
 
 const initialState = {
   categories: []

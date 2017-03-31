@@ -37,6 +37,27 @@ export function getRecentPosts(page: number, count: ?number) {
   }
 }
 
+export function getPage(pageId: number) {
+  return {
+    type: Types.GET_PAGE,
+    page_id: pageId
+  }
+}
+
+export function getCategoryPosts(categoryId: number) {
+  return {
+    type: Types.GET_CATEGORY_POSTS,
+    category_id: categoryId
+  }
+}
+
+export function getAuthorPosts(authorId: number) {
+  return {
+    type: Types.GET_AUTHOR_POSTS,
+    author_id: authorId
+  }
+}
+
 export function receivePosts(posts: Array<Object>, count: number, countTotal: number, pages: number, query: ?Object) {
   return {
     type: Types.RECEIVE_POSTS,
@@ -61,6 +82,7 @@ export function receiveRecentPosts(posts: Array<Object>, count: number, countTot
 export function receivePost(post: Object, nextUrl, previousUrl) {
   return {
     type: Types.RECEIVE_POST,
+    post: post,
     nextUrl: nextUrl,
     previousUrl: previousUrl
   }
