@@ -5,9 +5,14 @@ import {receiveRecentPosts, receiveError} from "../actions/actions-core";
 export function* getRecentPosts(api, action) {
   try {
     const result = yield call(api.getRecentPosts, 10, 1);
-    yield put({type: Types.RECEIVE_RECENT_POSTS, data: result.data});
+    console.log(result.data);
+    if (result.data.status === 'ok') {
+      yield put(receiveRecentPosts(result.data.posts, result.data.count, result.data.count_total, result.data.pages));
+    } else {
+      yield put(receiveError(result.data.error));
+    }
   } catch (e) {
     console.log(e);
-    yield put({type: Types.RECEIVE_ERROR, message: e});
+    yield put(receiveError(e));
   }
 }

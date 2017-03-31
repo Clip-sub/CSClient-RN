@@ -37,7 +37,6 @@ class HomeContainer extends Component {
  */
 function mapStateToProps(state) {
   const {posts} = state;
-  console.log(posts);
   return {
     posts
   }

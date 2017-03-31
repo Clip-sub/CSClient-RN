@@ -48,10 +48,10 @@ export function receivePosts(posts: Array<Object>, count: number, countTotal: nu
   }
 }
 
-export function receiveRecentPosts(recentPosts: Array<Object>, count: number, countTotal: number, pages: number) {
+export function receiveRecentPosts(posts: Array<Object>, count: number, countTotal: number, pages: number) {
   return {
     type: Types.RECEIVE_RECENT_POSTS,
-    posts: recentPosts,
+    posts: posts,
     count: count,
     countTotal: countTotal,
     pages: pages
