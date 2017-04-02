@@ -1,2 +1,1 @@
-@echo on
-CALL android\gradlew.bat
+"D:\Projects\Android\SDK\tools\emulator.exe" -avd Galaxy_Nexus_API_25 -netdelay none -netspeed full

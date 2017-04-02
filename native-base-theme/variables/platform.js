@@ -39,6 +39,14 @@ export default {
   checkboxSize: 20,
   checkboxTickColor: '#fff',
 
+  // Segment
+  segmentBackgroundColor: (platform === 'ios') ? '#F8F8F8' : '#3F51B5',
+  segmentActiveBackgroundColor: (platform === 'ios') ? '#007aff' : '#fff',
+  segmentTextColor: (platform === 'ios') ? '#007aff' : '#fff',
+  segmentActiveTextColor: (platform === 'ios') ? '#fff' : '#3F51B5',
+  segmentBorderColor: (platform === 'ios') ? '#007aff' : '#fff',
+  segmentBorderColorMain: (platform === 'ios') ? '#a7a6ab' : '#3F51B5',
+
     // New Variable
   get defaultTextColor() {
     return this.textColor;
@@ -160,6 +168,7 @@ export default {
   toolbarInverseBg: '#222',
   toolbarTextColor: (platform === 'ios') ? '#000' : '#fff',
   toolbarDefaultBorder: (platform === 'ios') ? '#a7a6ab' : '#3F51B5',
+  iosStatusbar: (platform === 'ios') ? 'dark-content' : 'light-content',
   get statusBarColor() {
     return color(this.toolbarDefaultBg).darken(0.2).hexString();
   },
@@ -169,7 +178,7 @@ export default {
   iconFamily: 'Ionicons',
   iconFontSize: (platform === 'ios') ? 30 : 28,
   iconMargin: 7,
-  iconHeaderSize: (platform === 'ios') ? 33 : 28,
+  iconHeaderSize: (platform === 'ios') ? 33 : 24,
 
 
     // InputGroup
@@ -207,6 +216,7 @@ export default {
   listBorderColor: '#c9c9c9',
   listDividerBg: '#f4f4f4',
   listItemHeight: 45,
+  listBtnUnderlayColor: '#DDD',
 
     // Card
   cardBorderColor: '#ccc',
@@ -225,7 +235,7 @@ export default {
 
     // Radio Button
   radioBtnSize: (platform === 'ios') ? 25 : 23,
-  radioSelectedColorAndroid: '#5067FF',
+  radioSelectedColorAndroid: '#3F51B5',
 
     // New Variable
   radioBtnLineHeight: (platform === 'ios') ? 29 : 24,

@@ -3,11 +3,11 @@
  */
 'use strict';
 import * as Types from '../actions/types-navigation';
-import Immutable from "immutable";
+import Immutable from "seamless-immutable";
 
 const initialRoute = {path: 'home'};
 //const initialState = {route: initialRoute};
-const initialState = Immutable.fromJS({
+const initialState = Immutable({
   index: 0,
   routes: [{
     routeName: 'init',

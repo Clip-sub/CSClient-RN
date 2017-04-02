@@ -5,7 +5,7 @@
 
 import React, {Component, PropTypes} from "react";
 import {Image, TouchableNativeFeedback} from "react-native";
-import {Card, CardItem, Text, H3, Left, Body} from "native-base";
+import {Card, CardItem, Text, H3, Left, Body, Icon, Button} from "native-base";
 
 /**
  * Basic needs for item:
@@ -56,23 +56,21 @@ export default class ItemPostCard extends Component {
         <CardItem header>
           <Left>
             <H3>{this.props.title}</H3>
-            <Text note>{this.props.excerpt}</Text>
           </Left>
         </CardItem>
-        <CardItem cardBody>
+        <CardItem>
+        <TouchableNativeFeedback>
           <Body>
-          <Image source={this.props.image} style={styles.thumbnailImage}/>
+            <Image source={this.props.image} style={styles.thumbnailImage}/>
+            <Text>{this.props.excerpt}</Text>
           </Body>
+        </TouchableNativeFeedback>
         </CardItem>
         <CardItem footer>
-          <TouchableNativeFeedback>
             <Icon active name="thumbs-up"/>
             <Text>{this.props.authorName}</Text>
-          </TouchableNativeFeedback>
-          <TouchableNativeFeedback>
             <Icon active name="chatbubbles"/>
             <Text>{this.props.commentCount}</Text>
-          </TouchableNativeFeedback>
           <Button transparent>
             <Icon active name="chatbubbles"/>
             <Text>Share</Text>
@@ -90,3 +88,11 @@ const styles = {
     height: 160
   }
 };
+
+/*export function ItemPostCard2() {
+  return (
+    <View>
+      <Text>sss</Text>
+    </View>
+  )
+}*/
