@@ -36,7 +36,7 @@
     "redux-form": "^6.6.1",
     "redux-saga": "^0.14.4",
     "redux-thunk": "^2.2.0",
-    "seamless-immutable": "^7.0.1"
+    "seamless-immutable": "^7.1.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",

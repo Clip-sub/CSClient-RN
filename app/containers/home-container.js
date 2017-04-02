@@ -2,11 +2,18 @@
 
 import React, {Component} from "react";
 import {View, Image} from "react-native";
-import {Container, Button, Icon, Header, Left} from "native-base";
+import {Container, Button, Icon, Header, Left, Fab} from "native-base";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
 class HomeContainer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: true
+    }
+  }
 
   render() {
     const {posts} = this.props;
@@ -24,6 +31,26 @@ class HomeContainer extends Component {
           </Left>
         </Header>
         <Home {...this.props}/>
+
+        <View>
+            <Fab
+                active={this.state.active}
+                direction="up"
+                style={{ backgroundColor: '#5067FF' }}
+                position="bottomRight"
+                onPress={() => this.setState({ active: !this.state.active })}>
+                <Icon name="share" />
+                <Button style={{ backgroundColor: '#34A34F' }}>
+                    <Icon name="logo-whatsapp" />
+                </Button>
+                <Button style={{ backgroundColor: '#3B5998' }}>
+                    <Icon name="logo-facebook" />
+                </Button>
+                <Button disabled style={{ backgroundColor: '#DD5144' }}>
+                    <Icon name="mail" />
+                </Button>
+            </Fab>
+        </View>
       </Container>
     );
   }

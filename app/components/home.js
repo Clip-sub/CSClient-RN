@@ -5,7 +5,7 @@
 import React, {Component, PropTypes} from "react";
 import {View, Dimensions, ListView} from "react-native";
 import {Content, Button, Text} from "native-base";
-import {getRecentPosts, dummy} from "../actions/actions-core";
+import {getRecentPosts} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
 import API from "../services/API";
@@ -35,11 +35,6 @@ export default class Home extends Component {
     dispatch(getRecentPosts(this.page));
   }
 
-  _dummy() {
-    const {dispatch} = this.props;
-    dispatch(dummy());
-  }
-
   renderItem(item) {
     return (
       <ItemPostCard
@@ -58,9 +53,6 @@ export default class Home extends Component {
         <PostMenuBar/>
         <Button title={''} onPress={() => this._getRecentPosts()}>
           <Text>Reload Posts</Text>
-        </Button>
-        <Button title={''} onPress={() => this._dummy()}>
-          <Text>{this.props.posts.text}</Text>
         </Button>
       </Content>
     );
