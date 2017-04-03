@@ -2,7 +2,7 @@
 
 import React, {Component} from "react";
 import {View, Image} from "react-native";
-import {Container, Button, Icon, Header, Left, Fab} from "native-base";
+import {Container, Button, Icon, Header, Left, Fab, Text, Footer, FooterTab} from "native-base";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
@@ -51,6 +51,23 @@ class HomeContainer extends Component {
                 </Button>
             </Fab>
         </View>
+
+        <Footer style={{zIndex: 0, position: 'absolute', bottom: 0, right: 0, left: 0}}>
+          <FooterTab>
+            <Button>
+              <Text>Tab 1</Text>
+            </Button>
+            <Button>
+              <Text>Tab 2</Text>
+            </Button>
+            <Button active>
+              <Text>Tab 3</Text>
+            </Button>
+            <Button>
+              <Text>Tab 4</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     );
   }
