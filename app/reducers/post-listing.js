@@ -7,7 +7,6 @@ const INITIAL_STATE = Immutable({});
 export const posts = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case Types.RECEIVE_RECENT_POSTS:
-      //console.log('1111', state);
       console.log('2222', action);
       return action.posts;
     case Types.RECEIVE_POSTS:

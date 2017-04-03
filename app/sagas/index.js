@@ -2,7 +2,7 @@
  * @flow
  */
 'use strict';
-import {fork, call, put, takeLatest} from "redux-saga/effects";
+import {takeLatest} from "redux-saga/effects";
 import API from "../services/API";
 import Types from "../actions/types-core";
 import {getRecentPosts} from "./home-saga";

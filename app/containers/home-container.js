@@ -1,8 +1,7 @@
 'use strict';
 
 import React, {Component} from "react";
-import {View, Image} from "react-native";
-import {Container, Button, Icon, Header, Left, Fab, Text, Footer, FooterTab} from "native-base";
+import {Button, Container, Footer, FooterTab, Header, Icon, Left, Text} from "native-base";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
@@ -16,8 +15,6 @@ class HomeContainer extends Component {
   }
 
   render() {
-    const {posts} = this.props;
-
     return (
       <Container>
         <Header>
@@ -31,26 +28,6 @@ class HomeContainer extends Component {
           </Left>
         </Header>
         <Home {...this.props}/>
-
-        <View>
-            <Fab
-                active={this.state.active}
-                direction="up"
-                style={{ backgroundColor: '#5067FF' }}
-                position="bottomRight"
-                onPress={() => this.setState({ active: !this.state.active })}>
-                <Icon name="share" />
-                <Button style={{ backgroundColor: '#34A34F' }}>
-                    <Icon name="logo-whatsapp" />
-                </Button>
-                <Button style={{ backgroundColor: '#3B5998' }}>
-                    <Icon name="logo-facebook" />
-                </Button>
-                <Button disabled style={{ backgroundColor: '#DD5144' }}>
-                    <Icon name="mail" />
-                </Button>
-            </Fab>
-        </View>
 
         <Footer style={{zIndex: 0, position: 'absolute', bottom: 0, right: 0, left: 0}}>
           <FooterTab>

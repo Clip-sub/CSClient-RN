@@ -5,7 +5,10 @@
 
 import React, {Component, PropTypes} from "react";
 import {Image, TouchableNativeFeedback} from "react-native";
-import {Card, CardItem, Text, H3, Left, Body, Icon, Button} from "native-base";
+import {Body, Button, Card, CardItem, H3, Icon, Left, Text} from "native-base";
+import he from "he";
+import HTMLView from "react-native-htmlview";
+import $ from "cheerio";
 
 /**
  * Basic needs for item:
@@ -55,23 +58,22 @@ export default class ItemPostCard extends Component {
       <Card>
         <CardItem header>
           <Left>
-            <H3>{this.props.title}</H3>
+            <H3>{he.unescape(this.props.title)}</H3>
           </Left>
         </CardItem>
         <CardItem>
-        <TouchableNativeFeedback>
-          <Body>
+            <Body>
             <Image source={this.props.image} style={styles.thumbnailImage}/>
-            <Text>{this.props.excerpt}</Text>
-          </Body>
-        </TouchableNativeFeedback>
+            <HTMLView
+              value={this.props.excerpt}/>
+            </Body>
         </CardItem>
         <CardItem footer>
-            <Icon active name="thumbs-up"/>
-            <Text>{this.props.authorName}</Text>
-            <Icon active name="chatbubbles"/>
-            <Text>{this.props.commentCount}</Text>
-          <Button transparent>
+          <Icon active name="thumbs-up"/>
+          <Text>{this.props.authorName}</Text>
+          <Icon active name="chatbubbles"/>
+          <Text>{this.props.commentCount}</Text>
+          <Button>
             <Icon active name="chatbubbles"/>
             <Text>Share</Text>
           </Button>
@@ -88,11 +90,3 @@ const styles = {
     height: 160
   }
 };
-
-/*export function ItemPostCard2() {
-  return (
-    <View>
-      <Text>sss</Text>
-    </View>
-  )
-}*/

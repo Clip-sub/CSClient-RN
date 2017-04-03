@@ -1,6 +1,5 @@
-import {fork, take, call, put, takeEvery} from "redux-saga/effects";
-import Types from "../actions/types-core";
-import {receiveRecentPosts, receiveError} from "../actions/actions-core";
+import {call, put} from "redux-saga/effects";
+import {receiveError, receiveRecentPosts} from "../actions/actions-core";
 
 export function* getRecentPosts(api, action) {
   try {
