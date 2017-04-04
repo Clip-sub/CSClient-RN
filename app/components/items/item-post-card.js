@@ -60,20 +60,25 @@ export default class ItemPostCard extends Component {
             <H3>{he.unescape(this.props.title)}</H3>
           </Left>
         </CardItem>
-        <CardItem>
-            <Body>
-            {/*<Image source={this.props.image} style={styles.thumbnailImage}/>*/}
-            <HTMLView
-              value={this.props.excerpt}/>
-            </Body>
+        <CardItem cardBody>
+          <Body>
+            <Image source={{uri: this.props.image}} style={styles.thumbnailImage}/>
+          </Body>
         </CardItem>
-        <CardItem footer>
-          <Icon active name="thumbs-up"/>
-          <Text>{this.props.authorName}</Text>
-          <Icon active name="chatbubbles"/>
-          <Text>{this.props.commentCount}</Text>
-          <Button>
-            <Icon active name="chatbubbles"/>
+        <CardItem content>
+          <HTMLView value={this.props.excerpt}/>
+        </CardItem>
+        <CardItem style={{ justifyContent: 'space-around', borderTopWidth: 0.5, borderTopColor: '#eee' }}>
+          <Button transparent>
+            <Icon name="thumbs-up"/>
+            <Text>{this.props.authorName}</Text>
+          </Button>
+          <Button transparent>
+            <Icon name="chatbubbles"/>
+            <Text>{this.props.commentCount}</Text>
+          </Button>
+          <Button transparent>
+            <Icon name="chatbubbles"/>
             <Text>Share</Text>
           </Button>
         </CardItem>

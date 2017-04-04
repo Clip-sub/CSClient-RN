@@ -3,7 +3,7 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {Button, Content, List, Text, Input} from "native-base";
+import {Content, List} from "native-base";
 import {getRecentPosts} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
@@ -29,11 +29,12 @@ export default class Home extends Component {
   }
 
   renderItem(item) {
-    const thumbnail = item.attachments[0].images.featured.url;
+    const thumbnail = /*item.attachments[0].images.featured.url;*/ 'https://clip-sub.com/wp-content/uploads/2017/04/59097934-600x300.jpg'
     return (
       <ItemPostCard
         title={item.title}
         excerpt={item.excerpt}
+        image={thumbnail || ''}
         commentCount={item.comment_count}
         id={item.id}
         authorId={item.author.id}
@@ -46,8 +47,7 @@ export default class Home extends Component {
 
     return (
       <Content>
-        {/*<PostMenuBar/>*/}
-        <Input style={{width: 120}}></Input>
+        <PostMenuBar/>
         <List
           dataArray={posts}
           renderRow={item => this.renderItem(item)}/>
