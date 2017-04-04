@@ -8,7 +8,6 @@ import {Image, TouchableNativeFeedback} from "react-native";
 import {Body, Button, Card, CardItem, H3, Icon, Left, Text} from "native-base";
 import he from "he";
 import HTMLView from "react-native-htmlview";
-import $ from "cheerio";
 
 /**
  * Basic needs for item:
@@ -63,7 +62,7 @@ export default class ItemPostCard extends Component {
         </CardItem>
         <CardItem>
             <Body>
-            <Image source={this.props.image} style={styles.thumbnailImage}/>
+            {/*<Image source={this.props.image} style={styles.thumbnailImage}/>*/}
             <HTMLView
               value={this.props.excerpt}/>
             </Body>

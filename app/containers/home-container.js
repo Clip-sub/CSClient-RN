@@ -28,7 +28,6 @@ class HomeContainer extends Component {
           </Left>
         </Header>
         <Home {...this.props}/>
-
         <Footer style={{zIndex: 0, position: 'absolute', bottom: 0, right: 0, left: 0}}>
           <FooterTab>
             <Button>

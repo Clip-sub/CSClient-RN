@@ -3,7 +3,7 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {Button, Content, List, Text} from "native-base";
+import {Button, Content, List, Text, Input} from "native-base";
 import {getRecentPosts} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
@@ -34,7 +34,6 @@ export default class Home extends Component {
       <ItemPostCard
         title={item.title}
         excerpt={item.excerpt}
-        image={thumbnail}
         commentCount={item.comment_count}
         id={item.id}
         authorId={item.author.id}
@@ -47,7 +46,8 @@ export default class Home extends Component {
 
     return (
       <Content>
-        <PostMenuBar/>
+        {/*<PostMenuBar/>*/}
+        <Input style={{width: 120}}></Input>
         <List
           dataArray={posts}
           renderRow={item => this.renderItem(item)}/>
