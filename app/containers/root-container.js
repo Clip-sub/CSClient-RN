@@ -6,7 +6,7 @@
 import React, {Component} from "react";
 import {View, Text, StatusBar, Button} from "react-native";
 import {connect} from "react-redux";
-import {addNavigationHelpers, StackNavigator} from "react-navigation";
+import {addNavigationHelpers, StackNavigator, NavigationActions} from "react-navigation";
 import HomeScreen from "../containers/home-container";
 import AuthScreen from "../containers/auth-container";
 
@@ -16,9 +16,6 @@ import AuthScreen from "../containers/auth-container";
 const routeConfiguration = {
   HomeScreen: {screen: HomeScreen},
   AuthScreen: {screen: AuthScreen}
-  /*Profile: { screen: ProfileContainer },
-   Content: { screen: ContentContainer },
-   About: { screen: AboutContainer }*/
 };
 
 /**
@@ -39,17 +36,12 @@ const stackNavigatorConfiguration = {
 const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
 
 class RootContainer extends Component {
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   render() {
-    console.log('here');
     const {dispatch, navState} = this.props;
     const navigationHelpers = addNavigationHelpers({dispatch: this.props.dispatch, navState: this.props.navState});
     
     return (
-      <AppNavigator/>
+      <AppNavigator navigation={addNavigationHelpers({dispatch, state: nav})}/>
     );
   }
 }
