@@ -2,27 +2,40 @@
  * @flow
  */
 'use strict';
-import * as Types from '../actions/types-navigation';
+import {Types} from '../actions/types-navigation';
 import Immutable from "seamless-immutable";
+import {NavigationActions, addNavigationHelpers, StackNavigator} from "react-navigation";
+import HomeScreen from "../containers/home-container";
+import AuthScreen from "../containers/auth-container";
 
-const initialRoute = {path: 'home'};
-//const initialState = {route: initialRoute};
-const initialState = Immutable({
-  index: 0,
-  routes: [{
-    routeName: 'init',
-    key: 'init'
-  }]
+const initialNavState = Immutable({
+  index: 1,
+  routes: [
+    { key: 'Init', routeName: 'HomeScreen' }
+  ],
 });
 
-export default function navigator(state = initialRoute, action) {
-  switch (action.type) {
-    case ActionTypes.CHANGE_PATH:
-      console.log(JSON.stringify(Object.assign({}, state, {route: action.route})));
-      return Object.assign({}, state, {
-        route: action.route
-      });
-    default:
-      return state;
+const routeConfiguration = {
+  HomeScreen: {screen: HomeScreen},
+  AuthScreen: {screen: AuthScreen}
+};
+
+const stackNavigatorConfiguration = {
+  initialRouteName: 'HomeScreen',
+  mode: 'card',
+  navigationOptions: {
+    header: {
+      visible: false
+    }
   }
+};
+
+const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
+
+const navReducer = (state = initialNavState, action) => {
+  const newState = AppNavigator.router.getStateForAction(action, state);
+  return (newState ? newState : state)
 }
+
+export {navReducer};
+export {AppNavigator};

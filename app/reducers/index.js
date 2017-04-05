@@ -1,10 +1,12 @@
 
 'use strict';
 import {combineReducers} from 'redux';
-import {posts/* categories, pages */} from './post-listing';
+import {posts} from './post-listing';
+import {navReducer} from './navigator';
 
 const rootReducer = combineReducers({
-  posts
+  posts,
+  navReducer
 });
 
 export default rootReducer;

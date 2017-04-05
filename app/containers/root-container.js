@@ -4,60 +4,29 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {View, Text, StatusBar, Button} from "react-native";
 import {connect} from "react-redux";
-import {addNavigationHelpers, StackNavigator, NavigationActions} from "react-navigation";
-import HomeScreen from "../containers/home-container";
-import AuthScreen from "../containers/auth-container";
-
-/**
- * Additional parameters would be: path, navigationOptions.
- */
-const routeConfiguration = {
-  HomeScreen: {screen: HomeScreen},
-  AuthScreen: {screen: AuthScreen}
-};
-
-/**
- * Default StackNavigator configuration.
- * Consult: https://reactnavigation.org/docs/navigators/stack
- * @type {{initialRouteName: string, mode: string, navigationOptions: {header: {visible: boolean}}}}
- */
-const stackNavigatorConfiguration = {
-  initialRouteName: 'HomeScreen',
-  mode: 'card',
-  navigationOptions: {
-    header: {
-      visible: false
-    }
-  }
-};
-
-const AppNavigator = StackNavigator(routeConfiguration, stackNavigatorConfiguration);
+import {addNavigationHelpers} from "react-navigation";
+import {AppNavigator} from "../reducers/navigator";
 
 class RootContainer extends Component {
   render() {
     const {dispatch, navState} = this.props;
-    const navigationHelpers = addNavigationHelpers({dispatch: this.props.dispatch, navState: this.props.navState});
-    
+    const navigationHelpers = addNavigationHelpers({dispatch, navState});
+
     return (
-      <AppNavigator navigation={addNavigationHelpers({dispatch, state: nav})}/>
+      <AppNavigator navigation={navigationHelpers}/>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const {activeTab, showSearchBar, searchKeyword} = state;
+  const {navState} = state;
   return {
-    activeTab,
-    showSearchBar,
-    searchKeyword
+    navState
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  startup: () => {
-  }
-});
+const mapDispatchToProps = (dispatch, navState) => {
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootContainer);
