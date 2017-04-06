@@ -4,21 +4,13 @@ import React, {Component} from "react";
 import {Button, Container, Footer, Body, Right, Title, FooterTab, Header, Icon, Left, Text} from "native-base";
 import {Image} from "react-native";
 import {connect} from "react-redux";
-import Home from "../components/home";
+import PostList from "../components/post-list";
 
 class HomeContainer extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: true
-    }
-  }
-
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor: '#EF5350'}} noShadow={false} iosBarStyle={'light-content'}>
+        <Header style={{backgroundColor: '#EF5350'}} iosBarStyle={'light-content'}>
           <Left>
             <Button
               title={''}
@@ -32,23 +24,7 @@ class HomeContainer extends Component {
           </Body>
           <Right/>
         </Header>
-        <Home {...this.props}/>
-        <Footer>
-          <FooterTab>
-            <Button>
-              <Text>Pages</Text>
-            </Button>
-            <Button>
-              <Text>Naruto</Text>
-            </Button>
-            <Button active>
-              <Text>Posts</Text>
-            </Button>
-            <Button>
-              <Text>Test</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        <PostList {...this.props}/>
       </Container>
     );
   }

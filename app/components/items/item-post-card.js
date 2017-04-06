@@ -4,8 +4,9 @@
 'use strict';
 
 import React, {Component, PropTypes} from "react";
-import {Image, TouchableNativeFeedback} from "react-native";
-import {Body, Button, Card, CardItem, H3, Icon, Left, Text} from "native-base";
+import {Image, TouchableHighlight, TouchableOpacity, Button as NativeButton} from "react-native";
+import {Body, Button, Card, CardItem, H3, Icon, Left, Text, Thumbnail, View} from "native-base";
+import I18n from "../../localizations/I18n";
 import he from "he";
 import HTMLView from "react-native-htmlview";
 
@@ -60,26 +61,31 @@ export default class ItemPostCard extends Component {
             <H3>{he.unescape(this.props.title)}</H3>
           </Left>
         </CardItem>
+        <TouchableOpacity>
+        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginLeft: 16}}>
+          <Thumbnail small source={{uri: 'https://unsplash.it/80/80?random'}}/>
+          <Text
+            style={{marginLeft: 12}}>
+            {this.props.authorName}
+          </Text>
+        </View>
+        </TouchableOpacity>
         <CardItem cardBody>
           <Body>
             <Image source={{uri: this.props.image}} style={styles.thumbnailImage}/>
           </Body>
         </CardItem>
-        <CardItem content>
-          <HTMLView value={this.props.excerpt}/>
+        <CardItem style={{flexDirection: 'column'}}>
+          <HTMLView value={this.props.excerpt.trim()}/>
         </CardItem>
         <CardItem style={{ justifyContent: 'space-around', borderTopWidth: 0.5, borderTopColor: '#eee' }}>
-          <Button transparent>
-            <Icon name="thumbs-up"/>
-            <Text>{this.props.authorName}</Text>
-          </Button>
           <Button transparent>
             <Icon name="chatbubbles"/>
             <Text>{this.props.commentCount}</Text>
           </Button>
           <Button transparent>
-            <Icon name="chatbubbles"/>
-            <Text>Share</Text>
+            <Icon name="md-share"/>
+            <Text>{I18n.t('share')}</Text>
           </Button>
         </CardItem>
       </Card>

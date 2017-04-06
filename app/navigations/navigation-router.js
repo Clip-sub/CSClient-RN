@@ -12,7 +12,7 @@ const routeConfig = {
 };
 
 const stackNavigatorConfig = {
-  initialRouteName: 'HomeScreen',
+  initialRouteName: 'AuthScreen',
   mode: 'card',
   headerMode: 'none',
   navigationOptions: {

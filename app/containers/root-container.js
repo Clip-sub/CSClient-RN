@@ -25,7 +25,6 @@ class RootContainer extends Component {
 
 const mapStateToProps = (state) => {
   const {posts} = state;
-  console.log('1111', posts);
   return {
     posts,
   }
@@ -35,4 +34,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RootContainer);
+export default connect(mapStateToProps)(RootContainer);
