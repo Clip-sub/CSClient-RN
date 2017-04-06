@@ -4,29 +4,35 @@
  */
 'use strict';
 import React, {Component} from "react";
+import {View, StatusBar, Text} from "react-native";
 import {connect} from "react-redux";
-import {addNavigationHelpers} from "react-navigation";
-import {AppNavigator} from "../reducers/navigator";
+import AppNavigator from "../navigations/navigation-router";
 
 class RootContainer extends Component {
+  componentDidMount() {
+    
+  }
+
   render() {
     const {dispatch, navState} = this.props;
-    const navigationHelpers = addNavigationHelpers({dispatch, navState});
-
     return (
-      <AppNavigator navigation={navigationHelpers}/>
+      <View style={{flex: 1}}>
+        <AppNavigator />
+      </View>
     );
   }
 }
 
-function mapStateToProps(state) {
-  const {navState} = state;
+const mapStateToProps = (state) => {
+  const {posts} = state;
+  console.log('1111', posts);
   return {
-    navState
+    posts,
   }
 }
 
-const mapDispatchToProps = (dispatch, navState) => {
+const mapDispatchToProps = (dispatch) => {
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootContainer);

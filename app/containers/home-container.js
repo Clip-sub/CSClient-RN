@@ -1,7 +1,8 @@
 'use strict';
 
 import React, {Component} from "react";
-import {Button, Container, Footer, FooterTab, Header, Icon, Left, Text} from "native-base";
+import {Button, Container, Footer, Body, Right, Title, FooterTab, Header, Icon, Left, Text} from "native-base";
+import {Image} from "react-native";
 import {connect} from "react-redux";
 import Home from "../components/home";
 
@@ -17,30 +18,34 @@ class HomeContainer extends Component {
   render() {
     return (
       <Container>
-        <Header>
+        <Header style={{backgroundColor: '#EF5350'}} noShadow={false} iosBarStyle={'light-content'}>
           <Left>
             <Button
               title={''}
               onPress={() => console.log('Open menu')}
               transparent>
-              <Icon name='menu'/>
+              <Icon style={{color: '#fff'}} name='menu'/>
             </Button>
           </Left>
+          <Body>
+            <Title style={{color: '#fff', backgroundColor: 'transparent'}}>Clip-sub</Title>
+          </Body>
+          <Right/>
         </Header>
         <Home {...this.props}/>
         <Footer>
           <FooterTab>
             <Button>
-              <Text>Tab 1</Text>
+              <Text>Pages</Text>
             </Button>
             <Button>
-              <Text>Tab 2</Text>
+              <Text>Naruto</Text>
             </Button>
             <Button active>
-              <Text>Tab 3</Text>
+              <Text>Posts</Text>
             </Button>
             <Button>
-              <Text>Tab 4</Text>
+              <Text>Test</Text>
             </Button>
           </FooterTab>
         </Footer>
@@ -56,9 +61,10 @@ class HomeContainer extends Component {
  * The result of mapStateToProps must be a plain object, which will be merged into component's props.
  */
 function mapStateToProps(state) {
-  const {posts} = state;
+  const {posts, categories} = state;
   return {
-    posts
+    posts,
+    categories
   }
 }
 
