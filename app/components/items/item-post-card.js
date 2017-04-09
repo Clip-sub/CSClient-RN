@@ -4,7 +4,7 @@
 'use strict';
 
 import React, {Component, PropTypes} from "react";
-import {Image, TouchableHighlight, TouchableOpacity, Button as NativeButton} from "react-native";
+import {Image, TouchableOpacity} from "react-native";
 import {Body, Button, Card, CardItem, H3, Icon, Left, Text, Thumbnail, View} from "native-base";
 import I18n from "../../localizations/I18n";
 import he from "he";
@@ -62,23 +62,23 @@ export default class ItemPostCard extends Component {
           </Left>
         </CardItem>
         <TouchableOpacity>
-        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginLeft: 16}}>
-          <Thumbnail small source={{uri: 'https://unsplash.it/80/80?random'}}/>
-          <Text
-            style={{marginLeft: 12}}>
-            {this.props.authorName}
-          </Text>
-        </View>
+          <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginLeft: 16}}>
+            <Thumbnail small source={{uri: 'https://unsplash.it/80/80?random'}}/>
+            <Text
+              style={{marginLeft: 12}}>
+              {this.props.authorName}
+            </Text>
+          </View>
         </TouchableOpacity>
         <CardItem cardBody>
           <Body>
-            <Image source={{uri: this.props.image}} style={styles.thumbnailImage}/>
+          <Image source={{uri: this.props.image}} style={styles.thumbnailImage}/>
           </Body>
         </CardItem>
         <CardItem style={{flexDirection: 'column'}}>
           <HTMLView value={this.props.excerpt.trim()}/>
         </CardItem>
-        <CardItem style={{ justifyContent: 'space-around', borderTopWidth: 0.5, borderTopColor: '#eee' }}>
+        <CardItem style={{justifyContent: 'space-around', borderTopWidth: 0.5, borderTopColor: '#eee'}}>
           <Button transparent>
             <Icon name="chatbubbles"/>
             <Text>{this.props.commentCount}</Text>

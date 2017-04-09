@@ -1,8 +1,7 @@
 'use strict';
 
 import React, {Component} from "react";
-import {Button, Container, Footer, Body, Right, Title, FooterTab, Header, Icon, Left, Text} from "native-base";
-import {Image} from "react-native";
+import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
 import {connect} from "react-redux";
 import PostList from "../components/post-list";
 
@@ -20,7 +19,7 @@ class HomeContainer extends Component {
             </Button>
           </Left>
           <Body>
-            <Title style={{color: '#fff', backgroundColor: 'transparent'}}>Clip-sub</Title>
+          <Title style={{color: '#fff', backgroundColor: 'transparent'}}>Clip-sub</Title>
           </Body>
           <Right/>
         </Header>

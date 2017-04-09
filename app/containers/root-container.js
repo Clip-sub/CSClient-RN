@@ -4,13 +4,13 @@
  */
 'use strict';
 import React, {Component} from "react";
-import {View, StatusBar, Text} from "react-native";
+import {View} from "react-native";
 import {connect} from "react-redux";
 import AppNavigator from "../navigations/navigation-router";
 
 class RootContainer extends Component {
   componentDidMount() {
-    
+
   }
 
   render() {
