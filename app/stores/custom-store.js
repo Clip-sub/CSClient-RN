@@ -11,7 +11,7 @@ import rootSaga from "../sagas";
 const sagaMiddleware = createSagaMiddleware();
 
 export default function CustomStore(initialState) {
-  const store = createStore(rootReducer, initialState, compose(applyMiddleware(sagaMiddleware)));
+  const store = createStore(rootReducer, initialState, compose(sagaMiddleware));
   sagaMiddleware.run(rootSaga);
   return store;
 }
