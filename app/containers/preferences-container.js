@@ -1,11 +1,23 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import ListPosts from "../components/lists/list-posts";
+import {Container, Header, Content, Button, Text} from "native-base";
 
-export default class PreferencesContainer extends Component {
+class PreferencesContainer extends Component {
   render() {
+    const {navigate} = this.props.navigation;
+    
     return (
-      <ListPosts {...this.props}/>
+      <Container>
+        <Header/>
+        <Content>
+          <Button>
+            <Text>Go back</Text>
+          </Button>
+          <Button onPress={() => navigate('Auth')}>
+            <Text>Go forward</Text>
+          </Button>
+        </Content>
+      </Container>
     )
   }
 }
@@ -15,4 +27,4 @@ function mapStateToProps(state) {
   return {posts};
 }
 
-export default connect(mapStateToProps)(ListPosts);
+export default connect(null)(PreferencesContainer);

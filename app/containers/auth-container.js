@@ -24,18 +24,20 @@ export default class AuthContainer extends Component {
     super(props);
     this.isAttempting = false;
     //<Image style={{flex: 1}} source={{uri: 'https://cdn.awwni.me/w28n.jpg'}}>
+    //<View style={{position: 'absolute', width: 2000, height: 2000, backgroundColor: '#000', opacity: 0.6}}/>
   }
 
   render() {
+    const {navigate, state} = this.props.navigation;
+    console.log(state);
+
     return(
-      <Image style={{flex: 1}} source={{uri: 'https://cdn.awwni.me/w28n.jpg'}}>
-      <View style={{position: 'absolute', width: 2000, height: 2000, backgroundColor: '#000', opacity: 0.6}}/>
-      <Container>
+      <Container style={{backgroundColor: '#000'}}>
         <Header style={{backgroundColor: 'transparent'}} iosBarStyle={'light-content'}>
           <Left>
             <Button
               title={''}
-              onPress={() => console.log('Open menu')}
+              onPress={() => navigate('Home')}
               transparent>
               <Icon style={{color: '#fff'}} name='menu'/>
             </Button>
@@ -47,7 +49,6 @@ export default class AuthContainer extends Component {
         </Header>
         <LoginForm/>
       </Container>
-      </Image>
     );
   }
 }

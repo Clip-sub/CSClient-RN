@@ -5,14 +5,16 @@
 import {StackNavigator} from "react-navigation";
 import HomeScreen from "../containers/home-container";
 import AuthScreen from "../containers/auth-container";
+import PreferencesScreen from "../containers/preferences-container";
 
 const routeConfig = {
-  HomeScreen: {screen: HomeScreen},
-  AuthScreen: {screen: AuthScreen}
+  Home: {screen: HomeScreen},
+  Auth: {screen: AuthScreen},
+  Preferences: {screen: PreferencesScreen}
 };
 
 const stackNavigatorConfig = {
-  initialRouteName: 'AuthScreen',
+  initialRouteName: 'Preferences',
   mode: 'card',
   headerMode: 'none',
   navigationOptions: {
