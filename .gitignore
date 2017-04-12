@@ -55,7 +55,4 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 
-# OneSignal
-onesignal.gradle
-
 .tmp/
