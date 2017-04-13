@@ -14,12 +14,6 @@ const RECEIVE_RECENT_POSTS = 'RECEIVE_RECENT_POSTS';
 const RECEIVE_CATEGORY_INDEX = 'RECEIVE_CATEGORY_INDEX';
 const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
-export function dummy() {
-  return {
-    type: 'DUMMY'
-  }
-}
-
 export function getPosts(page: number, count: ?number = 10, args: ?Object = {}) {
   return {
     type: Types.GET_POSTS,

@@ -15,6 +15,10 @@ module.exports = {
     "react",
     "react-native"
   ],
+  "settings": {
+    "createClass": "createClass",
+    "pragma": "React"
+  },
   "rules": {
     "indent": [
       "error",
@@ -32,6 +36,8 @@ module.exports = {
       "error",
       "always"
     ],
+    "react/jsx-uses-var": "error",
+    "react/no-is-mounted": "error",
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
   }
