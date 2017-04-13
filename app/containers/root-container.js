@@ -2,36 +2,24 @@
  * @flow
  * Application's root container. Including navigation component.
  */
-'use strict';
-import React, {Component} from "react";
-import {View} from "react-native";
-import {connect} from "react-redux";
-import AppNavigator from "../navigations/navigation-router";
+"use strict";
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import { addNavigationHelpers, StackNavigator } from "react-navigation";
+import AppNavigator from "../navigations/app-navigator";
 
-class RootContainer extends Component {
-  componentDidMount() {
+const AppWithNavigationState = ({ dispatch, nav }) => (
+  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+);
 
-  }
-
-  render() {
-    const {dispatch, navState} = this.props;
-    return (
-      <View style={{flex: 1}}>
-        <AppNavigator />
-      </View>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  const {posts} = state;
-  return {
-    posts,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
+AppWithNavigationState.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  nav: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps)(RootContainer);
+const mapStateToProps = state => ({
+  nav: state.nav,
+  posts: state.posts
+});
+
+export default connect(mapStateToProps)(AppWithNavigationState);
