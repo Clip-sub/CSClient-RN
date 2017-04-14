@@ -11,21 +11,26 @@ import {
 } from "react-navigation";
 import AppNavigator from "../navigations/app-navigator";
 
-const INITIAL_STATE = Immutable({
+const initialNavState = Immutable({
   index: 0,
   routes: [{ key: "Init", routeName: "Home" }]
 });
 
 export const nav = (state = initialNavState, action) => {
   switch (action.type) {
-    case "Login":
+    case "Home":
       return AppNavigator.router.getStateForAction(
-        NavigationActions.back(),
+        NavigationActions.navigate({ routeName: "Home" }),
         state
       );
-    case "Logout":
+    case "Authentication":
       return AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: "Login" }),
+        NavigationActions.navigate({ routeName: "Authentication" }),
+        state
+      );
+    case "Profile":
+      return AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: "Profile" }),
         state
       );
     default:
