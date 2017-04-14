@@ -58,7 +58,7 @@ export default class ItemPostCard extends Component {
       <Card>
         <CardItem header>
           <Left>
-            <H3>{he.unescape(this.props.title)}</H3>
+            <H2>{he.unescape(this.props.title)}</H2>
           </Left>
         </CardItem>
         <TouchableOpacity>
