@@ -1,4 +1,4 @@
 {
   "sourceMaps": true,
-  "presets": ["react-native"]
+  "presets": ["react-native", "flow"]
 }

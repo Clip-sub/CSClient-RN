@@ -1,16 +1,17 @@
-'use strict';
-
+/**
+ * @flow
+ */
+"use strict";
 import Types from "../actions/types-core";
+import Immutable from "seamless-immutable";
 
-const initialState = {
-  categories: []
-};
+const INITIAL_STATE = [];
 
-export default function categoryListing(state: Array = initialState, action) {
+export const categories = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case Types.RECEIVE_CATEGORY_INDEX:
-      return state.concat(action.categories);
+      return Immutable(action.categories);
     default:
       return state;
   }
-}
+};
