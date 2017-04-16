@@ -3,19 +3,18 @@
  */
 "use strict";
 import { StackNavigator } from "react-navigation";
-import HomeScreen from "../containers/home-container";
+import HomeDrawerNavigator from "../containers/navigation-drawer";
 import AuthScreen from "../containers/auth-container";
 import PreferencesScreen from "../containers/preferences-container";
 
 const routeConfig = {
   Auth: { screen: AuthScreen },
-  Home: { screen: HomeScreen },
-  
+  HomeDrawer: { screen: HomeDrawerNavigator },
   Preferences: { screen: PreferencesScreen }
 };
 
 const stackNavigatorConfig = {
-  initialRouteName: "Home",
+  initialRouteName: "HomeDrawer",
   mode: "card",
   headerMode: "none",
   navigationOptions: {

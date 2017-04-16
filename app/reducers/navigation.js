@@ -13,15 +13,14 @@ import AppNavigator from "../navigations/app-navigator";
 
 const initialNavState = Immutable({
   index: 0,
-  routes: [{ key: "Init", routeName: "Home" }]
+  routes: [{ key: "Init", routeName: "HomeDrawer" }]
 });
 
 export const nav = (state, action) => {
-  console.log(action)
   switch (action.type) {
     case "Home":
       return AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: "Home" }),
+        NavigationActions.navigate({ routeName: "HomeDrawer" }),
         state
       );
     case "Authentication":

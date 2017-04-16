@@ -1,45 +1,29 @@
-import React, {Component, PropTypes} from "react";
-import {Drawer} from "native-base";
-import {connect} from "react-redux";
-import Styles from "./styles/styles-drawer";
+/**
+ * @flow
+ */
+"use strict";
+import { connect, bindActionCreators } from "react-redux";
+import HomeContainer from "../containers/home-container";
+import HomeDrawerNavigator from "../navigations/drawer-navigator";
 
-class NavigationDrawer extends Component {
-  static propTypes = {
-    navigationState: PropTypes.object
+/**
+ * If ownProps is specified as a second argument, its value will be the props passed to your component,
+ * and mapStateToProps will be additionally re-invoked whenever the component receives new props.
+ *
+ * The result of mapStateToProps must be a plain object, which will be merged into component's props.
+ */
+const mapStateToProps = state => {
+  const { posts, categories } = state;
+  return {
+    posts,
+    categories
   };
-
-  render() {
-    const state = this.props.navigationState;
-    const children = state.children;
-    return (
-      <Drawer
-        ref='navigation'
-        type='displace'
-        open={state.open}
-        onOpen={() => {
-        }}
-        onClose={() => {
-        }}
-        content={<DrawerContent/>}
-        styles={Styles}
-        tapToClose
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        negotiatePan
-        tweenHandler={(ratio) => ({
-          main: {opacity: Math.max(0.54, 1 - ratio)}
-        })}>
-      </Drawer>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {}
 };
 
-const mapDispatchToProps = (state) => {
-  return {}
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeDrawerNavigator);

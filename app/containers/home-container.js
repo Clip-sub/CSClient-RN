@@ -47,22 +47,6 @@ class HomeContainer extends Component {
   }
 }
 
-const drawerRouteConfig = {
-  Home: {
-    screen: HomeContainer
-  }
-};
-
-const drawerNavigatorConfig = {
-  drawerWidth: 250,
-  drawerPosition: "right",
-  contentComponent: props => (
-    <View style={{ backgroundColor: "#ccc" }}><Text>sdsadda</Text></View>
-  )
-};
-
-const HomeScreen = DrawerNavigator(drawerRouteConfig, drawerNavigatorConfig);
-
 /**
  * If ownProps is specified as a second argument, its value will be the props passed to your component,
  * and mapStateToProps will be additionally re-invoked whenever the component receives new props.
@@ -70,7 +54,6 @@ const HomeScreen = DrawerNavigator(drawerRouteConfig, drawerNavigatorConfig);
  * The result of mapStateToProps must be a plain object, which will be merged into component's props.
  */
 const mapStateToProps = state => {
-  console.log(state);
   const { posts, categories } = state;
   return {
     posts,
@@ -84,4 +67,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
