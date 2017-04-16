@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from "react";
 import {Drawer} from "native-base";
-import DrawerContent from "./drawer-content";
 import {connect} from "react-redux";
 import Styles from "./styles/styles-drawer";
 

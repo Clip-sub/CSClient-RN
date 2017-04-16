@@ -28,8 +28,8 @@ export default class PostList extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getRecentPosts(this.page));
+    /*const { dispatch } = this.props;
+    dispatch(getRecentPosts(this.page));*/
   }
 
   renderItem = item => {

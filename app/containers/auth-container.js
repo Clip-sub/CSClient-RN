@@ -1,9 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import {View, Image} from "react-native";
-import {Container, Header, Button, Left, Body, Right, Form, Item, Input,
-  Title, Icon, Content, Card, CardItem, Text} from "native-base";
-import {connect} from "react-redux";
-import Authentication from "../components/authentication";
+import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
 import LoginForm from "../components/authentication/login-form";
 
 export default class AuthContainer extends Component {

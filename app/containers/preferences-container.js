@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {Container, Header, Content, Button, Text} from "native-base";
+import {Button, Container, Content, Header, Text} from "native-base";
 
 class PreferencesContainer extends Component {
   render() {

@@ -16,7 +16,8 @@ const initialNavState = Immutable({
   routes: [{ key: "Init", routeName: "Home" }]
 });
 
-export const nav = (state = initialNavState, action) => {
+export const nav = (state, action) => {
+  console.log(action)
   switch (action.type) {
     case "Home":
       return AppNavigator.router.getStateForAction(

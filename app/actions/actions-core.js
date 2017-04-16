@@ -48,7 +48,7 @@ export function getCategoryPosts(categoryId: number) {
 export function getAuthorPosts(authorId: number) {
   return {
     type: Types.GET_AUTHOR_POSTS,
-    author_id: authorId
+    authorId: authorId
   }
 }
 
