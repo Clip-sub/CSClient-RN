@@ -133,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-blur-image')
     compile project(':react-native-onesignal')
     compile project(':react-native-vector-icons')
     compile project(':react-native-i18n')
