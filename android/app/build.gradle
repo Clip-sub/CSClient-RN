@@ -99,8 +99,10 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
         dexOptions {
-            preDexLibraries = true
+            preDexLibraries true
             javaMaxHeapSize "4g"
+            incremental true
+            dexInProcess = true
         }
     }
     splits {

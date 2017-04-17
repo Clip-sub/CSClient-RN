@@ -24,7 +24,6 @@ project.xcworkspace
 
 # Android/IntelliJ/VSCode
 #
-build/
 .idea
 .gradle
 local.properties
@@ -56,3 +55,4 @@ fastlane/Preview.html
 fastlane/screenshots
 
 .tmp/
+android/onesignal.gradle
