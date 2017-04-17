@@ -1,6 +1,4 @@
 rootProject.name = 'csclient'
-include ':react-native-blur-image'
-project(':react-native-blur-image').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-blur-image/android')
 include ':react-native-onesignal'
 project(':react-native-onesignal').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-onesignal/android')
 include ':react-native-vector-icons'

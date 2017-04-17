@@ -36,6 +36,7 @@ npm-debug.log
 yarn-error.log
 yarn.lock
 .vscode/
+android/onesignal.gradle
 
 # BUCK
 buck-out/
@@ -55,4 +56,3 @@ fastlane/Preview.html
 fastlane/screenshots
 
 .tmp/
-android/onesignal.gradle
