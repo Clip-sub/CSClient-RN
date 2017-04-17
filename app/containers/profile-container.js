@@ -32,7 +32,7 @@ export default class ProfileContainer extends Component {
           barStyle="light-content"
           showHideTransition={"slide"}
         animated={true}/>*/}
-        <View style={{backgroundColor: 'red', paddingBottom: 16}}>
+        <View style={{backgroundColor: '#738e96', paddingBottom: 16}}>
           <BlurImage
             source={{ uri:'https://cdn.awwni.me/w28n.jpg' }}
             style={{ flex: 1, width: 200, height: 200, alignSelf: 'stretch'}}
