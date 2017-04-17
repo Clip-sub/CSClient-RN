@@ -1,42 +1,47 @@
 "use strict";
-import React, {Component} from "react";
-import {View} from "react-native";
-import {Button, Container, Header, Icon, Left, Text, Thumbnail} from "native-base";
+import React, { Component } from "react";
+import { View, StatusBar } from "react-native";
+import {
+  Button,
+  Container,
+  Header,
+  Content,
+  Icon,
+  Card,
+  CardItem,
+  Left,
+  Right,
+  Text,
+  Thumbnail,
+  Form,
+  ListItem
+} from "native-base";
 
-/**
- * {
-  "status": "ok",
-  "user": {
-    "id": 9433,
-    "username": "testwpapi",
-    "nicename": "testwpapi",
-    "email": "phamvanquan.ltu@gmail.com",
-    "url": "",
-    "registered": "2016-09-09 09:04:21",
-    "displayname": "testwpapi",
-    "firstname": "",
-    "lastname": "",
-    "nickname": "testwpapi",
-    "description": "",
-    "capabilities": "",
-    "avatar": null
-  }
-} */
+
 export default class ProfileContainer extends Component {
   render() {
     return (
-      <Container>
+      <Container style={{backgroundColor: '#fff'}}>
         {/*<StatusBar
          backgroundColor="green"
          barStyle="light-content"
          showHideTransition={"slide"}
          animated={true}/>*/}
-        <View style={{backgroundColor: '#1b1b1b', paddingBottom: 16}}>
-          <Header noShadow={true} iosBarStyle={'light-content'} backgroundColor={'transparent'}
-                  style={{backgroundColor: 'transparent', borderBottomWidth: 0}}>
+        <View style={styles.profileHeaderContainer}>
+          <Header
+            noShadow={true}
+            iosBarStyle={"light-content"}
+            backgroundColor={"transparent"}
+            style={{ backgroundColor: "transparent", borderBottomWidth: 0 }}>
+          <StatusBar
+            backgroundColor="transparent"
+            barStyle="light-content"
+            translucent
+            showHideTransition={"slide"}
+            animated={true}/>
             <Left>
-              <Button title={''} onPress={() => {}} transparent>
-                <Icon style={{color: '#fff'}} name='arrow-back'/>
+              <Button transparent>
+                <Icon style={{ color: "#fff" }} name="arrow-back" />
               </Button>
             </Left>
           </Header>
@@ -45,15 +50,65 @@ export default class ProfileContainer extends Component {
               alignItems: "center",
               justifyContent: "center"
             }}>
-            <Thumbnail large source={{uri: "https://cdn.awwni.me/w28n.jpg"}}/>
-            <Text style={{color: "#78909C", marginTop: 16, backgroundColor: 'transparent'}}>Sophia Emilion</Text>
-            <Text style={{fontSize: 10, color: "#000"}}>@(Sophia-sama)</Text>
-            <Text style={{fontSize: 10, color: '#fff', marginTop: 10, paddingHorizontal: 40, textAlign: 'center'}}>
+            <Thumbnail
+              large
+              source={{ uri: "https://cdn.awwni.me/w28n.jpg" }}/>
+            <Text
+              style={{
+                color: "#78909C",
+                marginTop: 16,
+                backgroundColor: "transparent" }}>
+              Sophia Emilion
+            </Text>
+            <Text style={{ fontSize: 10, color: "#78909C" }}>@(Sophia-sama)</Text>
+            <Text
+              style={{
+                fontSize: 10,
+                color: "#fff",
+                marginTop: 10,
+                paddingHorizontal: 40,
+                textAlign: "center" }}>
               Beyond the shadow you settled for, there's a miracle illuminated.
             </Text>
           </View>
         </View>
+
+        <Content>
+          <Card>
+            <CardItem header>
+              <Text>Profile</Text>
+            </CardItem>
+
+            <CardItem>
+              <Icon active name="person" />
+              <Text>Nickname</Text>
+              <Right>
+                <Text>Sophia-sama</Text>
+              </Right>
+            </CardItem>
+
+            <CardItem>
+              <Icon active name="calendar" />
+              <Text>Registered</Text>
+              <Right>
+                <Text>29-10-2010</Text>
+              </Right>
+            </CardItem>
+          </Card>
+
+          <Button block rounded>
+            <Text>View author's posts</Text>
+          </Button>
+
+        </Content>
       </Container>
     );
+  }
+}
+
+const styles = {
+  profileHeaderContainer: {
+    backgroundColor: "#1b1b1b",
+    paddingBottom: 16
   }
 }

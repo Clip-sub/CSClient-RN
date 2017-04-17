@@ -1,0 +1,72 @@
+// get_userinfo
+[{
+  "status": "ok",
+  "id": 8966,
+  "nicename": "viemlong11",
+  "url": "",
+  "displayname": "viemlong11",
+  "firstname": "",
+  "lastname": "",
+  "nickname": "viemlong11",
+  "avatar": null
+},
+
+// get_currentuserinfo
+{
+  "status": "ok",
+  "user": {
+    "id": 9433,
+    "username": "testwpapi",
+    "nicename": "testwpapi",
+    "email": "phamvanquan.ltu@gmail.com",
+    "url": "",
+    "registered": "2016-09-09 09:04:21",
+    "displayname": "testwpapi",
+    "firstname": "",
+    "lastname": "",
+    "nickname": "testwpapi",
+    "description": "",
+    "capabilities": "",
+    "avatar": null
+  }
+},
+
+// get_user_meta
+{
+  "status": "ok",
+  "nickname": "Sophia Emilion",
+  "description": "\"Beyond the shadow you settled for, there's a miracle illuminated.\"",
+  "rich_editing": "true",
+  "comment_shortcuts": "false",
+  "admin_color": "ocean",
+  "show_admin_bar_front": "true",
+  "yim": "PhamvanquanGX",
+  "jabber": "Phamvanquan.GX2",
+  "vkcz4j5z4_capabilities": "a:1:{s:13:\"administrator\";s:1:\"1\";}",
+  "vkcz4j5z4_user_level": "10",
+  "vkcz4j5z4_dashboard_quick_press_last_post_id": "33057",
+  "meta-box-order_dashboard": "a:4:{s:6:\"normal\";s:104:\"dashboard_right_now,dashboard_recent_comments,dashboard_incoming_links,dashboard_stats,dashboard_plugins\";s:4:\"side\";s:83:\"dashboard_quick_press,dashboard_recent_drafts,dashboard_primary,dashboard_secondary\";s:7:\"column3\";s:0:\"\";s:7:\"column4\";s:0:\"\";}",
+  "screen_layout_dashboard": "2",
+  "closedpostboxes_dashboard": "a:0:{}",
+  "metaboxhidden_dashboard": "a:0:{}",
+  "vkcz4j5z4_user-settings": "editor=html&align=center&hidetb=1&wplink=0&ed_size=457&libraryContent=browse&advImgDetails=hide&dfw_width=606&posts_list_mode=list",
+  "vkcz4j5z4_user-settings-time": "1443614257",
+  "closedpostboxes_post": "a:0:{}",
+  "metaboxhidden_post": "a:7:{i:0;s:22:\"bj_lazy_load_skip_post\";i:1;s:11:\"postexcerpt\";i:2;s:13:\"trackbacksdiv\";i:3;s:10:\"postcustom\";i:4;s:7:\"slugdiv\";i:5;s:12:\"aiosp_tabbed\";i:6;s:16:\"spec_live_toggle\";}",
+  "meta-box-order_post": "a:3:{s:4:\"side\";s:98:\"onesignal_notif_on_post,submitdiv,categorydiv,tagsdiv-post_tag,postimagediv,bj_lazy_load_skip_post\";s:6:\"normal\";s:71:\"postexcerpt,trackbacksdiv,postcustom,commentstatusdiv,slugdiv,authordiv\";s:8:\"advanced\";s:104:\"sharing_meta,myatu-wordpress-backgroundmanager-meta-single,aiosp_tabbed,spec_live_toggle,siderbar-layout\";}",
+  "screen_layout_post": "2",
+  "dismissed_wp_pointers": "wp330_media_uploader,wp330_toolbar,wp340_choose_image_from_library,wp350_media,wp360_revisions,aioseop_welcome_211,aioseop_menu_211,wp410_dfw,aioseop_menu_220",
+  "AtD_guess_lang": "true",
+  "nav_menu_recently_edited": "556",
+  "managenav-menuscolumnshidden": "a:4:{i:0;s:11:\"link-target\";i:1;s:11:\"css-classes\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";}",
+  "metaboxhidden_nav-menus": "a:3:{i:0;s:8:\"add-post\";i:1;s:12:\"add-post_tag\";i:2;s:15:\"add-post_format\";}",
+  "vkcz4j5z4_myatu_bgm_home_url": "https://clip-sub.com/wp-admin/themes.php?page=xYzc4O",
+  "_yoast_wpseo_profile_updated": "1408355760",
+  "closedpostboxes_page": "a:0:{}",
+  "metaboxhidden_page": "a:3:{i:0;s:10:\"postcustom\";i:1;s:7:\"slugdiv\";i:2;s:9:\"authordiv\";}",
+  "session_tokens": "a:6:{s:64:\"ddfae2fbee917ebc8e7d7b080c42340c00dfa0b9fdaba509f828a6d817132006\";a:4:{s:10:\"expiration\";i:1493403123;s:2:\"ip\";s:12:\"123.24.74.15\";s:2:\"ua\";s:73:\"Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0\";s:5:\"login\";i:1492193523;}s:64:\"88ca9975467f9b3c98e54e579fa9777c6aa4647f225467b45960763bff57e047\";a:4:{s:10:\"expiration\";i:1493517615;s:2:\"ip\";s:13:\"123.16.180.58\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36\";s:5:\"login\";i:1492308015;}s:64:\"283e06ac499b4f8c43ee7421784ae3034bbb590626845df0051f88a425eb9c9b\";a:4:{s:10:\"expiration\";i:1493613012;s:2:\"ip\";s:13:\"123.16.180.58\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36\";s:5:\"login\";i:1492403412;}s:64:\"ac2bf0da6a09a43d105f2ced1c388c2d2b3236fd7eea7294bb73619f430d8009\";a:4:{s:10:\"expiration\";i:1493613024;s:2:\"ip\";s:13:\"123.16.180.58\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36\";s:5:\"login\";i:1492403424;}s:64:\"cb7fe5c2cdb2d7de4f2d4b373058e8831f6a75c8b07d909f0daa952e0fdcd521\";a:4:{s:10:\"expiration\";i:1493671533;s:2:\"ip\";s:13:\"123.24.113.38\";s:2:\"ua\";s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36\";s:5:\"login\";i:1492461933;}s:64:\"2b40fb62437d3986d6ae9be9dab422dd61e16907526563e3b0336dd987ffc073\";a:4:{s:10:\"expiration\";i:1493671744;s:2:\"ip\";s:13:\"123.24.113.38\";s:2:\"ua\";s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36\";s:5:\"login\";i:1492462144;}}",
+  "itsec_user_activity_last_seen": "1492461936",
+  "jetpack_tracks_anon_id": "jetpack:nAqoQsKlyVF4VdYkG+8y9i7g",
+  "itsec-settings-view": "grid"
+}
+]
