@@ -16,7 +16,7 @@ const routeConfig = {
 };
 
 const stackNavigatorConfig = {
-  initialRouteName: "Profile",
+  initialRouteName: "HomeDrawer",
   mode: "card",
   headerMode: "none",
   navigationOptions: {

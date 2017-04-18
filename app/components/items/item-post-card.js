@@ -21,6 +21,8 @@ import I18n from "../../localizations/I18n";
 import he from "he";
 import HTMLView from "react-native-htmlview";
 
+import { navigate } from "../../actions/actions-navigation";
+
 /**
  * Basic needs for item:
  * title
@@ -65,6 +67,8 @@ export default class ItemPostCard extends Component {
   };
 
   render() {
+    const { dispatch } = this.props;
+
     return (
       <Card>
         <CardItem header>
@@ -106,7 +110,7 @@ export default class ItemPostCard extends Component {
             borderTopWidth: 0.5,
             borderTopColor: "#eee"
           }}>
-          <Button transparent>
+          <Button transparent onPress={() => dispatch(navigate("Profile"))}>
             <Icon name="chatbubbles" />
             <Text>{this.props.commentCount}</Text>
           </Button>

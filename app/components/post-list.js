@@ -2,10 +2,10 @@
  * @flow
  */
 "use strict";
-import React, { Component, PropTypes } from "react";
-import { FlatList, View } from "react-native";
-import { Content, List, Spinner } from "native-base";
-import { getRecentPosts } from "../actions/actions-core";
+import React, {Component, PropTypes} from "react";
+import {View} from "react-native";
+import {List, Spinner} from "native-base";
+import {getRecentPosts} from "../actions/actions-core";
 import PostMenuBar from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
 
@@ -28,29 +28,28 @@ export default class PostList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.dispatch);
-    const { dispatch } = this.props;
+    const {dispatch} = this.props;
     dispatch(getRecentPosts(this.page));
   }
 
   renderItem = item => {
     return (
       <ItemPostCard
+        id={item.id || ""}
         title={item.title}
         excerpt={item.excerpt}
         image={
           "https://clip-sub.com/wp-content/uploads/2017/04/59097934-600x300.jpg"
         }
         commentCount={item.comment_count}
-        id={item.id || ""}
         authorId={item.author.id || ""}
         authorName={item.author.name}
-      />
+        {...this.props} />
     );
   };
 
   renderPostMenuBar = () => {
-    return <PostMenuBar />;
+    return <PostMenuBar {...this.props}/>;
   };
 
   renderPostList(posts) {
@@ -64,10 +63,10 @@ export default class PostList extends Component {
   }
 
   render() {
-    let { status, posts } = this.props;
+    let {status, posts} = this.props;
 
     return (
-      <View style={{ flex: 1, alignSelf: "stretch", alignItems: "center" }}>
+      <View style={{flex: 1, alignSelf: "stretch", alignItems: "center"}}>
         {status === "loading" ? <Spinner /> : this.renderPostList(posts)}
       </View>
     );

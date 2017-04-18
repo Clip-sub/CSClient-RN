@@ -2,8 +2,7 @@
  * @flow
  */
 "use strict";
-import { connect, bindActionCreators } from "react-redux";
-import HomeContainer from "../containers/home-container";
+import {bindActionCreators, connect} from "react-redux";
 import HomeDrawerNavigator from "../navigations/drawer-navigator";
 
 /**
@@ -13,7 +12,7 @@ import HomeDrawerNavigator from "../navigations/drawer-navigator";
  * The result of mapStateToProps must be a plain object, which will be merged into component's props.
  */
 const mapStateToProps = state => {
-  const { posts, categories } = state;
+  const {posts, categories} = state;
   return {
     posts,
     categories

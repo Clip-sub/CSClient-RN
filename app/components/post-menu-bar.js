@@ -3,14 +3,14 @@
  */
 'use strict';
 import React, {Component, PropTypes} from "react";
-import {View, TextInput, TouchableOpacity} from "react-native";
-import {Button, Text, Icon} from "native-base";
+import {TextInput, TouchableOpacity, View} from "react-native";
+import {Icon} from "native-base";
 
 export default class PostMenuBar extends Component {
   static propTypes = {
     onChangeText: PropTypes.func,
     onChangeDisplayMode: PropTypes.func
-  }
+  };
 
   render() {
     return (
@@ -80,4 +80,4 @@ const styles = {
     color: '#fff',
     fontSize: 24
   }
-}
+};

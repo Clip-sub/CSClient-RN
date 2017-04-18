@@ -2,35 +2,41 @@
  * @flow
  */
 "use strict";
-import { Types } from "../actions/types-navigation";
 import Immutable from "seamless-immutable";
-import {
-  NavigationActions,
-  addNavigationHelpers,
-  StackNavigator
-} from "react-navigation";
+import {NavigationActions} from "react-navigation";
 import AppNavigator from "../navigations/app-navigator";
+import HomeDrawerNavigator from "../navigations/drawer-navigator";
 
 const initialNavState = Immutable({
   index: 0,
-  routes: [{ key: "Init", routeName: "HomeDrawer" }]
+  routes: [{key: "Init", routeName: "HomeDrawer"}]
 });
 
 export const nav = (state, action) => {
   switch (action.type) {
     case "Home":
       return AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: "HomeDrawer" }),
+        NavigationActions.navigate({routeName: "HomeDrawer"}),
         state
       );
     case "Authentication":
       return AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: "Authentication" }),
+        NavigationActions.navigate({routeName: "Authentication"}),
         state
       );
     case "Profile":
       return AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: "Profile" }),
+        NavigationActions.navigate({routeName: "Profile"}),
+        state
+      );
+    case "DrawerOpen":
+      return HomeDrawerNavigator.getStateForAction(
+        NavigationActions.navigate({routeName: "DrawerOpen"}),
+        state
+      );
+    case "DrawerClose":
+      return HomeDrawerNavigator.getStateForAction(
+        NavigationActions.navigate({routeName: "DrawerClose"}),
         state
       );
     default:
