@@ -1,0 +1,9 @@
+"use strict";
+
+const Types = {
+  REQUEST_LOGIN: "REQUEST_LOGIN",
+  GENERATE_AUTH_COOKIE: "GENERATE_AUTH_COOKIE",
+  VALIDATE_AUTH_COOKIE: "VALIDATE_AUTH_COOKIE"
+};
+
+export default Types;

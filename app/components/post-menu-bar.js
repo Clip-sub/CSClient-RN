@@ -2,42 +2,37 @@
  * @flow
  */
 'use strict';
-import React, {Component, PropTypes} from "react";
-import {TextInput, TouchableOpacity, View} from "react-native";
-import {Icon} from "native-base";
+import React, { Component, PropTypes } from "react";
+import { TextInput, TouchableOpacity, View } from "react-native";
+import { Icon } from "native-base";
 
-export default class PostMenuBar extends Component {
-  static propTypes = {
-    onChangeText: PropTypes.func,
-    onChangeDisplayMode: PropTypes.func
-  };
+export const PostMenuBar = (props) => (
+  <View elevation={1} style={styles.container}>
+    <View style={styles.searchBoxWrapper}>
+      <Icon name="search" style={styles.searchBoxIcon}/>
+      <TextInput
+        underlineColorAndroid='transparent'
+        returnKeyType={'search'}
+        multiline={false}
+        style={styles.searchBoxInput}/>
+      <Icon name="ios-close-circle" style={styles.searchBoxIcon}/>
+    </View>
+    <TouchableOpacity style={styles.iconWrapper}>
+      <Icon name="ios-list-outline" style={styles.iconOutside}/>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.iconWrapper}>
+      <Icon name="grid" style={styles.iconOutside}/>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.iconWrapper}>
+      <Icon name="ios-images-outline" style={styles.iconOutside}/>
+    </TouchableOpacity>
+  </View>
+);
 
-  render() {
-    return (
-      <View elevation={1} style={styles.container}>
-        <View style={styles.searchBoxWrapper}>
-          <Icon name="search" style={styles.searchBoxIcon}/>
-          <TextInput
-            ref={'searchBox'}
-            underlineColorAndroid='transparent'
-            returnKeyType={'search'}
-            multiline={false}
-            style={styles.searchBoxInput}/>
-          <Icon name="ios-close-circle" style={styles.searchBoxIcon}/>
-        </View>
-        <TouchableOpacity style={styles.iconWrapper}>
-          <Icon name="ios-list-outline" style={styles.iconOutside}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconWrapper}>
-          <Icon name="grid" style={styles.iconOutside}/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconWrapper}>
-          <Icon name="ios-images-outline" style={styles.iconOutside}/>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+PostMenuBar.propTypes = {
+  onChangeText: PropTypes.func,
+  onChangeDisplayMode: PropTypes.func
+};
 
 const styles = {
   container: {

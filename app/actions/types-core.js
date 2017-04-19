@@ -1,6 +1,8 @@
 "use strict";
 
 const Types = {
+  GET_NONCE: "GET_NONCE",
+
   GET_RECENT_POSTS: "GET_RECENT_POSTS",
   GET_POSTS: "GET_POSTS",
   GET_PAGE: "GET_PAGE",

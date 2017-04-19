@@ -1,8 +1,9 @@
 import React, {Component, PropTypes} from "react";
 import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
 import LoginForm from "../components/authentication/login-form";
+import {connect} from "react-redux";
 
-export default class AuthContainer extends Component {
+class AuthContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
     fetching: PropTypes.bool,
@@ -24,9 +25,6 @@ export default class AuthContainer extends Component {
   }
 
   render() {
-    const {navigate, state} = this.props.navigation;
-    console.log(state);
-
     return(
       <Container style={{backgroundColor: '#000'}}>
         <Header style={{backgroundColor: 'transparent'}} iosBarStyle={'light-content'}>
@@ -48,3 +46,13 @@ export default class AuthContainer extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
