@@ -23,4 +23,8 @@ const mapStateToProps = state => ({
   posts: state.posts
 });
 
+const mapDispatchToProps = dispatch => ({
+  dispatch
+});
+
 export default connect(mapStateToProps)(AppWithNavigationState);
