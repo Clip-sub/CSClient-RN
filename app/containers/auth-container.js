@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
+import {Body, Button, Container, Header, Icon, Input, Left, Right, Title, Footer, FooterTab, Text, Content} from "native-base";
 import LoginForm from "../components/authentication/login-form";
 import {connect} from "react-redux";
 
@@ -13,7 +13,7 @@ class AuthContainer extends Component {
   static navigationOptions = {
     title: 'Login Screen',
     header: {
-      left: <Button title={''} onPress={() => {}} transparent><Icon name='menu'/></Button>,
+      left: <Button title={''} transparent><Icon name='menu'/></Button>,
     }
   };
 
@@ -42,17 +42,26 @@ class AuthContainer extends Component {
           <Right/>
         </Header>
         <LoginForm/>
+        <Input/>
+        <Content/>
+                <Footer>
+                    <FooterTab>
+                        <Button full>
+                            <Text>Footer</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
       </Container>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
+  state
+})
 
-}
-
-const mapDispatchToProps = (dispatch) => {
-
-}
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
