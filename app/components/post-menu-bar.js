@@ -2,9 +2,9 @@
  * @flow
  */
 'use strict';
-import React, { Component, PropTypes } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
-import { Icon } from "native-base";
+import React, {PropTypes} from "react";
+import {TextInput, TouchableOpacity, View} from "react-native";
+import {Icon} from "native-base";
 
 export const PostMenuBar = (props) => (
   <View elevation={1} style={styles.container}>

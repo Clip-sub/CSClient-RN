@@ -1,41 +1,30 @@
 "use strict";
 
-import React, { Component } from "react";
-import { View } from "react-native";
-import {
-  Body,
-  Button,
-  Container,
-  Header,
-  Icon,
-  Left,
-  Right,
-  Text,
-  Title
-} from "native-base";
-import { connect, bindActionCreators } from "react-redux";
-import { DrawerNavigator, NavigationActions } from "react-navigation";
+import React from "react";
+import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
+import {bindActionCreators, connect} from "react-redux";
+import {NavigationActions} from "react-navigation";
 import PostList from "../components/post-list";
 
 const HomeContainer = (props) => {
-  const { openDrawer } = props;
+  const {openDrawer} = props;
   return (
     <Container>
       <Header
-        style={{ backgroundColor: "#EF5350" }}
+        style={{backgroundColor: "#EF5350"}}
         iosBarStyle={"light-content"}>
         <Left>
           <Button
             title={""}
             transparent
             onPress={() => openDrawer()}>
-            <Icon style={{ color: "#fff" }} name="menu" />
+            <Icon style={{color: "#fff"}} name="menu"/>
           </Button>
         </Left>
         <Body>
-          <Title style={{ color: "#fff", backgroundColor: "transparent" }}>
-            Clip-sub
-          </Title>
+        <Title style={{color: "#fff", backgroundColor: "transparent"}}>
+          Clip-sub
+        </Title>
         </Body>
         <Right />
       </Header>
@@ -51,7 +40,7 @@ const HomeContainer = (props) => {
  * The result of mapStateToProps must be a plain object, which will be merged into component's props.
  */
 const mapStateToProps = (state) => {
-  const { posts, categories } = state;
+  const {posts, categories} = state;
   return {
     posts,
     categories

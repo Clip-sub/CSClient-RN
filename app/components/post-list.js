@@ -2,11 +2,11 @@
  * @flow
  */
 "use strict";
-import React, { Component, PropTypes } from "react";
-import { View} from "react-native";
-import { List, Spinner } from "native-base";
-import { getRecentPosts } from "../actions/actions-core";
-import { PostMenuBar } from "./post-menu-bar";
+import React, {Component, PropTypes} from "react";
+import {View} from "react-native";
+import {List, Spinner} from "native-base";
+import {getRecentPosts} from "../actions/actions-core";
+import {PostMenuBar} from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
 
 const INIT_PAGE = 1;
