@@ -36,7 +36,6 @@ npm-debug.log
 yarn-error.log
 yarn.lock
 .vscode/
-android/onesignal.gradle
 
 # BUCK
 buck-out/

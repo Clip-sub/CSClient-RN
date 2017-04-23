@@ -1,6 +1,6 @@
 ext {
-    onesignal_app_id = 'ONESIGNAL_APP_ID'
-    onesignal_app_id_debug = 'ONESIGNAL_APP_ID_DEBUG'
-    onesignal_google_project_number = 'GOOGLE_PROJECT_NUMBER'
-    google_server_key = 'GOOGLE_SERVER_KEY'
+    onesignal_app_id = 'APP_ID'
+    onesignal_app_id_debug = 'APP_ID_DEBUG'
+    onesignal_google_project_number = 'PJ_NUMBER'
+    google_server_key = 'SERVER_KEY'
 }
