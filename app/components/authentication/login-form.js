@@ -3,20 +3,79 @@ import React, { Component, PropTypes } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { Button } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Field, reduxForm } from "redux-form";
+import moment from "moment";
+import { requestLogin } from "../../actions/actions-user";
 
-export default class LoginForm extends Component {
+const onSubmit = (values, dispatch) => {
+  console.log("Submitting form: ", values);
+};
+
+const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
+  return (
+    <View
+      style={{
+        borderBottomWidth: 1,
+        borderBottomColor: "#4e4242",
+        opacity: 0.6,
+        marginBottom: 16
+      }}>
+      <TextInput
+        {...inputProps}
+        name={"username"}
+        onChangeText={input.onChange}
+        value={input.value}
+        onBlur={input.onBlur}
+        placeholder={placeholder}
+        placeholderTextColor={"#FFF"}
+        underlineColorAndroid={"transparent"}
+      />
+    </View>
+  );
+};
+
+const phoneFormatter = number => {
+  if (!number) return "";
+  // NNN-NNN-NNNN
+  const splitter = /.{1,3}/g;
+  number = number.substring(0, 10);
+  return number.substring(0, 7).match(splitter).join("-") + number.substring(7);
+};
+
+// remove dashes added by the formatter
+const phoneParser = number => (number ? number.replace(/-/g, "") : "");
+
+class LoginForm extends Component {
+  static defaultProps = {
+    isLoading: false
+  };
+
   render() {
+    const { isLoading, handleSubmit, submitting } = this.props;
     return (
       <View style={[this.props.style, styles.formContainer]}>
-        <View>
+        <Field name={"login"} component={usernameField} placeholder={"yolo"} />
+        <View
+          style={{
+            borderBottomWidth: 1,
+            borderBottomColor: "#4e4242",
+            opacity: 0.6,
+            marginBottom: 26
+          }}>
           <TextInput
-            placeholder={"Username"}
+            secureTextEntry={true}
+            placeholder={"Password"}
             placeholderTextColor={"#FFF"}
             underlineColorAndroid={"transparent"}
           />
         </View>
-        <Button light block title={""} onPress={() => {}}>
-          <Icon name="rocket" size={30} color="#900" />
+        <Button
+          info
+          block
+          rounded
+          title={""}
+          onPress={handleSubmit(onSubmit)}
+          submitting={submitting}>
           <Text>Login</Text>
         </Button>
       </View>
@@ -27,8 +86,15 @@ export default class LoginForm extends Component {
 const styles = StyleSheet.create({
   formContainer: {
     borderRadius: 10,
-    backgroundColor: "rgba(255,255,255,0.5)",
+    borderWidth: 0.5,
+    borderColor: "#fff",
+    paddingTop: 32,
+    paddingBottom: 18,
     marginHorizontal: 40,
-    padding: 12
+    marginTop: 100,
+    padding: 12,
+    alignSelf: "stretch"
   }
 });
+
+export default reduxForm({ form: "login" })(LoginForm);

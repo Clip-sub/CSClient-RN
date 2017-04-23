@@ -35,7 +35,7 @@
     "react-native-i18n": "^1.0.0",
     "react-native-modal-datetime-picker": "^4.4.0",
     "react-native-onesignal": "^3.0.3",
-    "react-native-popup-dialog": "^0.7.26",
+    "react-native-popup-dialog": "^0.7.27",
     "react-native-snap-carousel": "^2.1.1",
     "react-navigation": "git+https://github.com/react-community/react-navigation.git",
     "react-redux": "^5.0.4",

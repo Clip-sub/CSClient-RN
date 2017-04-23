@@ -1,7 +1,22 @@
-import React, {Component, PropTypes} from "react";
-import {Body, Button, Container, Header, Icon, Input, Left, Right, Title, Footer, FooterTab, Text, Content} from "native-base";
+import React, { Component, PropTypes } from "react";
+import {
+  Body,
+  Button,
+  Container,
+  Header,
+  Icon,
+  Input,
+  Left,
+  Right,
+  Title,
+  Footer,
+  FooterTab,
+  Text,
+  Content
+} from "native-base";
+import { Image, StatusBar } from "react-native";
 import LoginForm from "../components/authentication/login-form";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class AuthContainer extends Component {
   static propTypes = {
@@ -11,9 +26,9 @@ class AuthContainer extends Component {
   };
 
   static navigationOptions = {
-    title: 'Login Screen',
+    title: "Login Screen",
     header: {
-      left: <Button title={''} transparent><Icon name='menu'/></Button>,
+      left: <Button title={""} transparent><Icon name="menu" /></Button>
     }
   };
 
@@ -25,43 +40,53 @@ class AuthContainer extends Component {
   }
 
   render() {
-    return(
-      <Container style={{backgroundColor: '#000'}}>
-        <Header style={{backgroundColor: 'transparent'}} iosBarStyle={'light-content'}>
+    const { goBack } = this.props.navigation;
+
+    return (
+      <Container style={{ backgroundColor: "#542424", justifyContent: "center", paddingTop: 20 }}>
+        <Header
+          noShadow={true}
+          backgroundColor={"transparent"}
+          style={{ backgroundColor: "transparent" }}
+          iosBarStyle={"light-content"}>
+        <StatusBar
+          translucent={true}
+          backgroundColor={"transparent"}
+          barStyle="light-content" />
           <Left>
-            <Button
-              title={''}
-              onPress={() => navigate('Home')}
-              transparent>
-              <Icon style={{color: '#fff'}} name='menu'/>
+            <Button title={""} onPress={() => goBack()} transparent>
+              <Icon style={{ color: "#fff" }} name="arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title style={{color: '#fff', backgroundColor: 'transparent'}}>Login</Title>
+            <Title style={{ color: "#fff", backgroundColor: "transparent" }}>
+              Login
+            </Title>
           </Body>
-          <Right/>
+          <Right />
         </Header>
-        <LoginForm/>
-        <Input/>
-        <Content/>
-                <Footer>
-                    <FooterTab>
-                        <Button full>
-                            <Text>Footer</Text>
-                        </Button>
-                    </FooterTab>
-                </Footer>
+        <Content>
+          <LoginForm {...this.props} />
+        </Content>
       </Container>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  state
-})
+const mapStateToProps = state => {
+  // Make sure to not pass "form" prop to the component which override the original one.
+  // Info: https://github.com/erikras/redux-form/issues/827
+  // TL;DR: Don't pass {...state}, only use what you want
+  return {
+    nav: state.nav,
+    posts: state.posts
+  }
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  dispatch
-})
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
