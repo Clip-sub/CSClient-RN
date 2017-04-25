@@ -5,7 +5,7 @@
 import { call, put } from "redux-saga/effects";
 import { receiveError, receiveRecentPosts } from "../actions/actions-core";
 
-export function* getRecentPosts(api, action) {
+export function* getRecentPosts(api) {
   try {
     const result = yield call(api.getRecentPosts, 10, 1);
     if (result.data.status === "ok") {

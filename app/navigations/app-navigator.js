@@ -20,9 +20,7 @@ const stackNavigatorConfig = {
   mode: "card",
   headerMode: "none",
   navigationOptions: {
-    header: {
-      visible: false
-    }
+    headerVisible: false
   }
 };
 

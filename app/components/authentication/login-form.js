@@ -6,9 +6,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
 import { requestLogin } from "../../actions/actions-user";
+console.disableYellowBox = true;
 
 const onSubmit = (values, dispatch) => {
-  console.log("Submitting form: ", values);
+  const { username, password } = values;
+  dispatch(requestLogin(username, password));
 };
 
 const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
@@ -26,7 +28,7 @@ const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
-        placeholder={placeholder}
+        placeholder={"Username"}
         placeholderTextColor={"#FFF"}
         underlineColorAndroid={"transparent"}
       />
@@ -58,17 +60,6 @@ const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
   );
 };
 
-const phoneFormatter = number => {
-  if (!number) return "";
-  // NNN-NNN-NNNN
-  const splitter = /.{1,3}/g;
-  number = number.substring(0, 10);
-  return number.substring(0, 7).match(splitter).join("-") + number.substring(7);
-};
-
-// remove dashes added by the formatter
-const phoneParser = number => (number ? number.replace(/-/g, "") : "");
-
 class LoginForm extends Component {
   static defaultProps = {
     isLoading: false
@@ -80,7 +71,11 @@ class LoginForm extends Component {
       <View style={[this.props.style, styles.formContainer]}>
         <Field name={"username"} component={usernameField} />
         <Field name={"password"} component={passwordField} />
-        <Button info block rounded title={""}
+        <Button
+          info
+          block
+          rounded
+          title={""}
           onPress={handleSubmit(onSubmit)}
           submitting={submitting}>
           <Text>Login</Text>

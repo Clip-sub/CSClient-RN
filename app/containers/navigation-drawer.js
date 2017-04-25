@@ -2,7 +2,7 @@
  * @flow
  */
 "use strict";
-import {bindActionCreators, connect} from "react-redux";
+import { bindActionCreators, connect } from "react-redux";
 import HomeDrawerNavigator from "../navigations/drawer-navigator";
 
 /**

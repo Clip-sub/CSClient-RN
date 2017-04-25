@@ -25,7 +25,8 @@ const Methods = {
     GET_NONCE: "get_nonce"
   },
   USER: {
-    REGISTER: "register"
+    REGISTER: "register",
+    GENERATE_AUTH_COOKIE: "generate_auth_cookie",
   }
 };
 
@@ -43,8 +44,10 @@ const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
     api.addMonitor(console.tron.apisauce);
   }
 
-  const getNonce = (method: string, controller: string) =>
-    api.get("get_nonce", { method, controller });
+  const getNonce = (controller: string, method: string) =>
+    api.get("get_nonce", { controller, method });
+  const generateAuthCookie = (username: string, password: string, nonce: string) => 
+    api.post("user/generate_auth_cookie", { username, password, nonce });
   const getRecentPosts = (count: number, page: number, postType: string) =>
     api.get("get_recent_posts", {
       count: count,
@@ -55,6 +58,8 @@ const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
 
   return {
     getNonce,
+    generateAuthCookie,
+
     getRecentPosts,
     getPosts
   };

@@ -27,9 +27,7 @@ class AuthContainer extends Component {
 
   static navigationOptions = {
     title: "Login Screen",
-    header: {
-      left: <Button title={""} transparent><Icon name="menu" /></Button>
-    }
+    headerLeft: <Button title={""} transparent><Icon name="menu" /></Button>
   };
 
   constructor(props) {
