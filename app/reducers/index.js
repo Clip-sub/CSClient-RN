@@ -2,7 +2,7 @@
 import { combineReducers } from "redux";
 import { posts } from "./post-listing";
 import { nav } from "./navigation";
-import { reducer as formReducer } from "redux-form";
+import { reducer as form } from "redux-form";
 
 const rootReducer = combineReducers({
   posts,

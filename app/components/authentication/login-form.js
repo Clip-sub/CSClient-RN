@@ -1,7 +1,7 @@
 "use strict";
 import React, { Component, PropTypes } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
-import { Button } from "native-base";
+import { Button, Input } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { Field, reduxForm } from "redux-form";
 import moment from "moment";
@@ -34,6 +34,30 @@ const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
   );
 };
 
+const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
+  return (
+    <View
+      style={{
+        borderBottomWidth: 1,
+        borderBottomColor: "#4e4242",
+        opacity: 0.6,
+        marginBottom: 26
+      }}>
+      <TextInput
+        {...inputProps}
+        name={"password"}
+        onChangeText={input.onChange}
+        value={input.value}
+        onBlur={input.onBlur}
+        secureTextEntry={true}
+        placeholder={"Password"}
+        placeholderTextColor={"#FFF"}
+        underlineColorAndroid={"transparent"}
+      />
+    </View>
+  );
+};
+
 const phoneFormatter = number => {
   if (!number) return "";
   // NNN-NNN-NNNN
@@ -54,26 +78,9 @@ class LoginForm extends Component {
     const { isLoading, handleSubmit, submitting } = this.props;
     return (
       <View style={[this.props.style, styles.formContainer]}>
-        <Field name={"login"} component={usernameField} placeholder={"yolo"} />
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderBottomColor: "#4e4242",
-            opacity: 0.6,
-            marginBottom: 26
-          }}>
-          <TextInput
-            secureTextEntry={true}
-            placeholder={"Password"}
-            placeholderTextColor={"#FFF"}
-            underlineColorAndroid={"transparent"}
-          />
-        </View>
-        <Button
-          info
-          block
-          rounded
-          title={""}
+        <Field name={"username"} component={usernameField} />
+        <Field name={"password"} component={passwordField} />
+        <Button info block rounded title={""}
           onPress={handleSubmit(onSubmit)}
           submitting={submitting}>
           <Text>Login</Text>
