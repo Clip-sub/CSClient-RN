@@ -37,6 +37,16 @@ class AuthContainer extends Component {
     //<View style={{position: 'absolute', width: 2000, height: 2000, backgroundColor: '#000', opacity: 0.6}}/>
   }
 
+  /*componentDidMount() {
+    var testStr = 5;
+    var regex = new RegExp(testStr);
+    let temp = "fghjkdfsf";
+    console.log(regex.test(temp));
+
+    var object={ mobile: mobile, content: regex};
+    console.log(object);
+  }*/
+
   render() {
     const { goBack } = this.props.navigation;
 

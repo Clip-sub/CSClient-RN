@@ -12,12 +12,12 @@ export function requestLogin(username, password) {
   }
 }
 
-export function generateAuthCookie(username, password, nonce) {
+export function generateAuthCookie(username, password, seconds) {
   return {
     type: Types.GENERATE_AUTH_COOKIE,
     username,
     password,
-    nonce
+    seconds
   };
 }
 
@@ -27,3 +27,5 @@ export function validateAuthCookie(cookie) {
     cookie
   };
 }
+
+export function

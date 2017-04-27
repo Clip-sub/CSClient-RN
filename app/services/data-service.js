@@ -1,7 +1,6 @@
 
 'use strict';
-
-import {AsyncStorage} from "react-native";
+import { AsyncStorage } from "react-native";
 
 let DataService = {
   storeUser: function (user) {

@@ -9,21 +9,14 @@ import API, { Controllers, Methods, DataStatus } from "../services/API";
 const api = API.create();
 
 export function* login(action) {
-  console.log("aaaa", action);
-  const { username, password } = action;
+  const { username, password, seconds } = action;
   try {
-    const nonceResult = yield call(
-      api.getNonce,
-      Controllers.USER,
-      Methods.USER.GENERATE_AUTH_COOKIE
-    );
-    if (nonceResult.data.status === DataStatus.OK) {
-      const nonce = nonceResult.data.nonce;
-      api.generateAuthCookie(username, password, nonce).then(result => console.log(result)).done();
-      //const cookieResult = yield call(api.generateAuthCookie, username, password, nonce);
-      //console.log(cookieResult);
+    // cookie, cookie_name, status
+    const result = yield call(api.generateAuthCookie, username, password, seconds);
+    if (result.data.status === DataStatus.OK) {
+      
     }
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+
   }
 }

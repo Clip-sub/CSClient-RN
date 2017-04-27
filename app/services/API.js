@@ -1,6 +1,7 @@
 "use strict";
 // New API, API.js is legacy.
 import apisauce from "apisauce";
+import qs from "querystringify";
 
 const DataStatus = { OK: "ok", ERROR: "error" };
 const RESPONSE_STATUS_OK = 200;
@@ -34,7 +35,8 @@ const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
   const api = apisauce.create({
     baseURL,
     headers: {
-      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Accept": "application/json; charset=UTF-8",
       "Cache-Control": "no-cache"
     },
     timeout: 10000
@@ -46,8 +48,14 @@ const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
 
   const getNonce = (controller: string, method: string) =>
     api.get("get_nonce", { controller, method });
-  const generateAuthCookie = (username: string, password: string, nonce: string) => 
-    api.post("user/generate_auth_cookie", { username, password, nonce });
+  const generateAuthCookie = (username: string, password: string, seconds: number) => {
+    // https://github.com/unshiftio/querystringify#qsstringify
+    let data = new FormData();
+    data.append("username", username);
+    data.append("password", password);
+    data.append("seconds", seconds);
+    return api.post("user/generate_auth_cookie", data);
+  };
   const getRecentPosts = (count: number, page: number, postType: string) =>
     api.get("get_recent_posts", {
       count: count,
