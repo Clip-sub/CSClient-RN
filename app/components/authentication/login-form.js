@@ -31,6 +31,7 @@ const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
         placeholder={"Username"}
         placeholderTextColor={"#FFF"}
         underlineColorAndroid={"transparent"}
+        style={styles.input}
       />
     </View>
   );
@@ -43,7 +44,7 @@ const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
         borderBottomWidth: 1,
         borderBottomColor: "#4e4242",
         opacity: 0.6,
-        marginBottom: 26
+        marginBottom: 26,
       }}>
       <TextInput
         {...inputProps}
@@ -55,7 +56,7 @@ const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
         placeholder={"Password"}
         placeholderTextColor={"#FFF"}
         underlineColorAndroid={"transparent"}
-      />
+        style={styles.input} />
     </View>
   );
 };
@@ -65,16 +66,17 @@ class LoginForm extends Component {
     isLoading: false
   };
 
+  componentWillUpdate(nextProps) {
+    console.log(nextProps);
+  }
+
   render() {
     const { isLoading, handleSubmit, submitting } = this.props;
     return (
       <View style={[this.props.style, styles.formContainer]}>
         <Field name={"username"} component={usernameField} />
         <Field name={"password"} component={passwordField} />
-        <Button
-          info
-          block
-          rounded
+        <Button info block rounded
           title={""}
           onPress={handleSubmit(onSubmit)}
           submitting={submitting}>
@@ -93,9 +95,13 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     paddingBottom: 18,
     marginHorizontal: 40,
-    marginTop: 100,
+    marginTop: 50,
     padding: 12,
     alignSelf: "stretch"
+  },
+  input: {
+    height: 40,
+    alignSelf: 'stretch'
   }
 });
 

@@ -3,11 +3,11 @@
  */
 'use strict';
 
-import * as Types from "./types-misc";
+import Types from "./types-misc";
 
-export function checkConnection() {
-  return dispatch => {
-    dispatch({type: Types.NETWORK_CHECK_CONNECTION});
-    setTimeout(() => dispatch({type: Types.NETWORK_CONNECTION_OFFLINE}), 5000);
+export function setLoading(isLoading: boolean) {
+  return {
+    type: Types.SET_LOADING,
+    isLoading
   }
 }

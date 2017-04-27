@@ -51,7 +51,7 @@ class AuthContainer extends Component {
     const { goBack } = this.props.navigation;
 
     return (
-      <Container style={{ backgroundColor: "#542424", justifyContent: "center", paddingTop: 20 }}>
+      <Container style={{ backgroundColor: "#542424", paddingTop: 20 }}>
         <Header
           noShadow={true}
           backgroundColor={"transparent"}
@@ -74,7 +74,7 @@ class AuthContainer extends Component {
           <Right />
         </Header>
         <Content>
-          <LoginForm {...this.props} />
+        <LoginForm {...this.props} />
         </Content>
       </Container>
     );
@@ -85,9 +85,10 @@ const mapStateToProps = state => {
   // Make sure to not pass "form" prop to the component which override the original one.
   // Info: https://github.com/erikras/redux-form/issues/827
   // TL;DR: Don't pass {...state}, only use what you want
+  const { nav, common } = state;
   return {
-    nav: state.nav,
-    posts: state.posts
+    nav,
+    common
   }
 };
 

@@ -12,7 +12,7 @@ export function requestLogin(username, password) {
   }
 }
 
-export function generateAuthCookie(username, password, seconds) {
+export function generateAuthCookie(username: string, password: string, seconds: number) {
   return {
     type: Types.GENERATE_AUTH_COOKIE,
     username,
@@ -21,11 +21,18 @@ export function generateAuthCookie(username, password, seconds) {
   };
 }
 
+export function generateAuthCookieSuccess(cookie: string, cookieName: string, user: Object) {
+  return {
+    type: Types.GENERATE_AUTH_COOKIE_OK,
+    cookie,
+    cookieName,
+    user
+  }
+}
+
 export function validateAuthCookie(cookie) {
   return {
     type: Types.VALIDATE_AUTH_COOKIE,
     cookie
   };
 }
-
-export function
