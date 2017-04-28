@@ -37,7 +37,7 @@
     "react-native-onesignal": "^3.0.3",
     "react-native-popup-dialog": "^0.7.27",
     "react-native-snap-carousel": "^2.1.2",
-    "react-navigation": "git+https://github.com/react-community/react-navigation.git",
+    "react-navigation": "^1.0.0-beta.9",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
     "redux-form": "^6.6.3",

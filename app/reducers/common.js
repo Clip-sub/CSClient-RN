@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 export const common = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case Types.SET_LOADING:
-      return action.isLoading;
+      return Object.assign({}, isLoading: action.isLoading);
     default:
       return state;
   }
