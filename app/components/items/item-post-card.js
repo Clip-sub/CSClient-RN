@@ -2,7 +2,6 @@
  * @flow
  */
 "use strict";
-
 import React, { Component, PropTypes } from "react";
 import { Image, TouchableOpacity } from "react-native";
 import {
@@ -43,91 +42,97 @@ import { navigate } from "../../actions/actions-navigation";
  * status: publish
  * tags: description / id / post_count / slug / title
  */
-export default class ItemPostCard extends Component {
-  static defaultProps = {
-    title: "",
-    excerpt: "",
-    commentCount: 0,
-    slug: "",
-    id: 0,
-    authorName: "",
-    authorId: 0,
-    thumbnailImage: {}
-  };
+const ItemPostCard = (props) => {
+  const { dispatch, title, authorName, image, excerpt, commentCount } = props;
 
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    excerpt: PropTypes.string.isRequired,
-    commentCount: PropTypes.number.isRequired,
-    slug: PropTypes.string,
-    id: PropTypes.number.isRequired,
-    authorName: PropTypes.string.isRequired,
-    authorId: PropTypes.number.isRequired,
-    thumbnailImage: PropTypes.object.isRequired
-  };
-
-  render() {
-    const { dispatch } = this.props;
-
-    return (
-      <Card>
-        <CardItem header>
-          <Left>
-            <H3>{he.unescape(this.props.title)}</H3>
-          </Left>
-        </CardItem>
-        <TouchableOpacity>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              marginBottom: 10,
-              marginLeft: 16
-            }}>
-            <Thumbnail
-              small
-              source={{ uri: "https://unsplash.it/80/80?random" }}
-            />
-            <Text style={{ marginLeft: 12 }}>
-              {this.props.authorName}
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <CardItem cardBody>
-          <Body>
-            <Image
-              source={{ uri: this.props.image }}
-              style={styles.thumbnailImage}
-            />
-          </Body>
-        </CardItem>
-        <CardItem style={{ flexDirection: "column" }}>
-          <HTMLView value={this.props.excerpt.trim()} />
-        </CardItem>
-        <CardItem
-          style={{
-            justifyContent: "space-around",
-            borderTopWidth: 0.5,
-            borderTopColor: "#eee"
-          }}>
-          <Button transparent onPress={() => dispatch(navigate("Profile"))}>
-            <Icon name="chatbubbles" />
-            <Text>{this.props.commentCount}</Text>
-          </Button>
-          <Button transparent>
-            <Icon name="md-share" />
-            <Text>{I18n.t("share")}</Text>
-          </Button>
-        </CardItem>
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <CardItem header>
+        <Left>
+          <H3>{he.unescape(title)}</H3>
+        </Left>
+      </CardItem>
+      <TouchableOpacity>
+        <View
+          style={styles.author}>
+          <Thumbnail
+            small
+            source={{ uri: "https://unsplash.it/80/80?random" }}
+          />
+          <Text style={styles.authorName}>
+            {authorName}
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <CardItem cardBody>
+        <Body>
+          <Image
+            source={{ uri: image }}
+            style={styles.thumbnailImage}
+          />
+        </Body>
+      </CardItem>
+      <CardItem>
+        <HTMLView value={excerpt.trim()} />
+      </CardItem>
+      <CardItem
+        style={styles.cardBottom}>
+        <Button transparent onPress={() => dispatch(navigate("Profile"))}>
+          <Icon name="chatbubbles" />
+          <Text>{commentCount}</Text>
+        </Button>
+        <Button transparent>
+          <Icon name="md-share" />
+          <Text>{I18n.t("share")}</Text>
+        </Button>
+      </CardItem>
+    </Card>
+  )
 }
+
+ItemPostCard.defaultProps = {
+  title: "",
+  excerpt: "",
+  commentCount: 0,
+  slug: "",
+  id: 0,
+  authorName: "",
+  authorId: 0,
+  thumbnailImage: {}
+};
+
+ItemPostCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  excerpt: PropTypes.string.isRequired,
+  commentCount: PropTypes.number.isRequired,
+  slug: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  authorName: PropTypes.string.isRequired,
+  authorId: PropTypes.number.isRequired,
+  thumbnailImage: PropTypes.object.isRequired
+};
+
+export { ItemPostCard };
 
 const styles = {
   thumbnailImage: {
     flex: 1,
     alignSelf: "stretch",
     height: 160
+  },
+  author: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    marginLeft: 16
+  },
+  authorName: {
+    marginLeft: 12
+  },
+  cardBottom: {
+    justifyContent: "space-around",
+    borderTopWidth: 0.5,
+    borderTopColor: "#eee"
   }
 };
+

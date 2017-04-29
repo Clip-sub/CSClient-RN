@@ -3,13 +3,12 @@
  */
 "use strict";
 import React, { Component, PropTypes } from "react";
-import { View } from "react-native";
+import { View, FlatList } from "react-native";
 import { List, Spinner } from "native-base";
 import { getRecentPosts } from "../actions/actions-core";
 import { PostMenuBar } from "./post-menu-bar";
-import ItemPostCard from "./items/item-post-card";
+import { ItemPostCard } from "./items/item-post-card";
 
-const INIT_PAGE = 1;
 export default class PostList extends Component {
   static propTypes = {
     page: PropTypes.number.isRequired,
@@ -22,12 +21,6 @@ export default class PostList extends Component {
     status: "loading",
     viewMode: "cards"
   };
-
-  constructor(props) {
-    super(props);
-    this.renderItem = this.renderItem.bind(this);
-    this.page = INIT_PAGE;
-  }
 
   componentDidMount() {
     const { dispatch, page } = this.props;
@@ -62,13 +55,13 @@ export default class PostList extends Component {
 
   renderPostList(posts) {
     return (
-      <List
-        dataArray={posts}
-        renderHeader={this.renderPostMenuBar}
-        renderRow={this.renderItem}
+      <FlatList
+        data={posts}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => this.renderItem(item)}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={2}
-      />
+        ListHeaderComponent={this.renderPostMenuBar}/>
     );
   }
 
