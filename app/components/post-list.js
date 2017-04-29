@@ -2,22 +2,24 @@
  * @flow
  */
 "use strict";
-import React, {Component, PropTypes} from "react";
-import {View} from "react-native";
-import {List, Spinner} from "native-base";
-import {getRecentPosts} from "../actions/actions-core";
-import {PostMenuBar} from "./post-menu-bar";
+import React, { Component, PropTypes } from "react";
+import { View } from "react-native";
+import { List, Spinner } from "native-base";
+import { getRecentPosts } from "../actions/actions-core";
+import { PostMenuBar } from "./post-menu-bar";
 import ItemPostCard from "./items/item-post-card";
 
 const INIT_PAGE = 1;
 export default class PostList extends Component {
   static propTypes = {
+    page: PropTypes.number.isRequired,
+    postItems: PropTypes.array,
     status: PropTypes.oneOf(["loading", "error", "loaded"]),
     viewMode: PropTypes.oneOf(["list", "cards", "tiles"])
   };
 
   static defaultProps = {
-    status: "loaded",
+    status: "loading",
     viewMode: "cards"
   };
 
@@ -28,8 +30,13 @@ export default class PostList extends Component {
   }
 
   componentDidMount() {
-    const {dispatch} = this.props;
-    dispatch(getRecentPosts(this.page));
+    const { dispatch, page } = this.props;
+    setTimeout(() => dispatch(getRecentPosts(page)), 300);
+  }
+
+  onEndReached = () => {
+    const { dispatch, page } = this.props;
+    dispatch(getRecentPosts(page + 1));
   }
 
   renderItem = item => {
@@ -44,12 +51,13 @@ export default class PostList extends Component {
         commentCount={item.comment_count}
         authorId={item.author.id || ""}
         authorName={item.author.name}
-        {...this.props} />
+        {...this.props}
+      />
     );
   };
 
   renderPostMenuBar = () => {
-    return <PostMenuBar {...this.props}/>;
+    return <PostMenuBar {...this.props} />;
   };
 
   renderPostList(posts) {
@@ -58,16 +66,18 @@ export default class PostList extends Component {
         dataArray={posts}
         renderHeader={this.renderPostMenuBar}
         renderRow={this.renderItem}
+        onEndReached={this.onEndReached}
+        onEndReachedThreshold={2}
       />
     );
   }
 
   render() {
-    let {status, posts} = this.props;
+    let { status, postItems } = this.props;
 
     return (
-      <View style={{flex: 1, alignSelf: "stretch", alignItems: "center"}}>
-        {status === "loading" ? <Spinner /> : this.renderPostList(posts)}
+      <View style={{ flex: 1, alignSelf: "stretch", alignItems: "center" }}>
+        {status === "loaded" ? <Spinner /> : this.renderPostList(postItems)}
       </View>
     );
   }

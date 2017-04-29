@@ -4,10 +4,12 @@
 "use strict";
 import { call, put } from "redux-saga/effects";
 import { receiveError, receiveRecentPosts } from "../actions/actions-core";
+import API, { Controllers, Methods, DataStatus } from "../services/API";
+const api = API.create();
 
-export function* getRecentPosts(api) {
+export function* getRecentPosts(action) {
   try {
-    const result = yield call(api.getRecentPosts, 10, 1);
+    const result = yield call(api.getRecentPosts, 10, action.page);
     if (result.data.status === "ok") {
       yield put(
         receiveRecentPosts(

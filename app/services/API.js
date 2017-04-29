@@ -31,7 +31,7 @@ const Methods = {
   }
 };
 
-const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
+const create = (baseURL = "https://clip-sub.com/api/") => {
   const api = apisauce.create({
     baseURL,
     headers: {

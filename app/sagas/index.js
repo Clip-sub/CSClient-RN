@@ -14,7 +14,7 @@ const api = API.create();
 
 function* rootSaga() {
   yield [
-    takeLatest(CoreTypes.GET_RECENT_POSTS, getRecentPosts, api),
+    takeLatest(CoreTypes.GET_RECENT_POSTS, getRecentPosts),
     takeLatest(UserTypes.REQUEST_LOGIN, login),
     // fork(startup),
   ];

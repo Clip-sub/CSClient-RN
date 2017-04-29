@@ -10,6 +10,8 @@ export const ScreenKey = {
   CONTENT: "Content"
 }
 
-export const Types = {
-  GO_HOME: 'GO_HOME'
+const Types = {
+  SWITCH_HOME_TAB: "SWITCH_HOME_TAB"
 }
+
+export default Types;

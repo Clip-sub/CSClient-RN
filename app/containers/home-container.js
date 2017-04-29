@@ -1,37 +1,78 @@
 "use strict";
 
 import React from "react";
-import {Body, Button, Container, Header, Icon, Left, Right, Title} from "native-base";
-import {bindActionCreators, connect} from "react-redux";
-import {NavigationActions} from "react-navigation";
+import { View } from "react-native";
+import {
+  Body,
+  Button,
+  Container,
+  Header,
+  Icon,
+  Left,
+  Right,
+  Title,
+  Footer,
+  FooterTab,
+  Text
+} from "native-base";
+import { bindActionCreators, connect } from "react-redux";
+import { NavigationActions } from "react-navigation";
 import PostList from "../components/post-list";
+import { switchHomeTab } from "../actions/actions-navigation";
 
-const HomeContainer = (props) => {
-  const {openDrawer} = props;
+const HomeContainer = props => {
+  const { openDrawer, activeTabIndex, dispatch } = props;
+
+  const renderHomeContent = () => {
+    switch(activeTabIndex) {
+      case 1:
+       return (<PostList {...props.posts} dispatch={props.dispatch} />);
+      case 2:
+       return <View />;
+      case 3:
+       return <View />;
+      case 4:
+       return <View />;
+    }
+  }
+
   return (
     <Container>
       <Header
-        style={{backgroundColor: "#EF5350"}}
+        style={{ backgroundColor: "#EF5350" }}
         iosBarStyle={"light-content"}>
         <Left>
-          <Button
-            title={""}
-            transparent
-            onPress={() => openDrawer()}>
-            <Icon style={{color: "#fff"}} name="menu"/>
+          <Button title={""} transparent onPress={() => openDrawer()}>
+            <Icon style={{ color: "#fff" }} name="menu" />
           </Button>
         </Left>
         <Body>
-        <Title style={{color: "#fff", backgroundColor: "transparent"}}>
-          Clip-sub
-        </Title>
+          <Title style={{ color: "#fff", backgroundColor: "transparent" }}>
+            Clip-sub
+          </Title>
         </Body>
         <Right />
       </Header>
-      <PostList {...props} />
+      {renderHomeContent()}
+      <Footer>
+        <FooterTab>
+          <Button active={activeTabIndex === 1} onPress={() => dispatch(switchHomeTab(1))}>
+            <Icon name="home" />
+          </Button>
+          <Button active={activeTabIndex === 2} onPress={() => dispatch(switchHomeTab(2))}>
+            <Icon name="list" />
+          </Button>
+          <Button active={activeTabIndex === 3} onPress={() => dispatch(switchHomeTab(3))}>
+            <Icon active name="navigate" />
+          </Button>
+          <Button active={activeTabIndex === 4} onPress={() => dispatch(switchHomeTab(4))}>
+            <Icon name="person" />
+          </Button>
+        </FooterTab>
+      </Footer>
     </Container>
   );
-}
+};
 
 /**
  * If ownProps is specified as a second argument, its value will be the props passed to your component,
@@ -39,19 +80,20 @@ const HomeContainer = (props) => {
  *
  * The result of mapStateToProps must be a plain object, which will be merged into component's props.
  */
-const mapStateToProps = (state) => {
-  const {posts, categories} = state;
+const mapStateToProps = state => {
+  const { posts, categories, activeTabIndex } = state;
   return {
     posts,
-    categories
+    categories,
+    activeTabIndex
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   openDrawer: () => {
     const navigateAction = NavigationActions.navigate({
-      routeName: 'DrawerOpen'
-    })
+      routeName: "DrawerOpen"
+    });
     dispatch(navigateAction);
   },
   dispatch
