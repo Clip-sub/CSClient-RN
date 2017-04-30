@@ -2,25 +2,14 @@
  * @flow
  */
 "use strict";
-import React, { Component, PropTypes } from "react";
-import { Image, TouchableOpacity } from "react-native";
-import {
-  Body,
-  Button,
-  Card,
-  CardItem,
-  H3,
-  Icon,
-  Left,
-  Text,
-  Thumbnail,
-  View
-} from "native-base";
+import React, {PropTypes} from "react";
+import {Image, TouchableOpacity} from "react-native";
+import {Body, Button, Card, CardItem, H3, Icon, Left, Text, Thumbnail, View} from "native-base";
 import I18n from "../../localizations/I18n";
 import he from "he";
 import HTMLView from "react-native-htmlview";
 
-import { navigate } from "../../actions/actions-navigation";
+import {navigate} from "../../actions/actions-navigation";
 
 /**
  * Basic needs for item:
@@ -43,7 +32,7 @@ import { navigate } from "../../actions/actions-navigation";
  * tags: description / id / post_count / slug / title
  */
 const ItemPostCard = (props) => {
-  const { dispatch, title, authorName, image, excerpt, commentCount } = props;
+  const {dispatch, title, authorName, image, excerpt, commentCount} = props;
 
   return (
     <Card>
@@ -57,7 +46,7 @@ const ItemPostCard = (props) => {
           style={styles.author}>
           <Thumbnail
             small
-            source={{ uri: "https://unsplash.it/80/80?random" }}
+            source={{uri: "https://unsplash.it/80/80?random"}}
           />
           <Text style={styles.authorName}>
             {authorName}
@@ -66,29 +55,29 @@ const ItemPostCard = (props) => {
       </TouchableOpacity>
       <CardItem cardBody>
         <Body>
-          <Image
-            source={{ uri: image }}
-            style={styles.thumbnailImage}
-          />
+        <Image
+          source={{uri: image}}
+          style={styles.thumbnailImage}
+        />
         </Body>
       </CardItem>
       <CardItem>
-        <HTMLView value={excerpt.trim()} />
+        <HTMLView value={excerpt.trim()}/>
       </CardItem>
       <CardItem
         style={styles.cardBottom}>
         <Button transparent onPress={() => dispatch(navigate("Profile"))}>
-          <Icon name="chatbubbles" />
+          <Icon name="chatbubbles"/>
           <Text>{commentCount}</Text>
         </Button>
         <Button transparent>
-          <Icon name="md-share" />
+          <Icon name="md-share"/>
           <Text>{I18n.t("share")}</Text>
         </Button>
       </CardItem>
     </Card>
   )
-}
+};
 
 ItemPostCard.defaultProps = {
   title: "",
@@ -112,7 +101,7 @@ ItemPostCard.propTypes = {
   thumbnailImage: PropTypes.object.isRequired
 };
 
-export { ItemPostCard };
+export {ItemPostCard};
 
 const styles = {
   thumbnailImage: {
@@ -135,4 +124,3 @@ const styles = {
     borderTopColor: "#eee"
   }
 };
-

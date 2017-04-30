@@ -5,7 +5,7 @@ import {Button, Container, Content, Header, Text} from "native-base";
 class PreferencesContainer extends Component {
   render() {
     const {navigate} = this.props.navigation;
-    
+
     return (
       <Container>
         <Header/>

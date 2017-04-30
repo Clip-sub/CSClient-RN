@@ -4,13 +4,13 @@
  * For now the navigation-drawer contains the home-container. All other containers are self-contained.
  */
 "use strict";
-import React, { PropTypes } from "react";
-import { connect } from "react-redux";
-import { addNavigationHelpers } from "react-navigation";
+import React, {PropTypes} from "react";
+import {connect} from "react-redux";
+import {addNavigationHelpers} from "react-navigation";
 import AppNavigator from "../navigations/app-navigator";
 
-const AppWithNavigationState = ({ dispatch, nav }) => (
-  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+const AppWithNavigationState = ({dispatch, nav}) => (
+  <AppNavigator navigation={addNavigationHelpers({dispatch, state: nav})}/>
 );
 
 AppWithNavigationState.propTypes = {
