@@ -21,6 +21,11 @@ export const posts = (state = INITIAL_STATE, action) => {
         ...state,
         postItems: action.posts
       };
+    case Types.CLEAR_POSTS:
+      return {
+        ...state,
+        postItems: []
+      }
     default:
       return state;
   }

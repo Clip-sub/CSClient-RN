@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from "react";
 import { View, FlatList } from "react-native";
 import { List, Spinner } from "native-base";
-import { getRecentPosts } from "../actions/actions-core";
+import { getRecentPosts, clearPosts } from "../actions/actions-core";
 import { PostMenuBar } from "./post-menu-bar";
 import { ItemPostCard } from "./items/item-post-card";
 
@@ -24,12 +24,17 @@ export default class PostList extends Component {
 
   componentDidMount() {
     const { dispatch, page } = this.props;
-    setTimeout(() => dispatch(getRecentPosts(page)), 300);
+    dispatch(getRecentPosts(page));
+  }
+
+  componentWillUnmount() {
+    const { dispatch, page } = this.props;
+    dispatch(clearPosts());
   }
 
   onEndReached = () => {
-    const { dispatch, page } = this.props;
-    dispatch(getRecentPosts(page + 1));
+    const { dispatch, status, page } = this.props;
+    if (status !== "loading") dispatch(getRecentPosts(page + 1));
   }
 
   renderItem = item => {
@@ -49,9 +54,9 @@ export default class PostList extends Component {
     );
   };
 
-  renderPostMenuBar = () => {
-    return <PostMenuBar {...this.props} />;
-  };
+  renderPostMenuBar = () => <PostMenuBar {...this.props} />
+
+  renderLoadingIndicator = () => <Spinner />
 
   renderPostList(posts) {
     return (
@@ -61,7 +66,8 @@ export default class PostList extends Component {
         renderItem={({item}) => this.renderItem(item)}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={2}
-        ListHeaderComponent={this.renderPostMenuBar}/>
+        ListHeaderComponent={this.renderPostMenuBar}
+        ListFooterComponent={this.renderLoadingIndicator}/>
     );
   }
 

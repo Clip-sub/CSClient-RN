@@ -16,7 +16,7 @@ const HomeContainer = props => {
       case 1:
         return (<PostList {...props.posts} dispatch={props.dispatch}/>);
       case 2:
-        return <View />;
+        return <View style={{flex: 1}} />;
       case 3:
         return <View />;
       case 4:

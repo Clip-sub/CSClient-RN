@@ -27,7 +27,7 @@ export function getPosts(page, count = 10, args = {}) {
     type: Types.GET_POSTS,
     page: page,
     count: count,
-    args: args
+    ...args
   };
 }
 
@@ -37,6 +37,12 @@ export function getRecentPosts(page: number, count: ?number) {
     page: page,
     count: count
   };
+}
+
+export function clearPosts() {
+  return {
+    type: Types.CLEAR_POSTS
+  }
 }
 
 export function getPage(pageId: number) {
@@ -92,7 +98,7 @@ export function receiveRecentPosts(
   };
 }
 
-export function receivePost(post: Object, nextUrl, previousUrl) {
+export function receivePost(post, nextUrl, previousUrl) {
   return {
     type: Types.RECEIVE_POST,
     post: post,
