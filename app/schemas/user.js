@@ -1,1 +1,1 @@
-import {normalize, arrayOf, Schema} from "normalizr";
+import { normalize, arrayOf, Schema } from "normalizr";
