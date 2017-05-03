@@ -48,6 +48,7 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
 
   const getNonce = (controller: string, method: string) =>
     api.get("get_nonce", { controller, method });
+
   const generateAuthCookie = (username: string, password: string, seconds: number) => {
     // https://github.com/unshiftio/querystringify#qsstringify
     let data = new FormData();
@@ -56,6 +57,7 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
     data.append("seconds", seconds);
     return api.post("user/generate_auth_cookie", data);
   };
+
   const getRecentPosts = (count: number, page: number, postType: string) =>
     api.get("get_recent_posts", {
       count: count,
@@ -63,13 +65,15 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
       post_type: postType
     });
   const getPosts = (...params) => api.get("get_posts", params);
+  
+  const getPageIndex = () => api.get("get_page_index");
 
   return {
     getNonce,
     generateAuthCookie,
-
     getRecentPosts,
-    getPosts
+    getPosts,
+    getPageIndex,
   };
 };
 
