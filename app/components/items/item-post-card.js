@@ -3,11 +3,12 @@
  */
 "use strict";
 import React, {PropTypes} from "react";
-import {Image, TouchableOpacity} from "react-native";
+import {Image, TouchableOpacity, Easing} from "react-native";
 import {Body, Button, Card, CardItem, H3, Icon, Left, Text, Thumbnail, View} from "native-base";
 import I18n from "../../localizations/I18n";
 import he from "he";
 import HTMLView from "react-native-htmlview";
+import ZoomImage from "react-native-zoom-image";
 
 import {navigate} from "../../actions/actions-navigation";
 
@@ -55,8 +56,16 @@ const ItemPostCard = (props) => {
       </TouchableOpacity>
       <CardItem cardBody>
         <Body>
+<ZoomImage
+  source={{uri: 'https://puu.sh/uNgpt/dd7659da05.jpg'}}
+  imgStyle={{width: 500, height: 500}}
+  style={styles.img}
+  duration={200}
+  enableScaling={true}
+  easingFunc={Easing.ease}
+/>
         <Image
-          source={{uri: image}}
+          source={{uri: "https://puu.sh/uNgpt/dd7659da05.jpg"/*image*/}}
           style={styles.thumbnailImage}
         />
         </Body>

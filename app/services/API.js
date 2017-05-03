@@ -1,9 +1,9 @@
 "use strict";
 // New API, API.js is legacy.
 import apisauce from "apisauce";
-import qs from "querystringify";
 
-const DataStatus = { OK: "ok", ERROR: "error" };
+
+const DataStatus = {OK: "ok", ERROR: "error"};
 const RESPONSE_STATUS_OK = 200;
 const Controllers = {
   CORE: "core",
@@ -27,16 +27,16 @@ const Methods = {
   },
   USER: {
     REGISTER: "register",
-    GENERATE_AUTH_COOKIE: "generate_auth_cookie",
+    GENERATE_AUTH_COOKIE: "generate_auth_cookie"
   }
 };
 
-const create = (baseURL = "https://clip-sub.com/api/") => {
+const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
   const api = apisauce.create({
     baseURL,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Accept": "application/json; charset=UTF-8",
+      Accept: "application/json; charset=UTF-8",
       "Cache-Control": "no-cache"
     },
     timeout: 10000
@@ -47,10 +47,11 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
   }
 
   const getNonce = (controller: string, method: string) =>
-    api.get("get_nonce", { controller, method });
+    api.get("get_nonce", {controller, method});
 
+
+  // https://github.com/unshiftio/querystringify#qsstringify
   const generateAuthCookie = (username: string, password: string, seconds: number) => {
-    // https://github.com/unshiftio/querystringify#qsstringify
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
@@ -59,13 +60,11 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
   };
 
   const getRecentPosts = (count: number, page: number, postType: string) =>
-    api.get("get_recent_posts", {
-      count: count,
-      page: page,
-      post_type: postType
-    });
-  const getPosts = (...params) => api.get("get_posts", params);
-  
+    api.get("get_recent_posts", {count: count, page: page, post_type: postType});
+
+  const getPosts = (count: number, page: number, ...query) =>
+    api.get("get_posts", {count: count, page: page, query});
+
   const getPageIndex = () => api.get("get_page_index");
 
   return {
@@ -77,5 +76,5 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
   };
 };
 
-export default { create };
-export { RESPONSE_STATUS_OK, DataStatus, Controllers, Methods };
+export default {create};
+export {RESPONSE_STATUS_OK, DataStatus, Controllers, Methods};
