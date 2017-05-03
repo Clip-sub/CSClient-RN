@@ -27,16 +27,16 @@ const Methods = {
   },
   USER: {
     REGISTER: "register",
-    GENERATE_AUTH_COOKIE: "generate_auth_cookie",
+    GENERATE_AUTH_COOKIE: "generate_auth_cookie"
   }
 };
 
-const create = (baseURL = "https://clip-sub.com/api/") => {
+const create = (baseURL = "https://doko.aniviet.com/blog/api/") => {
   const api = apisauce.create({
     baseURL,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      "Accept": "application/json; charset=UTF-8",
+      Accept: "application/json; charset=UTF-8",
       "Cache-Control": "no-cache"
     },
     timeout: 10000
@@ -48,8 +48,11 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
 
   const getNonce = (controller: string, method: string) =>
     api.get("get_nonce", { controller, method });
-  const generateAuthCookie = (username: string, password: string, seconds: number) => {
-    // https://github.com/unshiftio/querystringify#qsstringify
+  const generateAuthCookie = (
+    username: string,
+    password: string,
+    seconds: number
+  ) => {
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
@@ -62,12 +65,16 @@ const create = (baseURL = "https://clip-sub.com/api/") => {
       page: page,
       post_type: postType
     });
-  const getPosts = (...params) => api.get("get_posts", params);
+  const getPosts = (count: number, page: number, ...query) =>
+    api.get("get_posts", {
+      count: count,
+      page: page,
+      query
+    });
 
   return {
     getNonce,
     generateAuthCookie,
-
     getRecentPosts,
     getPosts
   };
