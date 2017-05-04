@@ -1,16 +1,12 @@
 /**
  * @flow
  */
-"use strict";
-import { takeLatest, fork } from "redux-saga/effects";
-import API from "../services/API";
-import CoreTypes from "../actions/types-core";
-import UserTypes from "../actions/types-user";
-import MiscTypes from "../actions/types-misc";
-import { getPosts, getCategoryIndex } from "./home-saga";
-import { login } from "./auth-saga";
-
-const api = API.create();
+'use strict';
+import { takeLatest } from 'redux-saga/effects';
+import CoreTypes from '../actions/types-core';
+import UserTypes from '../actions/types-user';
+import { getPosts, getCategoryIndex } from './home-saga';
+import { login } from './auth-saga';
 
 function* rootSaga() {
   yield [

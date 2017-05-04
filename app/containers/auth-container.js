@@ -10,10 +10,18 @@ import {
   Right,
   Title,
 } from 'native-base';
-import { Platform, StatusBar, Image, Dimensions } from 'react-native';
+import {
+  Platform,
+  StatusBar,
+  Image,
+  Dimensions,
+  Keyboard,
+  Text,
+} from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import LoginForm from '../components/authentication/login-form';
+import I18n from '../localizations/I18n';
 
 class AuthContainer extends Component {
   static propTypes = {
@@ -49,7 +57,7 @@ class AuthContainer extends Component {
         <Header
           noShadow
           backgroundColor={'transparent'}
-          style={{ backgroundColor: 'transparent' }}
+          style={{ backgroundColor: 'transparent', borderBottomWidth: 0 }}
           iosBarStyle={'light-content'}
         >
           <StatusBar
@@ -64,13 +72,23 @@ class AuthContainer extends Component {
           </Left>
           <Body>
             <Title style={{ color: '#fff', backgroundColor: 'transparent' }}>
-              Login
+              {I18n.t('login_header_title')}
             </Title>
           </Body>
           <Right />
         </Header>
         <Content>
           <LoginForm {...this.props} />
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 12,
+              textAlign: 'center',
+              marginVertical: 16,
+            }}
+          >
+            This is the same login account you use on the website
+          </Text>
         </Content>
       </Container>
     );
@@ -90,7 +108,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    goBack: () => dispatch(NavigationActions.back()),
+    goBack: () => {
+      Keyboard.dismiss();
+      dispatch(NavigationActions.back());
+    },
     dispatch,
   };
 };
@@ -99,7 +120,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
 
 const styles = {
   container: {
-    backgroundColor: '#542424',
+    backgroundColor: '#eee',
     paddingTop: Platform.OS === 'ios' ? 0 : 20,
   },
 };

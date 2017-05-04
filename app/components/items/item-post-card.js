@@ -3,20 +3,18 @@
  */
 'use strict';
 import React, { PropTypes } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, Platform } from 'react-native';
 import {
   Body,
   Button,
   Card,
   CardItem,
-  H3,
   Icon,
   Left,
   Text,
   Thumbnail,
   View,
 } from 'native-base';
-import he from 'he';
 import HTMLView from 'react-native-htmlview';
 import I18n from '../../localizations/I18n';
 import { navigate } from '../../actions/actions-navigation';
@@ -49,7 +47,7 @@ const ItemPostCard = props => {
     <Card>
       <CardItem header>
         <Left>
-          <H3>{he.unescape(title)}</H3>
+          <Text style={styles.title}>{title}</Text>
         </Left>
       </CardItem>
       <TouchableOpacity>
@@ -65,10 +63,7 @@ const ItemPostCard = props => {
       </TouchableOpacity>
       <CardItem cardBody>
         <Body>
-          <Image
-            source={{ uri: 'https://puu.sh/uNgpt/dd7659da05.jpg' /*image*/ }}
-            style={styles.thumbnailImage}
-          />
+          <Image source={{ uri: image }} style={styles.thumbnailImage} />
         </Body>
       </CardItem>
       <CardItem>
@@ -77,7 +72,7 @@ const ItemPostCard = props => {
       <CardItem style={styles.cardBottom}>
         <Button transparent onPress={() => dispatch(navigate('Profile'))}>
           <Icon name="chatbubbles" />
-          <Text>{commentCount}</Text>
+          <Text>{I18n.t('comment', { count: commentCount })}</Text>
         </Button>
         <Button transparent>
           <Icon name="md-share" />
@@ -117,6 +112,15 @@ const styles = {
     flex: 1,
     alignSelf: 'stretch',
     height: 160,
+  },
+  title: {
+    fontSize: 19,
+    //Iowan Old Style // Didot //Baskerville //AvenirNext-Medium
+    fontFamily: Platform.select({
+      android: 'Roboto',
+      ios: 'Baskerville',
+    }),
+    color: '#676767',
   },
   author: {
     flexDirection: 'row',

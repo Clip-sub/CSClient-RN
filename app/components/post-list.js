@@ -5,9 +5,12 @@
 import React, { Component, PropTypes } from 'react';
 import { View, FlatList } from 'react-native';
 import { Spinner } from 'native-base';
+import HTMLParser from 'fast-html-parser';
+import he from 'he';
 import { getRecentPosts, clearPosts } from '../actions/actions-core';
 import { PostMenuBar } from './post-menu-bar';
 import { ItemPostCard } from './items/item-post-card';
+import { ItemPostGrid } from './items/item-post-grid';
 
 export default class PostList extends Component {
   static propTypes = {
@@ -38,13 +41,22 @@ export default class PostList extends Component {
   };
 
   renderItem = item => {
+    //console.log(ImageParser.getImageUrlsFromDocument('ddd'));
+    //console.log(he.unescape(item.content));
+    const itemNode = HTMLParser.parse(he.unescape(item.content));
+    //console.log(itemNode.querySelector('img').attributes['data-lazy-src']);
+    const imageLink = itemNode.querySelector('img').attributes['data-lazy-src'];
+    console.log(imageLink);
+
     return (
-      <ItemPostCard
+      <ItemPostGrid
         id={item.id || ''}
-        title={item.title}
+        title={he.unescape(item.title)}
         excerpt={item.excerpt}
         image={
-          'https://clip-sub.com/wp-content/uploads/2017/04/59097934-600x300.jpg'
+          imageLink
+            ? imageLink
+            : 'https://clip-sub.com/wp-content/uploads/2017/04/59097934-600x300.jpg'
         }
         commentCount={item.comment_count}
         authorId={item.author.id || ''}
@@ -66,7 +78,8 @@ export default class PostList extends Component {
         renderItem={({ item }) => this.renderItem(item)}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={2}
-        ListHeaderComponent={this.renderPostMenuBar}
+        numColumns={2}
+        columnWrapperStyle={{ marginTop: 5, marginLeft: 5 }}
         ListFooterComponent={this.renderLoadingIndicator}
       />
     );
@@ -77,6 +90,7 @@ export default class PostList extends Component {
 
     return (
       <View style={{ flex: 1, alignSelf: 'stretch', alignItems: 'center' }}>
+        {this.renderPostMenuBar()}
         {status === 'loaded' ? this.renderPostList(postItems) : <Spinner />}
       </View>
     );

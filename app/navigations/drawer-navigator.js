@@ -3,18 +3,18 @@
  */
 'use strict';
 import React from 'react';
-import { View } from 'react-native';
-import { Body, Icon, Left, ListItem, Text, Thumbnail } from 'native-base';
+import { View, Image } from 'react-native';
+import { Body, Icon, Left, ListItem, Text } from 'native-base';
 import { DrawerNavigator, NavigationActions } from 'react-navigation';
 import HomeContainer from '../containers/home-container';
 
 const customDrawerContentComponent = props => {
-  console.log('222', props);
   const { dispatch } = props.navigation;
+  const closeDrawer = NavigationActions.navigate({
+    routeName: 'DrawerClose',
+  });
+
   const goToScreen = screenName => {
-    const closeDrawer = NavigationActions.navigate({
-      routeName: 'DrawerClose',
-    });
     const navigateAction = NavigationActions.navigate({
       routeName: screenName,
     });
@@ -26,19 +26,24 @@ const customDrawerContentComponent = props => {
     <View style={drawerStyle.drawerMenuContainer}>
       <View style={drawerStyle.drawerHeader}>
         <View style={drawerStyle.miniProfile}>
-          <Thumbnail source={{ uri: 'https://cdn.awwni.me/w28n.jpg' }} />
+          <Image
+            source={{ uri: 'https://cdn.awwni.me/w28n.jpg' }}
+            style={{ width: 90, height: 90, borderRadius: 45, zIndex: 9 }}
+          />
           <Text suppressHighlighting style={{ color: '#fff' }}>
             Sophia Emilion
           </Text>
-          <Text style={{ fontSize: 10, color: '#fff' }}>sophia@live.com</Text>
+          <Text style={{ fontSize: 10, color: '#fff' }}>
+            sophia@live.com
+          </Text>
         </View>
       </View>
-      <ListItem icon>
+      <ListItem icon onPress={() => dispatch(closeDrawer)}>
         <Left>
           <Icon name="home" />
         </Left>
         <Body>
-          <Text>Home</Text>
+          <Text style={{ fontFamily: 'Hoefler Text' }}>Home</Text>
         </Body>
       </ListItem>
 
@@ -47,7 +52,9 @@ const customDrawerContentComponent = props => {
           <Icon name="person" />
         </Left>
         <Body>
-          <Text>Login / Register</Text>
+          <Text style={{ fontFamily: 'Hoefler Text' }}>
+            Login / Register
+          </Text>
         </Body>
       </ListItem>
 
@@ -56,7 +63,7 @@ const customDrawerContentComponent = props => {
           <Icon name="ios-construct-outline" />
         </Left>
         <Body>
-          <Text>Settings</Text>
+          <Text style={{ fontFamily: 'Hoefler Text' }}>Settings</Text>
         </Body>
       </ListItem>
     </View>
@@ -85,7 +92,7 @@ const drawerStyle = {
     flex: 1,
   },
   drawerHeader: {
-    height: 140,
+    height: 160,
     backgroundColor: '#fe686a',
   },
   miniProfile: {

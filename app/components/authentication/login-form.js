@@ -4,6 +4,7 @@ import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { Field, reduxForm } from 'redux-form';
 import { requestLogin } from '../../actions/actions-user';
+import I18n from '../../localizations/I18n';
 
 const onSubmit = (values, dispatch) => {
   const { username, password } = values;
@@ -20,7 +21,7 @@ const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
         value={input.value}
         onBlur={input.onBlur}
         selectionColor={'#ffefef'}
-        placeholder={'Username'}
+        placeholder={I18n.t('login_username_placeholder')}
         placeholderTextColor={'#FFF'}
         underlineColorAndroid={'transparent'}
         style={styles.inputError}
@@ -39,7 +40,7 @@ const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
         value={input.value}
         onBlur={input.onBlur}
         secureTextEntry
-        placeholder={'Password'}
+        placeholder={I18n.t('login_password_placeholder')}
         placeholderTextColor={'#FFF'}
         underlineColorAndroid={'transparent'}
         style={styles.input}
@@ -58,7 +59,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { isLoading, handleSubmit, submitting } = this.props;
+    const { handleSubmit, submitting } = this.props;
     return (
       <View style={[this.props.style, styles.formContainer]}>
         <Field name={'username'} component={usernameField} />
@@ -73,8 +74,8 @@ class LoginForm extends Component {
           onPress={handleSubmit(onSubmit)}
           submitting={submitting}
         >
-          <Icon active name="ios-person" style={{ color: '#747474' }} />
-          <Text>Login</Text>
+          <Icon active name="ios-person" style={{ color: '#fff' }} />
+          <Text style={{ color: '#fff' }}>{I18n.t('login_button_label')}</Text>
         </Button>
       </View>
     );
