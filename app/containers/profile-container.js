@@ -1,6 +1,6 @@
-"use strict";
-import React from "react";
-import {StatusBar, View} from "react-native";
+'use strict';
+import React from 'react';
+import { StatusBar, View } from 'react-native';
 import {
   Button,
   Card,
@@ -14,58 +14,61 @@ import {
   Left,
   Right,
   Text,
-  Thumbnail
-} from "native-base";
-import {bindActionCreators, connect} from "react-redux";
-import {NavigationActions} from "react-navigation";
+  Thumbnail,
+} from 'native-base';
+import { bindActionCreators, connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
-const ProfileContainer = (props) => {
-  const {goBack} = props;
+const ProfileContainer = props => {
+  const { goBack } = props;
   return (
-    <Container style={{backgroundColor: '#fff'}}>
+    <Container style={{ backgroundColor: '#fff' }}>
       <View style={styles.profileHeaderContainer}>
         <Header
-          noShadow={true}
-          iosBarStyle={"light-content"}
-          backgroundColor={"#fff"}
-          style={{backgroundColor: "transparent", borderBottomWidth: 0}}>
+          noShadow
+          iosBarStyle={'light-content'}
+          backgroundColor={'#fff'}
+          style={{ backgroundColor: 'transparent', borderBottomWidth: 0 }}
+        >
           <StatusBar
             hidden
             backgroundColor="transparent"
             barStyle="light-content"
-            showHideTransition={"fade"}
-            animated={true}/>
+            showHideTransition={'fade'}
+            animated
+          />
           <Left>
             <Button title={'Back'} transparent onPress={() => goBack()}>
-              <Icon style={{color: "#fff"}} name="arrow-back"/>
+              <Icon style={{ color: '#fff' }} name="arrow-back" />
             </Button>
           </Left>
         </Header>
         <View
           style={{
-            alignItems: "center",
-            justifyContent: "center"
-          }}>
-          <Thumbnail
-            large
-            source={{uri: "https://cdn.awwni.me/w28n.jpg"}}/>
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Thumbnail large source={{ uri: 'https://cdn.awwni.me/w28n.jpg' }} />
           <Text
             style={{
-              color: "#78909C",
+              color: '#78909C',
               marginTop: 16,
-              backgroundColor: "transparent"
-            }}>
+              backgroundColor: 'transparent',
+            }}
+          >
             Sophia Emilion
           </Text>
-          <Text style={{fontSize: 10, color: "#78909C"}}>@(Sophia-sama)</Text>
+          <Text style={{ fontSize: 10, color: '#78909C' }}>@(Sophia-sama)</Text>
           <Text
             style={{
               fontSize: 10,
-              color: "#fff",
+              color: '#fff',
               marginTop: 10,
               paddingHorizontal: 40,
-              textAlign: "center"
-            }}>
+              textAlign: 'center',
+            }}
+          >
             Beyond the shadow you settled for, there's a miracle illuminated.
           </Text>
         </View>
@@ -78,7 +81,7 @@ const ProfileContainer = (props) => {
           </CardItem>
 
           <CardItem>
-            <Icon active name="person"/>
+            <Icon active name="person" />
             <Text>Nickname</Text>
             <Right>
               <Text>Sophia-sama</Text>
@@ -86,7 +89,7 @@ const ProfileContainer = (props) => {
           </CardItem>
 
           <CardItem>
-            <Icon active name="calendar"/>
+            <Icon active name="calendar" />
             <Text>Registered</Text>
             <Right>
               <Text>29-10-2010</Text>
@@ -94,7 +97,7 @@ const ProfileContainer = (props) => {
           </CardItem>
 
           <CardItem>
-            <Icon active name="bulb"/>
+            <Icon active name="bulb" />
             <Text>Color Scheme</Text>
             <Right>
               <Text>Ocean</Text>
@@ -102,17 +105,31 @@ const ProfileContainer = (props) => {
           </CardItem>
         </Card>
 
-        <View style={{flex: 1, height: 200, flexDirection: 'row', alignItems: 'stretch', padding: 12}}>
+        <View
+          style={{
+            flex: 1,
+            height: 200,
+            flexDirection: 'row',
+            alignItems: 'stretch',
+            padding: 12,
+          }}
+        >
 
           <Grid>
             <Col>
-              <Button block rounded bordered style={{marginHorizontal: 10}}>
+              <Button block rounded bordered style={{ marginHorizontal: 10 }}>
                 <Text>Author's posts</Text>
               </Button>
             </Col>
 
             <Col>
-              <Button block rounded success bordered style={{marginHorizontal: 10}}>
+              <Button
+                block
+                rounded
+                success
+                bordered
+                style={{ marginHorizontal: 10 }}
+              >
                 <Text>Edit Profile</Text>
               </Button>
             </Col>
@@ -126,21 +143,21 @@ const ProfileContainer = (props) => {
 
 const styles = {
   profileHeaderContainer: {
-    backgroundColor: "#1b1b1b",
-    paddingBottom: 16
-  }
+    backgroundColor: '#1b1b1b',
+    paddingBottom: 16,
+  },
 };
 
 const mapStateToProps = state => ({
-  ...state
+  ...state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   goBack: () => {
     const navigateAction = NavigationActions.back();
     dispatch(navigateAction);
   },
-  dispatch
+  dispatch,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
