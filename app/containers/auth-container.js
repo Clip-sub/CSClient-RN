@@ -10,8 +10,9 @@ import {
   Right,
   Title,
 } from 'native-base';
-import { Platform, StatusBar } from 'react-native';
+import { Platform, StatusBar, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import LoginForm from '../components/authentication/login-form';
 
 class AuthContainer extends Component {
@@ -28,16 +29,23 @@ class AuthContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.isAttempting = false;
     //<Image style={{flex: 1}} source={{uri: 'https://cdn.awwni.me/w28n.jpg'}}>
     //<View style={{position: 'absolute', width: 2000, height: 2000, backgroundColor: '#000', opacity: 0.6}}/>
   }
 
   render() {
-    const { goBack } = this.props.navigation;
+    const { goBack } = this.props;
 
     return (
       <Container style={styles.container}>
+        <Image
+          style={{
+            position: 'absolute',
+            resizeMode: 'cover',
+            width: Dimensions.get('window').width,
+          }}
+          source={require('../assets/bg_login.png')}
+        />
         <Header
           noShadow
           backgroundColor={'transparent'}
@@ -82,6 +90,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    goBack: () => dispatch(NavigationActions.back()),
     dispatch,
   };
 };

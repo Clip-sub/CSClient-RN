@@ -1,65 +1,62 @@
 /**
  * @flow
  */
-"use strict";
-import React from "react";
-import {View} from "react-native";
-import {Body, Icon, Left, ListItem, Text, Thumbnail} from "native-base";
-import {DrawerNavigator, NavigationActions} from "react-navigation";
-import HomeContainer from "../containers/home-container";
+'use strict';
+import React from 'react';
+import { View } from 'react-native';
+import { Body, Icon, Left, ListItem, Text, Thumbnail } from 'native-base';
+import { DrawerNavigator, NavigationActions } from 'react-navigation';
+import HomeContainer from '../containers/home-container';
 
-const resetToAuthScreen = () => {
-  return NavigationActions.navigate({
-    routeName: "Auth"
-  });
-};
-
-const customDrawerContentComponent = (props) => {
-  const {navigate} = props.navigation;
-
-  const goToScreen = (screenName: string) => {
-    navigate("DrawerClose");
-    setTimeout(() => navigate(screenName), 700);
+const customDrawerContentComponent = props => {
+  console.log('222', props);
+  const { dispatch } = props.navigation;
+  const goToScreen = screenName => {
+    const closeDrawer = NavigationActions.navigate({
+      routeName: 'DrawerClose',
+    });
+    const navigateAction = NavigationActions.navigate({
+      routeName: screenName,
+    });
+    dispatch(closeDrawer);
+    setTimeout(() => dispatch(navigateAction), 700);
   };
 
   return (
     <View style={drawerStyle.drawerMenuContainer}>
       <View style={drawerStyle.drawerHeader}>
         <View style={drawerStyle.miniProfile}>
-          <Thumbnail source={{uri: "https://cdn.awwni.me/w28n.jpg"}}/>
-          <Text suppressHighlighting={true} style={{color: "#fff"}}>
+          <Thumbnail source={{ uri: 'https://cdn.awwni.me/w28n.jpg' }} />
+          <Text suppressHighlighting style={{ color: '#fff' }}>
             Sophia Emilion
           </Text>
-          <Text style={{fontSize: 10, color: "#fff"}}>sophia@live.com</Text>
+          <Text style={{ fontSize: 10, color: '#fff' }}>sophia@live.com</Text>
         </View>
       </View>
-      <ListItem icon onPress={() => {
-        navigate("DrawerClose");
-        navigate("Auth")
-      }}>
+      <ListItem icon>
         <Left>
-          <Icon name="home"/>
+          <Icon name="home" />
         </Left>
         <Body>
-        <Text>Home</Text>
+          <Text>Home</Text>
         </Body>
       </ListItem>
 
-      <ListItem icon onPress={() => goToScreen("Auth")}>
+      <ListItem icon onPress={() => goToScreen('Auth')}>
         <Left>
-          <Icon name="person"/>
+          <Icon name="person" />
         </Left>
         <Body>
-        <Text>Login / Register</Text>
+          <Text>Login / Register</Text>
         </Body>
       </ListItem>
 
       <ListItem icon>
         <Left>
-          <Icon name="ios-construct-outline"/>
+          <Icon name="ios-construct-outline" />
         </Left>
         <Body>
-        <Text>Settings</Text>
+          <Text>Settings</Text>
         </Body>
       </ListItem>
     </View>
@@ -67,33 +64,33 @@ const customDrawerContentComponent = (props) => {
 };
 
 const drawerRouteConfig = {
-  Home: {screen: HomeContainer}
+  Home: { screen: HomeContainer },
 };
 
 const drawerNavigatorConfig = {
-  drawerPosition: "left",
-  contentComponent: customDrawerContentComponent
+  drawerPosition: 'left',
+  contentComponent: customDrawerContentComponent,
 };
 
 const HomeDrawerNavigator = DrawerNavigator(
   drawerRouteConfig,
-  drawerNavigatorConfig
+  drawerNavigatorConfig,
 );
 
 export default HomeDrawerNavigator;
 
 const drawerStyle = {
   drawerMenuContainer: {
-    backgroundColor: "#fff",
-    flex: 1
+    backgroundColor: '#fff',
+    flex: 1,
   },
   drawerHeader: {
     height: 140,
-    backgroundColor: "#fe686a"
+    backgroundColor: '#fe686a',
   },
   miniProfile: {
-    position: "absolute",
+    position: 'absolute',
     left: 18,
-    bottom: 12
-  }
+    bottom: 12,
+  },
 };

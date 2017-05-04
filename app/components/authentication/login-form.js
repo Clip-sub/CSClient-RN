@@ -1,12 +1,9 @@
-"use strict";
-import React, { Component, PropTypes } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
-import { Button, Input } from "native-base";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Field, reduxForm } from "redux-form";
-import moment from "moment";
-import { requestLogin } from "../../actions/actions-user";
-console.disableYellowBox = true;
+'use strict';
+import React, { Component } from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { Button, Icon } from 'native-base';
+import { Field, reduxForm } from 'redux-form';
+import { requestLogin } from '../../actions/actions-user';
 
 const onSubmit = (values, dispatch) => {
   const { username, password } = values;
@@ -15,23 +12,18 @@ const onSubmit = (values, dispatch) => {
 
 const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
   return (
-    <View
-      style={{
-        borderBottomWidth: 1,
-        borderBottomColor: "#4e4242",
-        opacity: 0.6,
-        marginBottom: 16
-      }}>
+    <View style={styles.inputWrapper}>
       <TextInput
         {...inputProps}
-        name={"username"}
+        name={'username'}
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
-        placeholder={"Username"}
-        placeholderTextColor={"#FFF"}
-        underlineColorAndroid={"transparent"}
-        style={styles.input}
+        selectionColor={'#ffefef'}
+        placeholder={'Username'}
+        placeholderTextColor={'#FFF'}
+        underlineColorAndroid={'transparent'}
+        style={styles.inputError}
       />
     </View>
   );
@@ -39,31 +31,26 @@ const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
 
 const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
   return (
-    <View
-      style={{
-        borderBottomWidth: 1,
-        borderBottomColor: "#4e4242",
-        opacity: 0.6,
-        marginBottom: 26,
-      }}>
+    <View style={styles.inputWrapper}>
       <TextInput
         {...inputProps}
-        name={"password"}
+        name={'password'}
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
-        secureTextEntry={true}
-        placeholder={"Password"}
-        placeholderTextColor={"#FFF"}
-        underlineColorAndroid={"transparent"}
-        style={styles.input} />
+        secureTextEntry
+        placeholder={'Password'}
+        placeholderTextColor={'#FFF'}
+        underlineColorAndroid={'transparent'}
+        style={styles.input}
+      />
     </View>
   );
 };
 
 class LoginForm extends Component {
   static defaultProps = {
-    isLoading: false
+    isLoading: false,
   };
 
   componentWillUpdate(nextProps) {
@@ -74,12 +61,19 @@ class LoginForm extends Component {
     const { isLoading, handleSubmit, submitting } = this.props;
     return (
       <View style={[this.props.style, styles.formContainer]}>
-        <Field name={"username"} component={usernameField} />
-        <Field name={"password"} component={passwordField} />
-        <Button info block rounded
-          title={""}
+        <Field name={'username'} component={usernameField} />
+        <Field name={'password'} component={passwordField} />
+        <Button
+          block
+          rounded
+          bordered
+          outline
+          light
+          title={''}
           onPress={handleSubmit(onSubmit)}
-          submitting={submitting}>
+          submitting={submitting}
+        >
+          <Icon active name="ios-person" style={{ color: '#747474' }} />
           <Text>Login</Text>
         </Button>
       </View>
@@ -91,18 +85,32 @@ const styles = StyleSheet.create({
   formContainer: {
     borderRadius: 10,
     borderWidth: 0.5,
-    borderColor: "#fff",
+    borderColor: '#fff',
     paddingTop: 32,
     paddingBottom: 18,
     marginHorizontal: 40,
     marginTop: 50,
     padding: 12,
-    alignSelf: "stretch"
+    alignSelf: 'stretch',
+  },
+  inputWrapper: {
+    opacity: 0.6,
+    marginBottom: 26,
   },
   input: {
     height: 40,
-    alignSelf: 'stretch'
-  }
+    color: '#fff',
+    alignSelf: 'stretch',
+    borderBottomWidth: 0.6,
+    borderBottomColor: '#eee',
+  },
+  inputError: {
+    height: 40,
+    color: '#fff',
+    alignSelf: 'stretch',
+    borderBottomWidth: 0.6,
+    borderBottomColor: '#ff4e4e',
+  },
 });
 
-export default reduxForm({ form: "login" })(LoginForm);
+export default reduxForm({ form: 'login' })(LoginForm);

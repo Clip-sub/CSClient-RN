@@ -1,7 +1,6 @@
-"use strict";
-
-import React from "react";
-import { View } from "react-native";
+'use strict';
+import React from 'react';
+import { View } from 'react-native';
 import {
   Body,
   Button,
@@ -12,13 +11,13 @@ import {
   Icon,
   Left,
   Right,
-  Title
-} from "native-base";
-import { bindActionCreators, connect } from "react-redux";
-import { NavigationActions } from "react-navigation";
-import PostList from "../components/post-list";
-import CategoryList from "../components/category-list";
-import { switchHomeTab } from "../actions/actions-navigation";
+  Title,
+} from 'native-base';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
+import PostList from '../components/post-list';
+import CategoryList from '../components/category-list';
+import { switchHomeTab } from '../actions/actions-navigation';
 
 const HomeContainer = props => {
   const { openDrawer, activeTabIndex, dispatch } = props;
@@ -39,15 +38,16 @@ const HomeContainer = props => {
   return (
     <Container>
       <Header
-        style={{ backgroundColor: "#EF5350" }}
-        iosBarStyle={"light-content"}>
+        style={{ backgroundColor: '#EF5350' }}
+        iosBarStyle={'light-content'}
+      >
         <Left>
-          <Button title={""} transparent onPress={() => openDrawer()}>
-            <Icon style={{ color: "#fff" }} name="menu" />
+          <Button title={''} transparent onPress={() => openDrawer()}>
+            <Icon style={{ color: '#fff' }} name="menu" />
           </Button>
         </Left>
         <Body>
-          <Title style={{ color: "#fff", backgroundColor: "transparent" }}>
+          <Title style={{ color: '#fff', backgroundColor: 'transparent' }}>
             Clip-sub
           </Title>
         </Body>
@@ -58,22 +58,26 @@ const HomeContainer = props => {
         <FooterTab>
           <Button
             active={activeTabIndex === 1}
-            onPress={() => dispatch(switchHomeTab(1))}>
+            onPress={() => dispatch(switchHomeTab(1))}
+          >
             <Icon name="home" />
           </Button>
           <Button
             active={activeTabIndex === 2}
-            onPress={() => dispatch(switchHomeTab(2))}>
+            onPress={() => dispatch(switchHomeTab(2))}
+          >
             <Icon name="list" />
           </Button>
           <Button
             active={activeTabIndex === 3}
-            onPress={() => dispatch(switchHomeTab(3))}>
+            onPress={() => dispatch(switchHomeTab(3))}
+          >
             <Icon active name="navigate" />
           </Button>
           <Button
             active={activeTabIndex === 4}
-            onPress={() => dispatch(switchHomeTab(4))}>
+            onPress={() => dispatch(switchHomeTab(4))}
+          >
             <Icon name="person" />
           </Button>
         </FooterTab>
@@ -93,18 +97,18 @@ const mapStateToProps = state => {
   return {
     posts,
     categories,
-    activeTabIndex
+    activeTabIndex,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   openDrawer: () => {
-    const navigateAction = NavigationActions.navigate({
-      routeName: "DrawerOpen"
+    const openDrawerAction = NavigationActions.navigate({
+      routeName: 'DrawerOpen',
     });
-    dispatch(navigateAction);
+    dispatch(openDrawerAction);
   },
-  dispatch
+  dispatch,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

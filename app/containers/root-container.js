@@ -18,10 +18,17 @@ AppWithNavigationState.propTypes = {
   nav: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+/*const mapStateToProps = state => ({
   nav: state.nav,
   posts: state.posts,
-});
+});*/
+
+const mapStateToProps = state => {
+  return {
+    nav: state.nav,
+    posts: state.posts,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
