@@ -1,12 +1,11 @@
-
 'use strict';
-import { AsyncStorage } from "react-native";
+import { AsyncStorage } from 'react-native';
 
-const KEY_USER_DATA = "_USERDATA";
-const KEY_USER = "_USER";
-const KEY_COOKIE = "_COOKIE";
+const KEY_USER_DATA = '_USERDATA';
+const KEY_USER = '_USER';
+const KEY_COOKIE = '_COOKIE';
 
-let DataService = {
+const DataService = {
   async storeUserData(data) {
     try {
       await AsyncStorage.setItem(KEY_USER_DATA, JSON.stringify(data));
@@ -22,15 +21,16 @@ let DataService = {
       console.log(error);
     }
   },
-  
-  async storeUser (userData) {
+
+  async storeUser(userData) {
     try {
       AsyncStorage.setItem(KEY_USER, JSON.stringify(userData));
     } catch (error) {
       console.log(error);
     }
   },
-  async getUser () {
+
+  async getUser() {
     try {
       let userData = await AsyncStorage.getItem(KEY_USER);
       return JSON.parse(userData);
@@ -38,13 +38,7 @@ let DataService = {
       console.log(error);
     }
   },
-  async storeUser (cookieData) {
-    try {
-      AsyncStorage.setItem(KEY_COOKIE, JSON.stringify(cookieData));
-    } catch (error) {
-      console.log(error);
-    }
-  },
+
   async getCookie() {
     try {
       let cookieData = await AsyncStorage.getItem(KEY_COOKIE);
@@ -55,9 +49,10 @@ let DataService = {
   },
   async storeCookieAndUser(data) {
     try {
-      await AsyncStorage.multiSet([ 
-        [KEY_COOKIE, {cookie: data.cookie, cookie_name: data.cookie_name}],
-        [KEY_USER, data.user] ]);
+      await AsyncStorage.multiSet([
+        [KEY_COOKIE, { cookie: data.cookie, cookie_name: data.cookie_name }],
+        [KEY_USER, data.user],
+      ]);
     } catch (error) {
       console.log(error);
     }

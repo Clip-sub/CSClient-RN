@@ -2,31 +2,35 @@
  * @flow
  */
 'use strict';
-import React, {PropTypes} from "react";
-import { TextInput, TouchableOpacity, View, Keyboard } from "react-native";
-import {Icon} from "native-base";
+import React, { PropTypes } from 'react';
+import { TextInput, TouchableOpacity, View, Keyboard } from 'react-native';
+import { Icon } from 'native-base';
 
-export const CategorySearchBar = (props) => (
+export const CategorySearchBar = props => (
   <View elevation={1} style={styles.container}>
     <View style={styles.searchBoxWrapper}>
-      <Icon name="search" style={styles.searchBoxIcon}/>
+      <Icon name="search" style={styles.searchBoxIcon} />
       <TextInput
-        underlineColorAndroid='transparent'
+        underlineColorAndroid="transparent"
         returnKeyType={'search'}
         multiline={false}
-        style={styles.searchBoxInput}/>
+        style={styles.searchBoxInput}
+      />
       <TouchableOpacity onPress={() => alert('clear')}>
-        <Icon name="ios-close-circle" style={styles.searchBoxIcon}/>
+        <Icon name="ios-close-circle" style={styles.searchBoxIcon} />
       </TouchableOpacity>
     </View>
-    <TouchableOpacity onPress={() => Keyboard.dismiss()} style={styles.iconWrapper}>
-      <Icon name="arrow-forward" style={styles.iconOutside}/>
+    <TouchableOpacity
+      onPress={() => Keyboard.dismiss()}
+      style={styles.iconWrapper}
+    >
+      <Icon name="arrow-forward" style={styles.iconOutside} />
     </TouchableOpacity>
   </View>
 );
 
 CategorySearchBar.propTypes = {
-  onChangeText: PropTypes.func
+  onChangeText: PropTypes.func,
 };
 
 const styles = {
@@ -38,7 +42,7 @@ const styles = {
     alignSelf: 'stretch',
     backgroundColor: '#ffeded',
     paddingHorizontal: 4,
-    paddingVertical: 6
+    paddingVertical: 6,
   },
   searchBoxWrapper: {
     flex: 1,
@@ -51,7 +55,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   searchBoxInput: {
     flex: 1,
@@ -59,18 +63,18 @@ const styles = {
     lineHeight: 10,
     height: 28,
     padding: 0,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   searchBoxIcon: {
     fontSize: 20,
     marginHorizontal: 10,
-    color: '#ff6060'
+    color: '#ff6060',
   },
   iconWrapper: {
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   iconOutside: {
     color: '#ff6060',
-    fontSize: 24
-  }
+    fontSize: 24,
+  },
 };

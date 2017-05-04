@@ -1,33 +1,29 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component, PropTypes } from 'react';
 import {
   Body,
   Button,
   Container,
+  Content,
   Header,
   Icon,
-  Input,
   Left,
   Right,
   Title,
-  Footer,
-  FooterTab,
-  Text,
-  Content
-} from "native-base";
-import { Image, StatusBar, Platform } from "react-native";
-import LoginForm from "../components/authentication/login-form";
-import { connect } from "react-redux";
+} from 'native-base';
+import { Platform, StatusBar } from 'react-native';
+import { connect } from 'react-redux';
+import LoginForm from '../components/authentication/login-form';
 
 class AuthContainer extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
     fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func
+    attemptLogin: PropTypes.func,
   };
 
   static navigationOptions = {
-    title: "Login Screen",
-    headerLeft: <Button title={""} transparent><Icon name="menu" /></Button>
+    title: 'Login Screen',
+    headerLeft: <Button title={''} transparent><Icon name="menu" /></Button>,
   };
 
   constructor(props) {
@@ -43,28 +39,30 @@ class AuthContainer extends Component {
     return (
       <Container style={styles.container}>
         <Header
-          noShadow={true}
-          backgroundColor={"transparent"}
-          style={{ backgroundColor: "transparent" }}
-          iosBarStyle={"light-content"}>
-        <StatusBar
-          translucent={true}
-          backgroundColor={"transparent"}
-          barStyle="light-content" />
+          noShadow
+          backgroundColor={'transparent'}
+          style={{ backgroundColor: 'transparent' }}
+          iosBarStyle={'light-content'}
+        >
+          <StatusBar
+            translucent
+            backgroundColor={'transparent'}
+            barStyle="light-content"
+          />
           <Left>
-            <Button title={""} onPress={() => goBack()} transparent>
-              <Icon style={{ color: "#fff" }} name="arrow-back" />
+            <Button title={''} onPress={() => goBack()} transparent>
+              <Icon style={{ color: '#fff' }} name="arrow-back" />
             </Button>
           </Left>
           <Body>
-            <Title style={{ color: "#fff", backgroundColor: "transparent" }}>
+            <Title style={{ color: '#fff', backgroundColor: 'transparent' }}>
               Login
             </Title>
           </Body>
           <Right />
         </Header>
         <Content>
-        <LoginForm {...this.props} />
+          <LoginForm {...this.props} />
         </Content>
       </Container>
     );
@@ -78,21 +76,21 @@ const mapStateToProps = state => {
   const { nav, common } = state;
   return {
     nav,
-    common
-  }
+    common,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    dispatch
-  }
+    dispatch,
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
 
 const styles = {
   container: {
-    backgroundColor: "#542424",
-    paddingTop: Platform.OS === 'ios' ? 0 : 20
-  }
-}
+    backgroundColor: '#542424',
+    paddingTop: Platform.OS === 'ios' ? 0 : 20,
+  },
+};

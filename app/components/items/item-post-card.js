@@ -1,14 +1,25 @@
 /**
  * @flow
  */
-"use strict";
-import React, {PropTypes} from "react";
-import {Image, TouchableOpacity, Easing} from "react-native";
-import {Body, Button, Card, CardItem, H3, Icon, Left, Text, Thumbnail, View} from "native-base";
-import I18n from "../../localizations/I18n";
-import he from "he";
-import HTMLView from "react-native-htmlview";
-import { navigate } from "../../actions/actions-navigation";
+'use strict';
+import React, { PropTypes } from 'react';
+import { Image, TouchableOpacity } from 'react-native';
+import {
+  Body,
+  Button,
+  Card,
+  CardItem,
+  H3,
+  Icon,
+  Left,
+  Text,
+  Thumbnail,
+  View,
+} from 'native-base';
+import he from 'he';
+import HTMLView from 'react-native-htmlview';
+import I18n from '../../localizations/I18n';
+import { navigate } from '../../actions/actions-navigation';
 
 /**
  * Basic needs for item:
@@ -30,7 +41,8 @@ import { navigate } from "../../actions/actions-navigation";
  * status: publish
  * tags: description / id / post_count / slug / title
  */
-const ItemPostCard = (props) => {
+
+const ItemPostCard = props => {
   const { dispatch, title, authorName, image, excerpt, commentCount } = props;
 
   return (
@@ -41,11 +53,10 @@ const ItemPostCard = (props) => {
         </Left>
       </CardItem>
       <TouchableOpacity>
-        <View
-          style={styles.author}>
+        <View style={styles.author}>
           <Thumbnail
             small
-            source={{uri: "https://unsplash.it/80/80?random"}}
+            source={{ uri: 'https://unsplash.it/80/80?random' }}
           />
           <Text style={styles.authorName}>
             {authorName}
@@ -55,37 +66,37 @@ const ItemPostCard = (props) => {
       <CardItem cardBody>
         <Body>
           <Image
-            source={{uri: "https://puu.sh/uNgpt/dd7659da05.jpg"/*image*/}}
-            style={styles.thumbnailImage} />
+            source={{ uri: 'https://puu.sh/uNgpt/dd7659da05.jpg' /*image*/ }}
+            style={styles.thumbnailImage}
+          />
         </Body>
       </CardItem>
       <CardItem>
-        <HTMLView value={excerpt.trim()}/>
+        <HTMLView value={excerpt.trim()} />
       </CardItem>
-      <CardItem
-        style={styles.cardBottom}>
-        <Button transparent onPress={() => dispatch(navigate("Profile"))}>
-          <Icon name="chatbubbles"/>
+      <CardItem style={styles.cardBottom}>
+        <Button transparent onPress={() => dispatch(navigate('Profile'))}>
+          <Icon name="chatbubbles" />
           <Text>{commentCount}</Text>
         </Button>
         <Button transparent>
-          <Icon name="md-share"/>
-          <Text>{I18n.t("share")}</Text>
+          <Icon name="md-share" />
+          <Text>{I18n.t('share')}</Text>
         </Button>
       </CardItem>
     </Card>
-  )
+  );
 };
 
 ItemPostCard.defaultProps = {
-  title: "",
-  excerpt: "",
+  title: '',
+  excerpt: '',
   commentCount: 0,
-  slug: "",
+  slug: '',
   id: 0,
-  authorName: "",
+  authorName: '',
   authorId: 0,
-  thumbnailImage: {}
+  thumbnailImage: {},
 };
 
 ItemPostCard.propTypes = {
@@ -96,7 +107,7 @@ ItemPostCard.propTypes = {
   id: PropTypes.number.isRequired,
   authorName: PropTypes.string.isRequired,
   authorId: PropTypes.number.isRequired,
-  thumbnailImage: PropTypes.object.isRequired
+  thumbnailImage: PropTypes.object.isRequired,
 };
 
 export { ItemPostCard };
@@ -104,21 +115,21 @@ export { ItemPostCard };
 const styles = {
   thumbnailImage: {
     flex: 1,
-    alignSelf: "stretch",
-    height: 160
+    alignSelf: 'stretch',
+    height: 160,
   },
   author: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 10,
-    marginLeft: 16
+    marginLeft: 16,
   },
   authorName: {
-    marginLeft: 12
+    marginLeft: 12,
   },
   cardBottom: {
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     borderTopWidth: 0.5,
-    borderTopColor: "#eee"
-  }
+    borderTopColor: '#eee',
+  },
 };
