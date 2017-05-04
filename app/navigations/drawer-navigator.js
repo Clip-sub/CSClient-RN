@@ -19,7 +19,7 @@ const customDrawerContentComponent = (props) => {
 
   const goToScreen = (screenName: string) => {
     navigate("DrawerClose");
-    setTimeout(() => navigate(screenName), 500);
+    setTimeout(() => navigate(screenName), 700);
   };
 
   return (
@@ -89,7 +89,7 @@ const drawerStyle = {
   },
   drawerHeader: {
     height: 140,
-    backgroundColor: "red"
+    backgroundColor: "#fe686a"
   },
   miniProfile: {
     position: "absolute",

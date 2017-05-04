@@ -3,14 +3,20 @@
  */
 "use strict";
 import Types from "../actions/types-core";
-import Immutable from "seamless-immutable";
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {
+  status: "loading",
+  categoryItems: []
+};
 
 export const categories = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case Types.RECEIVE_CATEGORY_INDEX:
-      return Immutable(action.categories);
+      return {
+        ...state,
+        status: "loaded",
+        categoryItems: action.categories
+      }
     default:
       return state;
   }

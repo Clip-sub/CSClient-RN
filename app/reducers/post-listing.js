@@ -14,16 +14,19 @@ export const posts = (state = INITIAL_STATE, action) => {
     case Types.RECEIVE_RECENT_POSTS:
       return {
         ...state,
+        status: "loaded",
         postItems: state.postItems.concat(action.posts)
       };
     case Types.RECEIVE_POSTS:
       return {
         ...state,
+        status: "loaded",
         postItems: action.posts
       };
     case Types.CLEAR_POSTS:
       return {
         ...state,
+        status: "loaded",
         postItems: []
       }
     default:

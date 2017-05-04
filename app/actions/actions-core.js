@@ -66,6 +66,13 @@ export function getAuthorPosts(authorId: number) {
   };
 }
 
+export function getCategoryIndex(parentId: number) {
+  return {
+    type: Types.GET_CATEGORY_INDEX,
+    parentId: parentId
+  };
+}
+
 export function receivePosts(
   posts: Array<Object>,
   count: number,
@@ -120,6 +127,7 @@ export function receiveCategoryIndex(
 ) {
   return {
     type: Types.RECEIVE_CATEGORY_INDEX,
+    categories: categories,
     count: count
   };
 }

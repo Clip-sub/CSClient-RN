@@ -37,7 +37,7 @@ export default class PostList extends Component {
     if (status !== "loading") dispatch(getRecentPosts(page + 1));
   }
 
-  renderItem = item => {
+  renderItem = (item) => {
     return (
       <ItemPostCard
         id={item.id || ""}
@@ -72,11 +72,11 @@ export default class PostList extends Component {
   }
 
   render() {
-    let { status, postItems } = this.props;
+    const { status, postItems } = this.props;
 
     return (
       <View style={{ flex: 1, alignSelf: "stretch", alignItems: "center" }}>
-        {status === "loaded" ? <Spinner /> : this.renderPostList(postItems)}
+        { status === "loaded" ? this.renderPostList(postItems) : <Spinner /> }
       </View>
     );
   }

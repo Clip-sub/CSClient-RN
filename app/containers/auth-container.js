@@ -14,7 +14,7 @@ import {
   Text,
   Content
 } from "native-base";
-import { Image, StatusBar } from "react-native";
+import { Image, StatusBar, Platform } from "react-native";
 import LoginForm from "../components/authentication/login-form";
 import { connect } from "react-redux";
 
@@ -41,7 +41,7 @@ class AuthContainer extends Component {
     const { goBack } = this.props.navigation;
 
     return (
-      <Container style={{ backgroundColor: "#542424", paddingTop: 20 }}>
+      <Container style={styles.container}>
         <Header
           noShadow={true}
           backgroundColor={"transparent"}
@@ -89,3 +89,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
+
+const styles = {
+  container: {
+    backgroundColor: "#542424",
+    paddingTop: Platform.OS === 'ios' ? 0 : 20
+  }
+}
