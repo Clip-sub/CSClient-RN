@@ -48,10 +48,6 @@
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "no-multi-spaces": "warn",
-    "indent": [
-      "error",
-      2
-    ],
     "prettier/prettier": [
       "error",
       {

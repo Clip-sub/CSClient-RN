@@ -4,7 +4,8 @@
 "use strict";
 import { call, put } from "redux-saga/effects";
 import { receiveError, receivePosts, receiveCategoryIndex } from "../actions/actions-core";
-import API, { Controllers, Methods, DataStatus } from "../services/API";
+import API, { DataStatus } from "../services/API";
+
 const api = API.create();
 
 export function* getPosts (action) {
@@ -14,6 +15,7 @@ export function* getPosts (action) {
     if (result.data.status === DataStatus.OK) {
       yield put(
         receivePosts(
+          page,
           result.data.posts,
           result.data.count,
           result.data.count_total,

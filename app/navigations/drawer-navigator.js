@@ -40,19 +40,19 @@ const customDrawerContentComponent = props => {
       </View>
       <ListItem icon onPress={() => dispatch(closeDrawer)}>
         <Left>
-          <Icon name="home" />
+          <Icon name="home" style={{ color: '#C0CA33' }} />
         </Left>
         <Body>
-          <Text style={{ fontFamily: 'Hoefler Text' }}>Home</Text>
+          <Text style={drawerStyle.itemText}>Home</Text>
         </Body>
       </ListItem>
 
       <ListItem icon onPress={() => goToScreen('Auth')}>
         <Left>
-          <Icon name="person" />
+          <Icon name="person" style={{ color: '#AB47BC' }} />
         </Left>
         <Body>
-          <Text style={{ fontFamily: 'Hoefler Text' }}>
+          <Text style={drawerStyle.itemText}>
             Login / Register
           </Text>
         </Body>
@@ -60,10 +60,10 @@ const customDrawerContentComponent = props => {
 
       <ListItem icon>
         <Left>
-          <Icon name="ios-construct-outline" />
+          <Icon name="ios-construct-outline" style={{ color: '#536DFE' }} />
         </Left>
         <Body>
-          <Text style={{ fontFamily: 'Hoefler Text' }}>Settings</Text>
+          <Text style={drawerStyle.itemText}>Settings</Text>
         </Body>
       </ListItem>
     </View>
@@ -99,5 +99,9 @@ const drawerStyle = {
     position: 'absolute',
     left: 18,
     bottom: 12,
+  },
+  itemText: {
+    fontFamily: 'Hoefler Text',
+    color: '#706b6b',
   },
 };

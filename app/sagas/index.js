@@ -10,7 +10,7 @@ import { login } from './auth-saga';
 
 function* rootSaga() {
   yield [
-    takeLatest(CoreTypes.GET_RECENT_POSTS, getPosts),
+    takeLatest(CoreTypes.GET_POSTS, getPosts),
     takeLatest(CoreTypes.GET_CATEGORY_INDEX, getCategoryIndex),
     takeLatest(UserTypes.REQUEST_LOGIN, login),
     // fork(startup),

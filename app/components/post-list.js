@@ -7,14 +7,14 @@ import { View, FlatList } from 'react-native';
 import { Spinner } from 'native-base';
 import HTMLParser from 'fast-html-parser';
 import he from 'he';
-import { getRecentPosts, clearPosts } from '../actions/actions-core';
+import { getPosts, clearPosts } from '../actions/actions-core';
 import { PostMenuBar } from './post-menu-bar';
 import { ItemPostCard } from './items/item-post-card';
 import { ItemPostGrid } from './items/item-post-grid';
 
 export default class PostList extends Component {
   static propTypes = {
-    page: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
     postItems: PropTypes.arrayOf(PropTypes.object),
     status: PropTypes.oneOf(['loading', 'error', 'loaded']),
     viewMode: PropTypes.oneOf(['list', 'cards', 'tiles']),
@@ -26,8 +26,8 @@ export default class PostList extends Component {
   };
 
   componentDidMount() {
-    const { dispatch, page } = this.props;
-    dispatch(getRecentPosts(page));
+    const { dispatch, currentPage } = this.props;
+    dispatch(getPosts(currentPage));
   }
 
   componentWillUnmount() {
@@ -36,17 +36,35 @@ export default class PostList extends Component {
   }
 
   onEndReached = () => {
-    const { dispatch, status, page } = this.props;
-    if (status !== 'loading') dispatch(getRecentPosts(page + 1));
+    const { dispatch, status, currentPage } = this.props;
+    if (status !== 'loading') dispatch(getPosts(currentPage + 1));
   };
 
-  renderItem = item => {
-    //console.log(ImageParser.getImageUrlsFromDocument('ddd'));
-    //console.log(he.unescape(item.content));
+  renderListItem = item => {
     const itemNode = HTMLParser.parse(he.unescape(item.content));
-    //console.log(itemNode.querySelector('img').attributes['data-lazy-src']);
     const imageLink = itemNode.querySelector('img').attributes['data-lazy-src'];
-    console.log(imageLink);
+
+    return (
+      <ItemPostCard
+        id={item.id || ''}
+        title={he.unescape(item.title)}
+        excerpt={item.excerpt}
+        image={
+          imageLink
+            ? imageLink
+            : 'https://clip-sub.com/wp-content/uploads/2017/04/59097934-600x300.jpg'
+        }
+        commentCount={item.comment_count}
+        authorId={item.author.id || ''}
+        authorName={item.author.name}
+        {...this.props}
+      />
+    );
+  };
+
+  renderGridItem = item => {
+    const itemNode = HTMLParser.parse(he.unescape(item.content));
+    const imageLink = itemNode.querySelector('img').attributes['data-lazy-src'];
 
     return (
       <ItemPostGrid
@@ -75,11 +93,29 @@ export default class PostList extends Component {
       <FlatList
         data={posts}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => this.renderItem(item)}
+        renderItem={({ item }) => this.renderListItem(item)}
+        onEndReached={this.onEndReached}
+        onEndReachedThreshold={1}
+        ListFooterComponent={this.renderLoadingIndicator}
+      />
+    );
+  }
+
+  renderPostGrid(posts) {
+    return (
+      <FlatList
+        data={posts}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => this.renderGridItem(item)}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={2}
         numColumns={2}
-        columnWrapperStyle={{ marginTop: 5, marginLeft: 5 }}
+        style={{ alignSelf: 'stretch' }}
+        columnWrapperStyle={{
+          marginTop: 5,
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+        }}
         ListFooterComponent={this.renderLoadingIndicator}
       />
     );
@@ -89,7 +125,7 @@ export default class PostList extends Component {
     const { status, postItems } = this.props;
 
     return (
-      <View style={{ flex: 1, alignSelf: 'stretch', alignItems: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
         {this.renderPostMenuBar()}
         {status === 'loaded' ? this.renderPostList(postItems) : <Spinner />}
       </View>
