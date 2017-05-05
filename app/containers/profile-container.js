@@ -118,7 +118,7 @@ const ProfileContainer = props => {
           <Grid>
             <Col>
               <Button block rounded bordered style={{ marginHorizontal: 10 }}>
-                <Text>Author's posts</Text>
+                <Text style={{ textAlign: 'center' }}>Author's posts</Text>
               </Button>
             </Col>
 
@@ -130,7 +130,7 @@ const ProfileContainer = props => {
                 bordered
                 style={{ marginHorizontal: 10 }}
               >
-                <Text>Edit Profile</Text>
+                <Text style={{ textAlign: 'center' }}>Edit Profile</Text>
               </Button>
             </Col>
           </Grid>
