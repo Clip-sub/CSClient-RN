@@ -56,3 +56,6 @@ buck-out/
 docs/
 .vscode/
 *.jks
+
+# OneSignal
+onesignal.gradle

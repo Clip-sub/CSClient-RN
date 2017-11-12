@@ -32,6 +32,9 @@
     }
   },
   "rules": {
+    "global-require": "off",
+    "linebreak-style": ["off", "unix"],
+    "strict": 0,
     "no-console": "off",
     "no-undef": "off",
     "no-underscore-dangle": 0,
@@ -59,7 +62,8 @@
       "error",
       "always"
     ],
-    "react/sort-comp": [1,
+    "react/sort-comp": [
+      1,
       {
         "order": [
           "static-methods",
@@ -111,9 +115,6 @@
       }
     ],
     "react-native/no-unused-styles": 2,
-    "react-native/split-platform-components": 2,
-    "jsx-a11y/img-has-alt": "off",
-    "jsx-a11y/href-no-hash": "off",
-    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
+    "react-native/split-platform-components": 2
   }
 }
