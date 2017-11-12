@@ -1,0 +1,5 @@
+{
+  "name": "csclient/i18n",
+  "main": "I18n.js",
+  "license": "MIT"
+}

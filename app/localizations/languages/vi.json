@@ -1,0 +1,8 @@
+{
+  "share": "Chia sẻ",
+
+  "register_username_placeholder": "Tên (3 ký tự trở lên)",
+  "register_password_placeholder": "Mật khẩu (3 ký tự trở lên)",
+  "register_email_placeholder": "Email",
+  "register_button_label": "Đăng ký"
+}

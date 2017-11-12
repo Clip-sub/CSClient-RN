@@ -1,0 +1,27 @@
+{
+  // Common.
+  "app_name": "Clip-sub",
+  "share": "Share",
+
+  // Home.
+  "comment": {
+    "one": "1 comment",
+    "other": "{{count}} comments",
+    "zero": "0 comment"
+  },
+
+  // Login.
+  "login_header_title": "Login",
+  "login_button_label": "Login",
+  "login_username_placeholder": "Username",
+  "login_password_placeholder": "Password",
+
+  // Register.
+  "register_username_placeholder": "Username (3+ chars)",
+  "register_password_placeholder": "Password (6+ chars)",
+  "register_email_placeholder": "Email",
+  "register_button_label": "Register",
+
+  // Drawer.
+  "logout_prompt": "You will be logged out, are you sure?"
+}
