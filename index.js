@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import csclient from './src';
 
-AppRegistry.registerComponent('csclient', () => App);
+AppRegistry.registerComponent('csclient', () => csclient);

@@ -21,6 +21,12 @@ export default class CSClient extends Component {
     OneSignal.addEventListener('ids', this.onIds);
   }
 
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    // You can also log the error to an error reporting service.
+    console.log(error, info);
+  }
+
   onReceived = notification => {
     console.log('Notification received: ', notification);
   };
