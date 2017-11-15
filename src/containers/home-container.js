@@ -23,7 +23,7 @@ import { bindActionCreators } from 'redux';
 import OneSignal from 'react-native-onesignal';
 import PostList from '../components/post-list';
 import CategoryList from '../components/category-list';
-import CommentList from '../components/comment-list-home';
+import { CommentList } from '../components/comment-list-home';
 import PagePlaceholder from '../components/page-placeholder';
 import * as navigationActions from '../actions/actions-navigation';
 import * as postActions from '../actions/actions-content';

@@ -2,31 +2,36 @@
  * @flow
  */
 'use strict';
-import React, {Component, PropTypes} from "react";
-import {View, TextInput, TouchableOpacity} from "react-native";
-import {Button, Text, Icon} from "native-base";
+import React, { Component, PropTypes } from 'react';
+import { View, TextInput, TouchableOpacity } from 'react-native';
+import { Icon } from 'native-base';
 
 export default class PostSearchBar extends Component {
   static propTypes = {
-    onChangeText: PropTypes.func
-  }
+    onChangeText: PropTypes.func,
+  };
 
   render() {
     return (
       <View elevation={1} style={styles.container}>
         <View style={styles.searchBoxWrapper}>
-          <Icon name="search" style={styles.searchBoxIcon}/>
-          <TextInput underlineColorAndroid='transparent' returnKeyType={'search'} multiline={false} style={styles.searchBoxInput}/>
-          <Icon name="ios-close-circle" style={styles.searchBoxIcon}/>
+          <Icon name="search" style={styles.searchBoxIcon} />
+          <TextInput
+            underlineColorAndroid="transparent"
+            returnKeyType="search"
+            multiline={false}
+            style={styles.searchBoxInput}
+          />
+          <Icon name="ios-close-circle" style={styles.searchBoxIcon} />
         </View>
         <TouchableOpacity style={styles.iconWrapper}>
-          <Icon name="ios-list-outline" style={styles.iconOutside}/>
+          <Icon name="ios-list-outline" style={styles.iconOutside} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconWrapper}>
-          <Icon name="grid" style={styles.iconOutside}/>
+          <Icon name="grid" style={styles.iconOutside} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconWrapper}>
-          <Icon name="ios-images-outline" style={styles.iconOutside}/>
+          <Icon name="ios-images-outline" style={styles.iconOutside} />
         </TouchableOpacity>
       </View>
     );
@@ -42,7 +47,7 @@ const styles = {
     alignSelf: 'stretch',
     backgroundColor: '#424242',
     paddingHorizontal: 4,
-    paddingVertical: 6
+    paddingVertical: 6,
   },
   searchBoxWrapper: {
     flex: 1,
@@ -53,7 +58,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
   searchBoxInput: {
     flex: 1,
@@ -61,17 +66,17 @@ const styles = {
     lineHeight: 10,
     height: 28,
     padding: 0,
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   searchBoxIcon: {
     fontSize: 20,
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   iconWrapper: {
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
   },
   iconOutside: {
     color: '#fff',
-    fontSize: 24
-  }
-}
+    fontSize: 24,
+  },
+};

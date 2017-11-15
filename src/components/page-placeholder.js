@@ -23,7 +23,7 @@ export default class PagePlaceholder extends Component {
       >
         <Image
           style={{ height: 300, width: 300, marginBottom: 18 }}
-          resizeMode={'contain'}
+          resizeMode="contain"
           source={require('../assets/asahi_chibi_1.png')}
         />
         <Text style={{ color: '#555459' }}>Coming soon...</Text>

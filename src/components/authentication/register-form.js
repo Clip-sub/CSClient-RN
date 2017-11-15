@@ -51,14 +51,14 @@ const usernameField = ({ input, meta, ...inputProps }) => {
       <Icon name="person" style={styles.icon} />
       <TextInput
         {...inputProps}
-        name={'username'}
+        name="username"
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
-        selectionColor={'#ffefef'}
+        selectionColor="#ffefef"
         placeholder={I18n.t('register_username_placeholder')}
         placeholderTextColor={[styles.placeholderTextColor]}
-        underlineColorAndroid={'transparent'}
+        underlineColorAndroid="transparent"
         style={styles.input}
       />
     </View>
@@ -77,15 +77,15 @@ const passwordField = ({ input, meta, ...inputProps }) => {
       <Icon name="lock" style={styles.icon} />
       <TextInput
         {...inputProps}
-        name={'password'}
+        name="password"
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
         secureTextEntry
-        selectionColor={'#ffefef'}
+        selectionColor="#ffefef"
         placeholder={I18n.t('register_password_placeholder')}
         placeholderTextColor={[styles.placeholderTextColor]}
-        underlineColorAndroid={'transparent'}
+        underlineColorAndroid="transparent"
         style={styles.input}
       />
     </View>
@@ -104,16 +104,16 @@ const emailField = ({ input, type, meta, ...inputProps }) => {
       <Icon name="mail" style={styles.icon} />
       <TextInput
         {...inputProps}
-        name={'email'}
-        keyboardType={'email-address'}
+        name="email"
+        keyboardType="email-address"
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
-        selectionColor={'#ffefef'}
-        autoCapitalize={'none'}
+        selectionColor="#ffefef"
+        autoCapitalize="none"
         placeholder={I18n.t('register_email_placeholder')}
         placeholderTextColor={styles.placeholderTextColor}
-        underlineColorAndroid={'transparent'}
+        underlineColorAndroid="transparent"
         style={styles.input}
       />
     </View>
@@ -150,30 +150,30 @@ class RegisterForm extends Component {
     const registerLabel = (
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Icon active name="ios-person" style={{ color: '#fff' }} />
-        <Text style={{ color: '#fff' }}>
-          {I18n.t('register_button_label')}
-        </Text>
+        <Text style={{ color: '#fff' }}>{I18n.t('register_button_label')}</Text>
       </View>
     );
 
     return (
       <View style={[this.props.style, styles.formContainer]}>
-        <Field name={'username'} component={usernameField} />
-        <Field name={'password'} component={passwordField} />
-        <Field name={'email'} component={emailField} />
+        <Field name="username" component={usernameField} />
+        <Field name="password" component={passwordField} />
+        <Field name="email" component={emailField} />
         <Button
           block
           rounded
           bordered
           outline
           light
-          title={''}
+          title=""
           onPress={handleSubmit(onSubmit)}
           disabled={submitting}
         >
-          {submitting
-            ? <SpinKit type="Wave" size={26} color={'#ffffff'} />
-            : registerLabel}
+          {submitting ? (
+            <SpinKit type="Wave" size={26} color="#ffffff" />
+          ) : (
+            registerLabel
+          )}
         </Button>
       </View>
     );

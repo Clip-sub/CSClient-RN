@@ -52,17 +52,13 @@ const ItemPostCard = props => {
     <Card>
       <CardItem header>
         <Left>
-          <Text style={styles.title}>
-            {he.unescape(title.rendered)}
-          </Text>
+          <Text style={styles.title}>{he.unescape(title.rendered)}</Text>
         </Left>
       </CardItem>
       <TouchableOpacity>
         <View style={styles.author}>
           <Thumbnail small source={{ uri: author[0].avatar_urls['48'] }} />
-          <Text style={styles.authorName}>
-            {author[0].name}
-          </Text>
+          <Text style={styles.authorName}>{author[0].name}</Text>
         </View>
       </TouchableOpacity>
       <CardItem cardBody>
@@ -89,9 +85,7 @@ const ItemPostCard = props => {
         </Button>
         <Button transparent small onPress={() => sharePost()}>
           <Icon name="md-share" />
-          <Text>
-            {I18n.t('share')}
-          </Text>
+          <Text>{I18n.t('share')}</Text>
         </Button>
       </CardItem>
     </Card>

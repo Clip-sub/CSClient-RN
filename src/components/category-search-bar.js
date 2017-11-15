@@ -14,7 +14,7 @@ export const CategorySearchBar = props => (
       <Icon name="search" style={styles.searchBoxIcon} />
       <TextInput
         underlineColorAndroid="transparent"
-        returnKeyType={'search'}
+        returnKeyType="search"
         multiline={false}
         onChangeText={props.onChangeText}
         style={styles.searchBoxInput}

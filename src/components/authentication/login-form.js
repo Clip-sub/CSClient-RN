@@ -9,8 +9,6 @@ import { View, Text, TextInput } from 'react-native';
 import { Button, Icon } from 'native-base';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
 import SpinKit from 'react-native-spinkit';
-import base64 from 'base-64';
-import BottomSheet from 'react-native-bottomsheet';
 import { reset } from '../../actions/actions-navigation';
 import { saveUserData } from '../../actions/actions-users';
 import APIv1 from '../../services/api-auth';
@@ -64,15 +62,15 @@ const usernameField = ({ input, placeholder, meta, ...inputProps }) => {
       <Icon name="person" style={styles.icon} />
       <TextInput
         {...inputProps}
-        name={'username'}
+        name="username"
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
-        autoCapitalize={'none'}
-        selectionColor={'#ffefef'}
+        autoCapitalize="none"
+        selectionColor="#ffefef"
         placeholder={I18n.t('login_username_placeholder')}
         placeholderTextColor={[styles.placeholderTextColor]}
-        underlineColorAndroid={'transparent'}
+        underlineColorAndroid="transparent"
         style={styles.input}
       />
     </View>
@@ -91,14 +89,14 @@ const passwordField = ({ input, placeholder, meta, ...inputProps }) => {
       <Icon name="lock" style={styles.icon} />
       <TextInput
         {...inputProps}
-        name={'password'}
+        name="password"
         onChangeText={input.onChange}
         value={input.value}
         onBlur={input.onBlur}
         secureTextEntry
         placeholder={I18n.t('login_password_placeholder')}
         placeholderTextColor={[styles.placeholderTextColor]}
-        underlineColorAndroid={'transparent'}
+        underlineColorAndroid="transparent"
         style={styles.input}
       />
     </View>
@@ -126,29 +124,29 @@ class LoginForm extends Component {
     const loginLabel = (
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Icon active name="ios-person" style={{ color: '#fff' }} />
-        <Text style={{ color: '#fff' }}>
-          {I18n.t('login_button_label')}
-        </Text>
+        <Text style={{ color: '#fff' }}>{I18n.t('login_button_label')}</Text>
       </View>
     );
 
     return (
       <View style={[this.props.style, styles.formContainer]}>
-        <Field name={'username'} component={usernameField} />
-        <Field name={'password'} component={passwordField} />
+        <Field name="username" component={usernameField} />
+        <Field name="password" component={passwordField} />
         <Button
           block
           rounded
           bordered
           outline
           light
-          title={''}
+          title=""
           onPress={handleSubmit(onSubmit)}
           disabled={submitting}
         >
-          {submitting
-            ? <SpinKit type="Wave" size={26} color={'#ffffff'} />
-            : loginLabel}
+          {submitting ? (
+            <SpinKit type="Wave" size={26} color="#ffffff" />
+          ) : (
+            loginLabel
+          )}
         </Button>
       </View>
     );

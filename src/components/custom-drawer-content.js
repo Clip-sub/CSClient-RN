@@ -43,23 +43,25 @@ const CustomDrawerContent = props => {
     dispatch(NavigationActions.navigate({ routeName: 'DrawerClose' }));
   };
 
-  const userItem = !user
-    ? <ListItem icon onPress={() => goToScreen('Auth')}>
-        <Left>
-          <Icon name="person" style={{ color: '#EF5350' }} />
-        </Left>
-        <Body>
-          <Text style={drawerStyle.itemText}>Login / Register</Text>
-        </Body>
-      </ListItem>
-    : <ListItem icon onPress={() => goToScreen('Profile')}>
-        <Left>
-          <Icon name="person" style={{ color: '#EF5350' }} />
-        </Left>
-        <Body>
-          <Text style={drawerStyle.itemText}>Profile</Text>
-        </Body>
-      </ListItem>;
+  const userItem = !user ? (
+    <ListItem icon onPress={() => goToScreen('Auth')}>
+      <Left>
+        <Icon name="person" style={{ color: '#EF5350' }} />
+      </Left>
+      <Body>
+        <Text style={drawerStyle.itemText}>Login / Register</Text>
+      </Body>
+    </ListItem>
+  ) : (
+    <ListItem icon onPress={() => goToScreen('Profile')}>
+      <Left>
+        <Icon name="person" style={{ color: '#EF5350' }} />
+      </Left>
+      <Body>
+        <Text style={drawerStyle.itemText}>Profile</Text>
+      </Body>
+    </ListItem>
+  );
 
   return (
     <View style={drawerStyle.drawerMenuContainer}>
@@ -110,16 +112,16 @@ const CustomDrawerContent = props => {
         </Body>
       </ListItem>
 
-      {user && user.id !== null
-        ? <ListItem icon onPress={() => onPressLogout()}>
-            <Left>
-              <Icon name="ios-exit-outline" style={{ color: '#EF5350' }} />
-            </Left>
-            <Body>
-              <Text style={drawerStyle.itemText}>Log out</Text>
-            </Body>
-          </ListItem>
-        : null}
+      {user && user.id !== null ? (
+        <ListItem icon onPress={() => onPressLogout()}>
+          <Left>
+            <Icon name="ios-exit-outline" style={{ color: '#EF5350' }} />
+          </Left>
+          <Body>
+            <Text style={drawerStyle.itemText}>Log out</Text>
+          </Body>
+        </ListItem>
+      ) : null}
     </View>
   );
 };

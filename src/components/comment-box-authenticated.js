@@ -54,9 +54,9 @@ const commentField = ({ input, placeholder, meta, ...inputProps }) => {
         multiline
         onBlur={input.onBlur}
         editable={!submitting}
-        placeholder={'Enter your comment'}
-        placeholderTextColor={'#63585b'}
-        underlineColorAndroid={'transparent'}
+        placeholder="Enter your comment"
+        placeholderTextColor="#63585b"
+        underlineColorAndroid="transparent"
         style={[Styles.input, Styles.inputArea]}
       />
     </View>
@@ -67,7 +67,7 @@ const CommentBoxAuthenticated = props => {
   const { handleSubmit, submitting } = props;
   return (
     <View style={[props.style, Styles.formContainer]}>
-      <Field name={'content'} component={commentField} />
+      <Field name="content" component={commentField} />
       <Button
         danger
         block
@@ -76,12 +76,10 @@ const CommentBoxAuthenticated = props => {
         outline
         onPress={handleSubmit(onSubmit)}
         disabled={submitting}
-        title={''}
+        title=""
       >
         <Icon active name="ios-person" style={{ color: '#fff' }} />
-        <Text style={{ color: '#000' }}>
-          {'Post your comment'}
-        </Text>
+        <Text style={{ color: '#000' }}>Post your comment</Text>
       </Button>
     </View>
   );

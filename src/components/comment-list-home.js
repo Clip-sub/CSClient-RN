@@ -9,7 +9,7 @@ import { View, FlatList, Text, Image, TouchableOpacity } from 'react-native';
 import he from 'he';
 import moment from 'moment/min/moment-with-locales.min';
 
-export default class CommentList extends PureComponent {
+export class CommentList extends PureComponent {
   componentDidMount() {
     const { getCommentsHome } = this.props;
     getCommentsHome(1);
@@ -65,7 +65,10 @@ export default class CommentList extends PureComponent {
                 color: '#ff8282',
               }}
             >
-              {moment(item.date).locale('en').startOf('day').fromNow()}
+              {moment(item.date)
+                .locale('en')
+                .startOf('day')
+                .fromNow()}
             </Text>
           </View>
         </View>

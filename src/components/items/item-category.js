@@ -24,7 +24,7 @@ const ItemCategory = props => {
   return (
     <TouchableHighlight
       activeOpacity={0.3}
-      underlayColor={'#f4f8ff'}
+      underlayColor="#f4f8ff"
       style={styles.itemContainer}
       onPress={onItemPress}
     >
