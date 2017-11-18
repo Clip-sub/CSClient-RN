@@ -4,7 +4,7 @@
 
 'use strict';
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   Keyboard,
   View,
@@ -15,6 +15,7 @@ import {
   UIManager,
   LayoutAnimation,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import HTMLView from 'react-native-htmlview';

@@ -4,7 +4,7 @@
 
 'use strict';
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {
   Body,
   Button,
@@ -16,6 +16,7 @@ import {
   Right,
   Title,
 } from 'native-base';
+import PropTypes from 'prop-types';
 import {
   BackHandler,
   Platform,

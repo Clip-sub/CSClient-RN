@@ -4,10 +4,10 @@
 'use strict';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { StyleProvider } from 'native-base';
+//import { StyleProvider } from 'native-base';
 import OneSignal from 'react-native-onesignal';
-import getTheme from '../native-base-theme/components';
-import megumi from '../native-base-theme/variables/megumi';
+//import getTheme from '../native-base-theme/components';
+//import megumi from '../native-base-theme/variables/megumi';
 import CustomStore from './stores/custom-store';
 import RootContainer from './containers/index';
 
@@ -40,7 +40,7 @@ export default class CSClient extends Component {
 
   onRegistered = notifData => {
     console.log(
-      'Device had been registered for push notifications!',
+      'Device had been registered for push notifications.',
       notifData,
     );
   };
@@ -51,11 +51,9 @@ export default class CSClient extends Component {
 
   render() {
     return (
-      <StyleProvider style={getTheme(megumi)}>
-        <Provider store={store}>
-          <RootContainer />
-        </Provider>
-      </StyleProvider>
+      <Provider store={store}>
+        <RootContainer />
+      </Provider>
     );
   }
 }
