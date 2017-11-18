@@ -20,7 +20,7 @@ export function* getPosts(action) {
       const totalPages = parseInt(result.headers['x-wp-totalpages']);
       yield put(receivePosts(result.data, page, total, totalPages));
     } else {
-      console.log('Error');
+      console.log('Error', result);
     }
   } catch (error) {
     console.log(error);

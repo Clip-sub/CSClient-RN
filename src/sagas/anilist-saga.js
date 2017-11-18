@@ -7,7 +7,6 @@
 import _ from 'lodash';
 import { call } from 'redux-saga/effects';
 import API from '../services/api-ani';
-
 const credentials = require('../utils/credentials.json');
 
 const api = API.create();

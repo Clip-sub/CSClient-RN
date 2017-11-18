@@ -6,7 +6,7 @@
 
 import apisauce from 'apisauce';
 
-const Status = {
+export const Status = {
   OK: 200,
   ERROR_404: 404,
 };

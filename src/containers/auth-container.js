@@ -43,7 +43,7 @@ class AuthContainer extends Component {
   static navigationOptions = {
     title: 'Login Screen',
     headerLeft: (
-      <Button title={''} transparent>
+      <Button title="" transparent>
         <Icon name="menu" />
       </Button>
     ),
@@ -91,17 +91,17 @@ class AuthContainer extends Component {
         />
         <Header
           noShadow
-          backgroundColor={'transparent'}
+          backgroundColor="transparent"
           style={{ backgroundColor: 'transparent', borderBottomWidth: 0 }}
-          iosBarStyle={'light-content'}
+          iosBarStyle="light-content"
         >
           <StatusBar
             translucent
-            backgroundColor={'transparent'}
+            backgroundColor="transparent"
             barStyle="light-content"
           />
           <Left>
-            <Button title={''} onPress={() => goBack()} transparent>
+            <Button title="" onPress={() => goBack()} transparent>
               <Icon style={{ color: '#fff' }} name="arrow-back" />
             </Button>
           </Left>
