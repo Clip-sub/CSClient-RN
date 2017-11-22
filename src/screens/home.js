@@ -30,7 +30,7 @@ import * as postActions from '../actions/actions-content';
 import * as categoryActions from '../actions/actions-categories';
 import * as commentActions from '../actions/actions-comments';
 
-const HomeContainer = props => {
+const Home = props => {
   const { navigate, switchHomeTab, home } = props;
 
   const renderHomeContent = () => {
@@ -124,4 +124,5 @@ const mapDispatchToProps = dispatch =>
     dispatch,
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+Home = connect(mapStateToProps, mapDispatchToProps)(Home);
+exports.Home = Home;

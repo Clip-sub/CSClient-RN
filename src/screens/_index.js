@@ -7,14 +7,20 @@
 
 'use strict';
 import { Navigation } from 'react-native-navigation';
-// Screens:
-import HomeContainer from './home-container';
+// import { CustomProvider } from './custom-provider';
+// Stack Screens:
+import { Home } from './home';
+import ContentContainer from './content-container';
+// Tab Screens:
 
 export function registerScreens(store, Provider) {
+  // Stack-based screens:
+  Navigation.registerComponent('csclient.Home', () => Home, store, Provider);
   Navigation.registerComponent(
-    'csclient.Home',
-    () => HomeContainer,
+    'csclient.Content',
+    () => ContentContainer,
     store,
     Provider,
   );
+  // Tab-based screens:
 }

@@ -6,19 +6,7 @@
 
 import React, { PureComponent } from 'react';
 import { View, StatusBar, Text } from 'react-native';
-import {
-  Container,
-  Header,
-  Left,
-  Button,
-  Icon,
-  Body,
-  Title,
-} from 'native-base';
-import {
-  RichTextEditor,
-  RichTextToolbar,
-} from 'react-native-zss-rich-text-editor';
+import { Container, Header, Left, Button, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import DialogManager, { SlideAnimation } from 'react-native-dialog-component';
 import GravatarAPI from '../services/api-gravatar';
@@ -71,27 +59,12 @@ class EditorContainer extends PureComponent {
               <Icon name="menu" />
             </Button>
           </Left>
-          <Body>
-            <Title></Title>
-          </Body>
         </Header>
         <View style={{ flex: 1, marginTop: 24, backgroundColor: '#fff' }}>
           <Button
             onPress={this.onPressAutoFetch}
             title="Learn More"
             color="#841584"
-          />
-          <RichTextEditor
-            ref={r => (this.richtext = r)}
-            initialTitleHTML="Title!!"
-            initialContentHTML={
-              'Hello <b>World</b> <p>this is a new paragraph</p> <p>this is another new paragraph</p>'
-            }
-            editorInitializedCallback={() => console.log('ed')}
-          />
-          <RichTextToolbar
-            getEditor={() => this.richtext}
-            selectedButtonStyle={{ backgroundColor: 'yellow' }}
           />
         </View>
       </Container>
