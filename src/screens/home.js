@@ -5,22 +5,9 @@
 'use strict';
 
 import React from 'react';
-import { View, StatusBar } from 'react-native';
-import {
-  Body,
-  Button,
-  Container,
-  Footer,
-  FooterTab,
-  Header,
-  Icon,
-  Left,
-  Right,
-  Title,
-} from 'native-base';
+import { Button, Container, Footer, FooterTab, Icon } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import OneSignal from 'react-native-onesignal';
 import PostList from '../components/post-list';
 import CategoryList from '../components/category-list';
 import { CommentList } from '../components/comment-list-home';
@@ -30,8 +17,8 @@ import * as postActions from '../actions/actions-content';
 import * as categoryActions from '../actions/actions-categories';
 import * as commentActions from '../actions/actions-comments';
 
-const Home = props => {
-  const { navigate, switchHomeTab, home } = props;
+let Home = props => {
+  const { switchHomeTab, home } = props;
 
   const renderHomeContent = () => {
     switch (home.activeTabIndex) {
@@ -48,22 +35,6 @@ const Home = props => {
 
   return (
     <Container>
-      <Header iosBarStyle={'light-content'}>
-        <StatusBar backgroundColor="#d32f2f" barStyle="light-content" />
-        <Left>
-          <Button title={''} transparent onPress={() => navigate('DrawerOpen')}>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>Clip-sub</Title>
-        </Body>
-        <Right>
-          <Button transparent onPress={() => OneSignal.setSubscription(true)}>
-            <Icon name="notifications" />
-          </Button>
-        </Right>
-      </Header>
       {renderHomeContent()}
       <Footer>
         <FooterTab>

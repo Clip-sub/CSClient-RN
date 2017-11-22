@@ -9,18 +9,12 @@
 import { Navigation } from 'react-native-navigation';
 // import { CustomProvider } from './custom-provider';
 // Stack Screens:
-import { Home } from './home';
-import ContentContainer from './content-container';
+//import { Home } from './home';
+import { Test } from './tab-based/test';
 // Tab Screens:
 
 export function registerScreens(store, Provider) {
   // Stack-based screens:
-  Navigation.registerComponent('csclient.Home', () => Home, store, Provider);
-  Navigation.registerComponent(
-    'csclient.Content',
-    () => ContentContainer,
-    store,
-    Provider,
-  );
+  Navigation.registerComponent('csclient.Test', () => Test, store, Provider);
   // Tab-based screens:
 }
