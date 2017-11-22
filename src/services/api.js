@@ -4,9 +4,8 @@
 
 'use strict';
 
-import base64 from 'base-64';
 import apisauce from 'apisauce';
-
+import base64 from 'base-64';
 const privilegeData = require('../utils/credentials.json');
 
 XMLHttpRequest = GLOBAL.originalXMLHttpRequest
