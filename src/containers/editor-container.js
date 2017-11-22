@@ -64,21 +64,15 @@ class EditorContainer extends PureComponent {
   render() {
     return (
       <Container style={{ backgroundColor: '#fff' }}>
-        <Header iosBarStyle={'light-content'}>
+        <Header iosBarStyle="light-content">
           <StatusBar backgroundColor="#d32f2f" barStyle="light-content" />
           <Left>
-            <Button
-              title={''}
-              transparent
-              onPress={() => navigate('DrawerOpen')}
-            >
+            <Button title="" transparent onPress={() => navigate('DrawerOpen')}>
               <Icon name="menu" />
             </Button>
           </Left>
           <Body>
-            <Title>
-              {''}
-            </Title>
+            <Title></Title>
           </Body>
         </Header>
         <View style={{ flex: 1, marginTop: 24, backgroundColor: '#fff' }}>
@@ -89,7 +83,7 @@ class EditorContainer extends PureComponent {
           />
           <RichTextEditor
             ref={r => (this.richtext = r)}
-            initialTitleHTML={'Title!!'}
+            initialTitleHTML="Title!!"
             initialContentHTML={
               'Hello <b>World</b> <p>this is a new paragraph</p> <p>this is another new paragraph</p>'
             }
