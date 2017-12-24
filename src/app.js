@@ -19,7 +19,7 @@ export const startApp = () => {
   Navigation.startTabBasedApp({
     tabs: [
       {
-        label: 'One',
+        label: 'Home',
         screen: 'csclient.Test',
         //icon: require('../img/one.png'), // local image asset for the tab icon unselected state (optional on iOS)
         //selectedIcon: require('../img/one_selected.png'), // local image asset for the tab icon selected state (optional, iOS only. On Android, Use `tabBarSelectedButtonColor` instead)
@@ -36,7 +36,21 @@ export const startApp = () => {
         navigatorButtons: {}, // override the nav buttons for the tab screen, see "Adding buttons to the navigator" below (optional)
       },
       {
-        label: 'Two',
+        label: 'Categories',
+        screen: 'csclient.Test',
+        //icon: require('../img/two.png'),
+        //selectedIcon: require('../img/two_selected.png'),
+        title: 'Screen Two',
+      },
+      {
+        label: 'Comments',
+        screen: 'csclient.Test',
+        //icon: require('../img/two.png'),
+        //selectedIcon: require('../img/two_selected.png'),
+        title: 'Screen Two',
+      },
+      {
+        label: 'Profile',
         screen: 'csclient.Test',
         //icon: require('../img/two.png'),
         //selectedIcon: require('../img/two_selected.png'),

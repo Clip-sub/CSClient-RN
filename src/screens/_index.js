@@ -7,7 +7,6 @@
 
 'use strict';
 import { Navigation } from 'react-native-navigation';
-// import { CustomProvider } from './custom-provider';
 // Stack Screens:
 //import { Home } from './home';
 import { Test } from './tab-based/test';

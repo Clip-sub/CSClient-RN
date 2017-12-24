@@ -12,7 +12,7 @@ import { PostMenuBar } from './post-menu-bar';
 import { ItemPostCard } from './items/item-post-card';
 import { ItemPostGrid } from './items/item-post-grid';
 
-export default class PostList extends Component {
+export default class Home extends Component {
   static propTypes = {
     postItems: PropTypes.arrayOf(PropTypes.object),
     status: PropTypes.oneOf(['loading', 'error', 'loaded']),
