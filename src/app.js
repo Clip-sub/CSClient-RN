@@ -5,12 +5,13 @@
 //import { StyleProvider } from 'native-base';
 //import OneSignal from 'react-native-onesignal';
 //import getTheme from '../native-base-theme/components';
+import { DeviceEventEmitter } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
 import { registerScreens } from './screens/_index';
-import CustomStore from './stores/custom-store';
+import { configureStore } from './stores/custom-store';
 // import { CustomProvider } from './custom-provider';
-const store = CustomStore();
+const { store } = configureStore();
 
 registerScreens(store, Provider);
 
@@ -18,8 +19,8 @@ export const startApp = () => {
   Navigation.startTabBasedApp({
     tabs: [
       {
-        label: 'One', // tab label as appears under the icon in iOS (optional)
-        screen: 'example.FirstTabScreen', // unique ID registered with Navigation.registerScreen
+        label: 'One',
+        screen: 'csclient.Test',
         //icon: require('../img/one.png'), // local image asset for the tab icon unselected state (optional on iOS)
         //selectedIcon: require('../img/one_selected.png'), // local image asset for the tab icon selected state (optional, iOS only. On Android, Use `tabBarSelectedButtonColor` instead)
         iconInsets: {
@@ -36,7 +37,7 @@ export const startApp = () => {
       },
       {
         label: 'Two',
-        screen: 'example.SecondTabScreen',
+        screen: 'csclient.Test',
         //icon: require('../img/two.png'),
         //selectedIcon: require('../img/two_selected.png'),
         title: 'Screen Two',
@@ -47,7 +48,7 @@ export const startApp = () => {
       tabBarButtonColor: '#ffff00', // optional, change the color of the tab icons and text (also unselected). On Android, add this to appStyle
       tabBarSelectedButtonColor: '#ff9900', // optional, change the color of the selected tab icon and text (only selected). On Android, add this to appStyle
       tabBarBackgroundColor: '#551A8B', // optional, change the background color of the tab bar
-      initialTabIndex: 1, // optional, the default selected bottom tab. Default: 0. On Android, add this to appStyle
+      initialTabIndex: 0, // optional, the default selected bottom tab. Default: 0. On Android, add this to appStyle
     },
     appStyle: {
       orientation: 'portrait',
@@ -56,27 +57,11 @@ export const startApp = () => {
       //backButtonImage: require('./pathToImage.png'),
       hideBackButtonTitle: true,
     },
-    drawer: {
-      left: {
-        screen: 'example.FirstSideMenu',
-        passProps: {},
-      },
-      right: {
-        screen: 'example.SecondSideMenu', // unique ID registered with Navigation.registerScreen
-        passProps: {},
-      },
-      style: {
-        drawerShadow: true,
-        contentOverlayColor: 'rgba(0,0,0,0.25)',
-        leftDrawerWidth: 50,
-        rightDrawerWidth: 50,
-        shouldStretchDrawer: true,
-      },
-      type: 'MMDrawer',
-      animationType: 'door',
-      disableOpenGesture: false,
-    },
     passProps: {},
     animationType: 'slide-down',
   });
 };
+
+DeviceEventEmitter.once('PERSIST', () => {
+  startApp();
+});

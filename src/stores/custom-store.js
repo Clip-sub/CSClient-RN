@@ -5,6 +5,7 @@
 'use strict';
 
 import { createStore, applyMiddleware, compose } from 'redux';
+import { DeviceEventEmitter } from 'react-native';
 import createSagaMiddleware from 'redux-saga';
 import { persistCombineReducers, persistStore } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
@@ -25,12 +26,12 @@ export function configureStore(initialState) {
   const store = createStore(
     reducers,
     initialState,
-    compose(applyMiddleware(sagaMiddleware), autoRehydrate()),
+    compose(applyMiddleware(sagaMiddleware)),
   );
   sagaMiddleware.run(rootSaga);
 
   const persistor = persistStore(store, {}, () =>
-    console.log('Persist completed'),
+    DeviceEventEmitter.emit('PERSIST'),
   );
 
   return { persistor, store };

@@ -1,4 +1,2 @@
-import { AppRegistry } from 'react-native';
+/* eslint-disable no-unused-vars */
 import csclient from './src/app';
-
-AppRegistry.registerComponent('csclient', () => csclient);
