@@ -1,5 +1,4 @@
 const Colors = {
-  GRAY_ULTRA: '#ddd',
   GRAY_MEDIUM: '#7e7e7e',
   GRAY_SEMILIGHT: '#ddd',
   GRAY_LIGHT: '#f0f0f0',

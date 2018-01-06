@@ -50,6 +50,7 @@
     "he": "^1.1.1",
     "instabug-reactnative": "^2.2.2",
     "lodash": "^4.17.4",
+    "lottie-react-native": "^2.3.2",
     "moment": "^2.20.1",
     "native-base": "^2.3.5",
     "querystringify": "^1.0.0",
