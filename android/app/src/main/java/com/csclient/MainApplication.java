@@ -3,6 +3,7 @@ package com.csclient;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactPackage;
@@ -20,6 +21,7 @@ public class MainApplication extends NavigationApplication {
 
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
+          new LinearGradientPackage(),
           new ReactNativeI18n(),
           new ReactNativeOneSignalPackage(),
           new VectorIconsPackage()

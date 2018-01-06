@@ -139,6 +139,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-linear-gradient')
     compile project(':react-native-navigation')
     compile project(':react-native-onesignal')
     compile project(':react-native-vector-icons')

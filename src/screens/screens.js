@@ -12,6 +12,7 @@ import { Navigation } from 'react-native-navigation';
 import { Test } from './tab-based/test';
 // Tab Screens:
 import { PostList } from './tab-based/post-list';
+import { Profile } from './stack-based/profile';
 
 export function registerScreens(store, Provider) {
   // Stack-based screens:
@@ -19,6 +20,13 @@ export function registerScreens(store, Provider) {
   Navigation.registerComponent(
     'screens.PostList',
     () => PostList,
+    store,
+    Provider,
+  );
+
+  Navigation.registerComponent(
+    'screens.Profile',
+    () => Profile,
     store,
     Provider,
   );

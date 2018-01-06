@@ -3,22 +3,13 @@
  */
 'use strict';
 import React from 'react';
-import { Image, TouchableOpacity, Platform, Share } from 'react-native';
-import {
-  Body,
-  Button,
-  Card,
-  CardItem,
-  Icon,
-  Left,
-  Text,
-  Thumbnail,
-  View,
-} from 'native-base';
+import { Image, TouchableOpacity, Platform, Share, Text } from 'react-native';
+import { Body, Button, Card, CardItem, Icon, Left, View } from 'native-base';
 import HTMLView from 'react-native-htmlview';
 import HTMLParser from 'fast-html-parser';
 import he from 'he';
 import { I18n } from 'csclient-common';
+import { ButtonGradient } from '../buttons/button-gradient';
 
 const ItemPostCard = ({ post }) => {
   const { id, content, title, excerpt, link } = post;
@@ -56,7 +47,10 @@ const ItemPostCard = ({ post }) => {
       </CardItem>
       <TouchableOpacity>
         <View style={styles.author}>
-          <Thumbnail small source={{ uri: author[0].avatar_urls['48'] }} />
+          <Image
+            style={styles.avatar}
+            source={{ uri: author[0].avatar_urls['48'] }}
+          />
           <Text style={styles.authorName}>{author[0].name}</Text>
         </View>
       </TouchableOpacity>
@@ -87,6 +81,8 @@ const ItemPostCard = ({ post }) => {
           <Text>{I18n.t('share')}</Text>
         </Button>
       </CardItem>
+
+      <ButtonGradient title="Test" />
     </Card>
   );
 };
@@ -94,6 +90,11 @@ const ItemPostCard = ({ post }) => {
 export { ItemPostCard };
 
 const styles = {
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+  },
   thumbnailImage: {
     flex: 1,
     alignSelf: 'stretch',

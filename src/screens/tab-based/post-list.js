@@ -28,7 +28,7 @@ export class PostList extends Component {
 
   static navigatorStyle = {
     navBarSubtitleFontSize: 10,
-    drawUnderNavBar: true,
+    drawUnderNavBar: false,
     navBarTranslucent: true,
     navBarBlur: true,
   };
@@ -49,6 +49,8 @@ export class PostList extends Component {
     this.state = {
       posts: [],
     };
+
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   componentDidMount() {
@@ -56,9 +58,19 @@ export class PostList extends Component {
       .listPosts({ page: this.page })
       .then(resp => {
         console.log(resp);
-        //this.setState({ posts: resp });
+        this.setState({ posts: resp });
       })
       .catch(e => console.log(e));
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'profile') {
+        this.props.navigator.showModal({
+          screen: 'screens.Profile',
+        });
+      }
+    }
   }
 
   onEndReached = () => {
