@@ -1,0 +1,5 @@
+{
+  "name": "csclient-common",
+  "main": "common.js",
+  "license": "ISC"
+}

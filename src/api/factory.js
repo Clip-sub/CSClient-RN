@@ -24,7 +24,7 @@ const addHeaders = (url: string, options) => {
   return axios({
     baseURL: urlModifier(url),
     headers,
-    timeout: 5000,
+    timeout: 10000,
     ...options,
   });
 };
@@ -51,7 +51,6 @@ const xhrWithoutPayload = (method: string) => {
     return new Promise((resolve, reject) => {
       addHeaders(url, {
         method,
-        data: payload,
       })
         .then(resp => {
           resolve(resp.data);

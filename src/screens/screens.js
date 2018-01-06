@@ -11,9 +11,15 @@ import { Navigation } from 'react-native-navigation';
 //import { Home } from './home';
 import { Test } from './tab-based/test';
 // Tab Screens:
+import { PostList } from './tab-based/post-list';
 
 export function registerScreens(store, Provider) {
   // Stack-based screens:
-  Navigation.registerComponent('csclient.Test', () => Test, store, Provider);
   // Tab-based screens:
+  Navigation.registerComponent(
+    'screens.PostList',
+    () => PostList,
+    store,
+    Provider,
+  );
 }

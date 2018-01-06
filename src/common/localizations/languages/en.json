@@ -25,5 +25,9 @@
 
   "drawer": {
     "logout_prompt": "You will be logged out, are you sure?"
+  },
+
+  "home": {
+    "posts": "Posts"
   }
 }

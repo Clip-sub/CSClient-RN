@@ -18,12 +18,11 @@ import {
 import HTMLView from 'react-native-htmlview';
 import HTMLParser from 'fast-html-parser';
 import he from 'he';
-import I18n from '../../localizations/I18n';
+import { I18n } from 'csclient-common';
 
-const ItemPostCard = props => {
-  const { navigate } = props;
-  const { id, content, title, excerpt, link } = props.post;
-  const { author, replies } = props.post._embedded;
+const ItemPostCard = ({ post }) => {
+  const { id, content, title, excerpt, link } = post;
+  const { author, replies } = post._embedded;
   const sharePost = () => {
     const shareContent = {
       message: link,

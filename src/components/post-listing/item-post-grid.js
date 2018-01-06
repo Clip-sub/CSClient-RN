@@ -7,7 +7,7 @@ import { View, TouchableOpacity, Image, Platform, Share } from 'react-native';
 import { Text, Icon } from 'native-base';
 import HTMLParser from 'fast-html-parser';
 import he from 'he';
-import I18n from '../../localizations/I18n';
+import { I18n } from 'csclient-common';
 
 const ItemPostGrid = props => {
   const { id, title, author, content, comment_count, url } = props.post;
